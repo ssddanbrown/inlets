@@ -8,9 +8,11 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/alexellis/inlets/pkg/transport"
+	"github.com/alexellis/inlets/pkg/types"
 	"github.com/gorilla/websocket"
 	"github.com/twinj/uuid"
 )
@@ -24,21 +26,46 @@ type Server struct {
 
 // Serve traffic
 func (s *Server) Serve() {
-	ch := make(chan *http.Response)
 	outgoing := make(chan *http.Request)
 
-	http.HandleFunc("/", proxyHandler(ch, outgoing, s.GatewayTimeout))
-	http.HandleFunc("/tunnel", serveWs(ch, outgoing, s.Token))
+	bus := types.NewBus()
+
+	http.HandleFunc("/", proxyHandler(outgoing, bus, s.GatewayTimeout))
+	http.HandleFunc("/tunnel", serveWs(outgoing, bus, s.Token))
+
+	collectInterval := time.Second * 10
+	go garbageCollectBus(bus, collectInterval, s.GatewayTimeout*2)
+
 	if err := http.ListenAndServe(fmt.Sprintf(":%d", s.Port), nil); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func proxyHandler(msg chan *http.Response, outgoing chan *http.Request, gatewayTimeout time.Duration) func(w http.ResponseWriter, r *http.Request) {
+func garbageCollectBus(bus *types.Bus, interval time.Duration, expiry time.Duration) {
+	ticker := time.NewTicker(interval)
+	select {
+	case <-ticker.C:
+		list := bus.SubscriptionList()
+		for _, item := range list {
+			if bus.Expired(item, expiry) {
+				bus.Unsubscribe(item)
+			}
+		}
+		break
+	}
+}
+
+func proxyHandler(outgoing chan *http.Request, bus *types.Bus, gatewayTimeout time.Duration) func(w http.ResponseWriter, r *http.Request) {
 
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		inletsID := uuid.Formatter(uuid.NewV4(), uuid.FormatHex)
+
+		sub := bus.Subscribe(inletsID)
+
+		defer func() {
+			bus.Unsubscribe(inletsID)
+		}()
 
 		log.Printf("[%s] proxy %s %s %s", inletsID, r.Host, r.Method, r.URL.String())
 		r.Header.Set(transport.InletsHeader, inletsID)
@@ -48,7 +75,7 @@ func proxyHandler(msg chan *http.Response, outgoing chan *http.Request, gatewayT
 		}
 
 		body, _ := ioutil.ReadAll(r.Body)
-		// fmt.Println("RequestURI/Host", r.RequestURI, r.Host)
+
 		qs := ""
 		if len(r.URL.RawQuery) > 0 {
 			qs = "?" + r.URL.RawQuery
@@ -59,38 +86,42 @@ func proxyHandler(msg chan *http.Response, outgoing chan *http.Request, gatewayT
 
 		transport.CopyHeaders(req.Header, &r.Header)
 
-		outgoing <- req
+		wg := sync.WaitGroup{}
+		wg.Add(2)
 
-		log.Printf("[%s] waiting for response", inletsID)
+		go func() {
+			log.Printf("[%s] waiting for response", inletsID)
 
-		cancel := make(chan bool)
+			select {
+			case res := <-sub.Data:
 
-		timeout := time.AfterFunc(gatewayTimeout, func() {
-			cancel <- true
-		})
+				innerBody, _ := ioutil.ReadAll(res.Body)
 
-		select {
-		case res := <-msg:
-			timeout.Stop()
+				transport.CopyHeaders(w.Header(), &res.Header)
+				w.WriteHeader(res.StatusCode)
+				w.Write(innerBody)
+				log.Printf("[%s] wrote %d bytes", inletsID, len(innerBody))
+				wg.Done()
+				break
+			case <-time.After(gatewayTimeout):
+				log.Printf("[%s] timeout after %f secs\n", inletsID, gatewayTimeout.Seconds())
 
-			innerBody, _ := ioutil.ReadAll(res.Body)
+				w.WriteHeader(http.StatusGatewayTimeout)
+				wg.Done()
+				break
+			}
+		}()
 
-			transport.CopyHeaders(w.Header(), &res.Header)
-			w.WriteHeader(res.StatusCode)
-			w.Write(innerBody)
-			log.Printf("[%s] wrote %d bytes", inletsID, len(innerBody))
+		go func() {
+			outgoing <- req
+			wg.Done()
+		}()
 
-			break
-		case <-cancel:
-			log.Printf("[%s] timeout after %f secs\n", inletsID, gatewayTimeout.Seconds())
-
-			w.WriteHeader(http.StatusGatewayTimeout)
-			break
-		}
+		wg.Wait()
 	}
 }
 
-func serveWs(msg chan *http.Response, outgoing chan *http.Request, token string) func(w http.ResponseWriter, r *http.Request) {
+func serveWs(outgoing chan *http.Request, bus *types.Bus, token string) func(w http.ResponseWriter, r *http.Request) {
 
 	var upgrader = websocket.Upgrader{
 		ReadBufferSize:  1024,
@@ -98,22 +129,11 @@ func serveWs(msg chan *http.Response, outgoing chan *http.Request, token string)
 	}
 
 	return func(w http.ResponseWriter, r *http.Request) {
+		err := authorized(token, r)
 
-		auth := r.Header.Get("Authorization")
-		valid := false
-		if len(token) == 0 {
-			valid = true
-		} else {
-			prefix := "Bearer "
-			if strings.HasPrefix(auth, prefix); len(auth) > len(prefix) && auth[len(prefix):] == token {
-				valid = true
-			}
-		}
-
-		if !valid {
+		if err != nil {
 			w.WriteHeader(http.StatusUnauthorized)
-			w.Write([]byte(`Send token in header Authorization: Bearer <token>`))
-			return
+			w.Write([]byte(err.Error()))
 		}
 
 		ws, err := upgrader.Upgrade(w, r, nil)
@@ -140,13 +160,14 @@ func serveWs(msg chan *http.Response, outgoing chan *http.Request, token string)
 				if msgType == websocket.TextMessage {
 					log.Println("TextMessage: ", message)
 				} else if msgType == websocket.BinaryMessage {
-					// log.Printf("Server recv: %s", message)
 
 					reader := bytes.NewReader(message)
 					scanner := bufio.NewReader(reader)
 					res, _ := http.ReadResponse(scanner, nil)
 
-					msg <- res
+					if id := res.Header.Get(transport.InletsHeader); len(id) > 0 {
+						bus.Send(id, res)
+					}
 				}
 			}
 		}()
@@ -169,4 +190,24 @@ func serveWs(msg chan *http.Response, outgoing chan *http.Request, token string)
 
 		<-connectionDone
 	}
+}
+
+func authorized(token string, r *http.Request) error {
+
+	auth := r.Header.Get("Authorization")
+	valid := false
+	if len(token) == 0 {
+		valid = true
+	} else {
+		prefix := "Bearer "
+		if strings.HasPrefix(auth, prefix); len(auth) > len(prefix) && auth[len(prefix):] == token {
+			valid = true
+		}
+	}
+
+	if !valid {
+		return fmt.Errorf("send token in header Authorization: Bearer <token>")
+	}
+
+	return nil
 }
