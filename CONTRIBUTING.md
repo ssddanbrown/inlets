@@ -4,7 +4,8 @@
 
 Here are a few guidelines for contributing:
 
-* If you would like to contribute to the codebase **please raise an issue to propose the change**
+* If you would like to contribute to the codebase then please raise an issue to propose the change or feature
+* Do not work on an issue / PR until it gets a `design/approved` label from a maintainer
 * Do not mix feature changes or fixes with refactoring - it makes the code harder to review and means there is more for the maintainers (with limited time) to test
 
 * If you have found a bug please raise an issue and fill out the whole template.
@@ -13,7 +14,13 @@ Here are a few guidelines for contributing:
 
 * Please always provide a summary of what you changed, how you did it and how it can be tested.
 
-### License
+### Compliance
+
+All commits need to be signed-off in accordance with the Developer Certificate of Origin (DCO) as per below.
+
+The [Derek bot](https://github.com/alexellis/derek) will enforce this policy, if you need help please get in touch.
+
+#### License
 
 This project is licensed under the MIT License.
 
