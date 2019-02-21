@@ -14,6 +14,14 @@ When combined with SSL - inlets can be used with any corporate HTTP proxy which 
 
 ![](docs/inlets.png)
 
+*Conceptual diagram for inlets*
+
+### Who is behind this project?
+
+inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk), the founder of [OpenFaaS](https://github.com/openfaas/faas/). The goal of OpenFaaS is to Make Serverless Functions Simple for developers. With OpenFaaS you can package any code, binary or microservice into a Serverless Function and deploy to Kubernetes or Docker Swarm without repetitive boiler-plate coding or complex YAML files.
+
+### Goals
+
 Initial goals:
 
 * automatically create endpoints on exit-node based upon client definitions
@@ -35,7 +43,7 @@ Non-goals:
 
 * tunnelling plain (non-HTTP) traffic over TCP
 
-## Status
+### Status
 
 Unlike HTTP 1.1 which follows a synchronous request/response model websockets use an asynchronous pub/sub model for sending and receiving messages. This presents a challenge for tunneling a synchronous protocol over an asynchronous bus. This is a working prototype that can be used for testing, development and to generate discussion, but is not production-ready.
 
