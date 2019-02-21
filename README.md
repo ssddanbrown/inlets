@@ -18,11 +18,13 @@ When combined with SSL - inlets can be used with any corporate HTTP proxy which 
 
 ### Who is behind this project?
 
-inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk), the founder of [OpenFaaS](https://github.com/openfaas/faas/). The goal of OpenFaaS is to Make Serverless Functions Simple for developers. With OpenFaaS you can package any code, binary or microservice into a Serverless Function and deploy to Kubernetes or Docker Swarm without repetitive boiler-plate coding or complex YAML files.
+inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk), the founder of [OpenFaaS](https://github.com/openfaas/faas/).
+
+> The mission of [OpenFaaS](https://github.com/openfaas/faas/) is to Make Serverless Functions Simple for developers. With OpenFaaS you can package any code, binary or microservice into a Serverless Function and deploy to Kubernetes or Docker Swarm without repetitive boiler-plate coding or complex YAML files. OpenFaaS has over 15.5k GitHub stars, 180 contributors and a growing end-user community.
 
 ### Goals
 
-Initial goals:
+#### Initial goals:
 
 * automatically create endpoints on exit-node based upon client definitions
   * multiplex sites on same port through use of DNS / host entries 
@@ -32,14 +34,14 @@ Initial goals:
 * automatic TLS provisioning for endpoints using [cert-magic](https://github.com/mholt/certmagic)
   * configure staging or production LetsEncrypt issuer using HTTP01 challenge
 
-Stretch goals:
+#### Stretch goals:
 
 * discover and configure endpoints for Ingress definitions from Kubernetes
 * configuration to run "exit-node" as serverless container with Azure ACI / AWS Fargate
 * automatic configuration of DNS / A records
 * configure staging or production LetsEncrypt issuer using DNS01 challenge
 
-Non-goals:
+#### Non-goals:
 
 * tunnelling plain (non-HTTP) traffic over TCP
 
