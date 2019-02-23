@@ -27,12 +27,12 @@ func (b *Bus) SubscriptionList() []string {
 	keys := []string{}
 
 	b.Mutex.RLock()
+	defer b.Mutex.RUnlock()
 
 	for key := range b.Subscriptions {
 		keys = append(keys, key)
 	}
 
-	b.Mutex.RUnlock()
 	return keys
 }
 
@@ -40,6 +40,7 @@ func (b *Bus) Send(id string, res *http.Response) {
 	var ok bool
 
 	b.Mutex.RLock()
+	defer b.Mutex.RUnlock()
 	_, ok = b.Subscriptions[id]
 
 	if !ok {
@@ -47,7 +48,6 @@ func (b *Bus) Send(id string, res *http.Response) {
 	}
 
 	b.Subscriptions[id].Data <- res
-	b.Mutex.RUnlock()
 }
 
 func (b *Bus) Subscribe(id string) *Subscription {
@@ -91,8 +91,8 @@ func (b *Bus) Unsubscribe(id string) {
 		close(sub.Data)
 
 		b.Mutex.Lock()
+		defer b.Mutex.Unlock()
 
 		delete(b.Subscriptions, id)
-		b.Mutex.Unlock()
 	}
 }
