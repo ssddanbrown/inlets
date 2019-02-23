@@ -184,7 +184,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: alexellis2/inlets-runtime:0.5.0-sync
+        image: alexellis2/inlets-runtime:0.5.1
         imagePullPolicy: Always
         command: ["./inlets"]
         args:
@@ -213,18 +213,18 @@ If the token value is randomly generated then you will need to access the VPS in
 cat /etc/default/inlets 
 ```  
 
-* Scaleway
-
-[Scaleway](https://www.scaleway.com/) offer probably the cheapest option at 1.99 EUR / month using the "1-XS" from the "Start" tier. 
-
-If you have the Scaleway CLI installed you can provision a host with [./hack/provision-scaleway.sh](./hack/provision-scaleway.sh).
-
-* Digital Ocean
-
-If you are a Digital Ocean user and use `doctl` then you can provision a host with [./hack/provision-digitalocean.sh](./hack/provision-digitalocean.sh).  Please ensure you have configured `droplet.create.ssh-keys` within your `~/.config/doctl/config.yaml`.
-
-### Where can I get a cheap / free domain-name?
+#### Where can I get a cheap / free domain-name?
 
 You can get a free domain-name with a .tk / .ml or .ga TLD from https://www.freenom.com - make sure the domain has at least 4 letters to get it for free. You can also get various other domains starting as cheap as 1-2USD from https://www.namecheap.com
 
 [Namecheap](https://www.namecheap.com) provides wildcard TLS out of the box, but [freenom](https://www.freenom.com) only provides root/naked domain and a list of sub-domains. Domains from both providers can be moved to alternative nameservers for use with AWS Route 53 or Google Cloud DNS - this then enables wildcard DNS and the ability to get a wildcard TLS certificate from LetsEncrypt.
+
+#### Digital Ocean
+
+If you are a Digital Ocean user and use `doctl` then you can provision a host with [./hack/provision-digitalocean.sh](./hack/provision-digitalocean.sh).  Please ensure you have configured `droplet.create.ssh-keys` within your `~/.config/doctl/config.yaml`.
+
+#### Scaleway
+
+[Scaleway](https://www.scaleway.com/) offer probably the cheapest option at 1.99 EUR / month using the "1-XS" from the "Start" tier. 
+
+If you have the Scaleway CLI installed you can provision a host with [./hack/provision-scaleway.sh](./hack/provision-scaleway.sh).
