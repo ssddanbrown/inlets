@@ -4,7 +4,7 @@
 # Change the value here if you desire a specific token value.
 export INLETSTOKEN=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1)
 
-curl -sLO https://github.com/alexellis/inlets/releases/download/0.5.1/inlets && \
+curl -sLO https://github.com/alexellis/inlets/releases/download/0.5.2/inlets && \
   mv inlets /usr/bin/inlets && \
   chmod +x /usr/bin/inlets
 

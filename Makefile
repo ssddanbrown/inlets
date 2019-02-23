@@ -1,3 +1,4 @@
+TAG?=latest
 .PHONY: all
 all: docker
 
@@ -10,4 +11,4 @@ dist:
 
 .PHONY: docker
 docker:
-	docker build -t alexellis2/inlets:latest .
+	docker build -t alexellis2/inlets:$(TAG) .
