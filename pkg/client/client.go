@@ -115,8 +115,9 @@ func (c *Client) Connect() error {
 					errRes := http.Response{
 						StatusCode: http.StatusBadGateway,
 						Body:       ioutil.NopCloser(strings.NewReader(resErr.Error())),
-						Header:     make(http.Header, 1),
+						Header:     http.Header{},
 					}
+
 					errRes.Header.Set(transport.InletsHeader, inletsID)
 					buf2 := new(bytes.Buffer)
 					errRes.Write(buf2)
