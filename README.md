@@ -58,7 +58,7 @@ Unlike HTTP 1.1 which follows a synchronous request/response model websockets us
 
 Run this command:
 ```bash
-curl https://github.com/alexellis/inlets/blob/master/get.sh | bash
+curl https://raw.githubusercontent.com/alexellis/inlets/master/get.sh | bash
 ```
 
 Binaries for Linux, Darwin (MacOS) and armhf are made available via the [releases page](https://github.com/alexellis/inlets/releases)
