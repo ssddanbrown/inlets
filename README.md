@@ -57,8 +57,13 @@ Unlike HTTP 1.1 which follows a synchronous request/response model websockets us
 ### Get `inlets`
 
 Run this command:
+
 ```bash
-curl https://raw.githubusercontent.com/alexellis/inlets/master/get.sh | bash
+# Install to local directory
+curl https://www.alexellis.io/inlets | sh
+
+# Install to /usr/local/bin/
+curl https://www.alexellis.io/inlets | sudo sh
 ```
 
 Binaries for Linux, Darwin (MacOS) and armhf are made available via the [releases page](https://github.com/alexellis/inlets/releases)
