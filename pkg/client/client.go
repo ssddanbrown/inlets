@@ -12,6 +12,7 @@ import (
 
 	"github.com/alexellis/inlets/pkg/transport"
 	"github.com/gorilla/websocket"
+	"github.com/pkg/errors"
 )
 
 var httpClient *http.Client
@@ -36,7 +37,18 @@ func (c *Client) Connect() error {
 		return http.ErrUseLastResponse
 	}
 
-	u := url.URL{Scheme: "ws", Host: c.Remote, Path: "/tunnel"}
+	remote := c.Remote
+	if !strings.HasPrefix(remote, "ws") {
+		remote = "ws://" + remote
+	}
+
+	remoteURL, urlErr := url.Parse(remote)
+	if urlErr != nil {
+		return errors.Wrap(urlErr, "bad remote URL")
+	}
+
+	u := url.URL{Scheme: remoteURL.Scheme, Host: remoteURL.Host, Path: "/tunnel"}
+
 	log.Printf("connecting to %s", u.String())
 
 	ws, _, err := websocket.DefaultDialer.Dial(u.String(), http.Header{
