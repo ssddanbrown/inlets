@@ -60,10 +60,10 @@ Run this command:
 
 ```bash
 # Install to local directory
-curl https://www.alexellis.io/inlets | sh
+curl -sLS https://www.alexellis.io/inlets | sh
 
 # Install to /usr/local/bin/
-curl https://www.alexellis.io/inlets | sudo sh
+curl -sLS https://www.alexellis.io/inlets | sudo sh
 ```
 
 Binaries for Linux, Darwin (MacOS) and armhf are made available via the [releases page](https://github.com/alexellis/inlets/releases)
