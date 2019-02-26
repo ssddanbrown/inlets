@@ -10,6 +10,14 @@
   version = "v1.4.0"
 
 [[projects]]
+  digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
+  version = "v0.8.1"
+
+[[projects]]
   digest = "1:8f41bbca0d6435bb54d7c090336f7693942cda30f9126eaf3959b8df48721ac3"
   name = "github.com/twinj/uuid"
   packages = ["."]
@@ -22,6 +30,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/gorilla/websocket",
+    "github.com/pkg/errors",
     "github.com/twinj/uuid",
   ]
   solver-name = "gps-cdcl"
