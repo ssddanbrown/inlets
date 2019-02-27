@@ -11,7 +11,3 @@ curl -sLO https://raw.githubusercontent.com/alexellis/inlets/master/hack/inlets.
   echo "AUTHTOKEN=$INLETSTOKEN" > /etc/default/inlets && \
   systemctl start inlets && \
   systemctl enable inlets
-
-
-
-

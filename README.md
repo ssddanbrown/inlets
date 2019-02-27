@@ -94,7 +94,7 @@ You can use my hash-browns service for instance which generates hashes.
 
 Install hash-browns or run your own HTTP server
 
-```
+```sh
 go get -u github.com/alexellis/hash-browns
 cd $GOPATH/src/github.com/alexellis/hash-browns
 
@@ -105,7 +105,7 @@ port=3000 go run server.go
 
 Start the tunnel client
 
-```
+```sh
 ./inlets -server=false \
  -remote=192.168.0.101:80 \
  -upstream=http://127.0.0.1:3000
@@ -117,11 +117,11 @@ We now have an example service running (hash-browns), a tunnel server and a tunn
 
 So send a request to the public IP address or hostname:
 
-```
+```sh
 ./inlets -server=false -remote=192.168.0.101:80 -upstream  "gateway.mydomain.tk=http://127.0.0.1:3000"
 ```
 
-```
+```sh
 curl -d "hash this" http://192.168.0.101/hash -H "Host: gateway.mydomain.tk"
 # or
 curl -d "hash this" http://192.168.0.101/hash
@@ -131,7 +131,7 @@ curl -d "hash this" http://gateway.mydomain.tk/hash
 
 You will see the traffic pass between the exit node / server and your development machine. You'll see the hash message appear in the logs as below:
 
-```
+```sh
 ~/go/src/github.com/alexellis/hash-browns$ port=3000 go run server.go 
 2018/12/23 20:15:00 Listening on port: 3000
 "hash this"
@@ -139,7 +139,7 @@ You will see the traffic pass between the exit node / server and your developmen
 
 Now check the metrics endpoint which is built-into the hash-browns example service:
 
-```
+```sh
 curl http://192.168.0.101/metrics | grep hash
 ```
 
@@ -166,13 +166,13 @@ In this example the Host/Client is acting as a relay for OpenFaaS running on por
 
 Host/Client:
 
-```
+```sh
 while [ true ] ; do sleep 5 && ./inlets -server=false -upstream=http://192.168.0.28:8080 -remote=exit.my.club  ; done
 ```
 
 Exit-node:
 
-```
+```sh
 while [ true ] ; do sleep 5 && ./inlets -server=true -upstream=http://192.168.0.28:8080 ; done
 ```
 
@@ -211,7 +211,7 @@ Provisioning on a VPS will see inlets running as a systemd service.  All the usu
 
 Inlets uses a token to prevent unauthorized access to the server component.  A known token can be configured by amending [userdata.sh](./hack/userdata.sh) prior to provisioning
 
-```
+```sh
 # Enables randomly generated authentication token by default.
 # Change the value here if you desire a specific token value.
 export INLETSTOKEN=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1)
@@ -219,7 +219,7 @@ export INLETSTOKEN=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1)
 
 If the token value is randomly generated then you will need to access the VPS in order to obtain the token value.
 
-```
+```sh
 cat /etc/default/inlets 
 ```  
 
