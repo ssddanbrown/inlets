@@ -194,7 +194,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: alexellis2/inlets-runtime:0.5.2
+        image: alexellis2/inlets:0.5.4
         imagePullPolicy: Always
         command: ["./inlets"]
         args:
