@@ -5,6 +5,7 @@ script:
 - make docker
 - make docker-login
 - make push
+- make dist
 
 deploy:
   provider: releases
