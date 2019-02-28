@@ -16,10 +16,16 @@ RUN CGO_ENABLED=0 go build -ldflags "-s -w -X main.GitCommit=${GIT_COMMIT} -X ma
 FROM alpine:3.9
 RUN apk add --force-refresh ca-certificates
 
-COPY --from=build /usr/bin/inlets /root/
+# Add non-root user
+RUN addgroup -S app && adduser -S -g app app \
+  && mkdir -p /home/app || : \
+  && chown -R app /home/app
 
+COPY --from=build /usr/bin/inlets /usr/bin/
+WORKDIR /home/app
+
+USER app
 EXPOSE 80
 
-WORKDIR /root/
-
-CMD ["/usr/bin/inlets"]
+ENTRYPOINT ["inlets"]
+CMD ["-help"]
