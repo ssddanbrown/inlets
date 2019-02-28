@@ -22,6 +22,8 @@ inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk), the f
 
 > The mission of [OpenFaaS](https://github.com/openfaas/faas/) is to Make Serverless Functions Simple for developers. With OpenFaaS you can package any code, binary or microservice into a Serverless Function and deploy to Kubernetes or Docker Swarm without repetitive boiler-plate coding or complex YAML files. OpenFaaS has over 15.5k GitHub stars, 180 contributors and a growing end-user community.
 
+Make a donation to support inlets via [PayPal](https://www.paypal.me/openfaas?locale.x=en_GB).
+
 ### Goals
 
 #### Initial goals:
