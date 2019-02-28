@@ -5,3 +5,5 @@ services:
 
 script:
   - make docker
+  - make docker-login
+  - make push

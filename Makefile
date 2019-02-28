@@ -1,4 +1,3 @@
-TAG?=latest
 Version := $(shell git describe --tags --dirty)
 GitCommit := $(shell git rev-parse HEAD)
 LDFLAGS := "-s -w -X main.Version=$(Version) -X main.GitCommit=$(GitCommit)"
@@ -15,4 +14,12 @@ dist:
 
 .PHONY: docker
 docker:
-	docker build --build-arg VERSION=$(Version) --build-arg GIT_COMMIT=$(GitCommit) -t alexellis2/inlets:$(TAG) .
+	docker build --build-arg Version=$(Version) --build-arg GIT_COMMIT=$(GitCommit) -t alexellis2/inlets:$(Version) .
+
+.PHONY: docker-login
+docker-login:
+	echo -n "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+
+.PHONY: push
+push:
+	docker push alexellis2/inlets:$(Version)
