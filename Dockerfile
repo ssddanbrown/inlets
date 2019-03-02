@@ -2,7 +2,7 @@ FROM golang:1.10 as build
 
 WORKDIR /go/src/github.com/alexellis/inlets
 
-COPY .github            .git
+COPY .git               .git
 COPY vendor             vendor
 COPY pkg                pkg
 COPY main.go            .
