@@ -4,7 +4,7 @@
 # Change the value here if you desire a specific token value.
 export INLETSTOKEN=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1)
 
-curl -sLS https://www.alexellis.io/inlets | sudo sh
+curl -sLS https://get.inlets.dev | sudo sh
 
 curl -sLO https://raw.githubusercontent.com/alexellis/inlets/master/hack/inlets.service  && \
   mv inlets.service /etc/systemd/system/inlets.service && \
