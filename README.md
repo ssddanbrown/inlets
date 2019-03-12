@@ -225,6 +225,43 @@ If the token value is randomly generated then you will need to access the VPS in
 cat /etc/default/inlets 
 ```  
 
+#### How do I enable TLS / HTTPS?
+
+* Create a DNS A record for your exit-node IP and the DNS entry `exit.domain.com` (replace as necessary).
+
+* Download Caddy from the [Releases page](https://github.com/mholt/caddy/releases).
+
+* Enter this text into a Caddyfile replacing `exit.domain.com` with your subdomain.
+
+```Caddyfile
+exit.domain.com
+
+proxy / 127.0.0.1:8000 {
+  transparent
+}
+
+proxy /tunnel 127.0.0.1:8000 {
+  transparent
+  websocket
+}
+```
+
+* Run `inlets server --port 8000`
+
+* Run `caddy`
+
+Caddy will now ask you for your email address and after that will obtain a TLS certificate for you.
+
+* On the client run the following, adding any other parameters you need for `--upstream`
+
+```
+inlets client --remote wss://exit.domain.com
+```
+
+> Note: wss indicates to use port 443 for TLS.
+
+You now have a secure TLS link between your client(s) and your server on the exit node and for your site to serve traffic over.
+
 #### Where can I get a cheap / free domain-name?
 
 You can get a free domain-name with a .tk / .ml or .ga TLD from https://www.freenom.com - make sure the domain has at least 4 letters to get it for free. You can also get various other domains starting as cheap as 1-2USD from https://www.namecheap.com
