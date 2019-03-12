@@ -105,7 +105,7 @@ getPackage() {
                 rm $targetFile
             fi
 
-           inlets -version
+           inlets version
         fi
     fi
 }
