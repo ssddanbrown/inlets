@@ -268,12 +268,24 @@ You can get a free domain-name with a .tk / .ml or .ga TLD from https://www.free
 
 [Namecheap](https://www.namecheap.com) provides wildcard TLS out of the box, but [freenom](https://www.freenom.com) only provides root/naked domain and a list of sub-domains. Domains from both providers can be moved to alternative nameservers for use with AWS Route 53 or Google Cloud DNS - this then enables wildcard DNS and the ability to get a wildcard TLS certificate from LetsEncrypt.
 
-#### Digital Ocean
+##### Digital Ocean
 
 If you are a Digital Ocean user and use `doctl` then you can provision a host with [./hack/provision-digitalocean.sh](./hack/provision-digitalocean.sh).  Please ensure you have configured `droplet.create.ssh-keys` within your `~/.config/doctl/config.yaml`.
 
-#### Scaleway
+##### Scaleway
 
 [Scaleway](https://www.scaleway.com/) offer probably the cheapest option at 1.99 EUR / month using the "1-XS" from the "Start" tier. 
 
 If you have the Scaleway CLI installed you can provision a host with [./hack/provision-scaleway.sh](./hack/provision-scaleway.sh).
+
+#### Running over an SSH tunnel
+
+You can tunnel over SSH if you are not using a reverse proxy that enables SSL. This encrypts the traffic over the tunnel.
+
+On your client, create a tunnel to the exit-node:
+
+```
+ssh -L 8000:127.0.0.1:80 exit-node-ip
+```
+
+Now for the `--remote` address use `--remote ws://127.0.0.1:8000`
