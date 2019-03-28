@@ -26,12 +26,12 @@ type Server struct {
 
 // Serve traffic
 func (s *Server) Serve() {
-	outgoing := make(chan *http.Request)
-
 	bus := types.NewBus()
 
-	http.HandleFunc("/", proxyHandler(outgoing, bus, s.GatewayTimeout))
-	http.HandleFunc("/tunnel", serveWs(outgoing, bus, s.Token))
+	outgoingBus := types.NewRequestBus()
+
+	http.HandleFunc("/", proxyHandler(outgoingBus, bus, s.GatewayTimeout))
+	http.HandleFunc("/tunnel", serveWs(outgoingBus, bus, s.Token))
 
 	collectInterval := time.Second * 10
 	go garbageCollectBus(bus, collectInterval, s.GatewayTimeout*2)
@@ -55,7 +55,7 @@ func garbageCollectBus(bus *types.Bus, interval time.Duration, expiry time.Durat
 	}
 }
 
-func proxyHandler(outgoing chan *http.Request, bus *types.Bus, gatewayTimeout time.Duration) func(w http.ResponseWriter, r *http.Request) {
+func proxyHandler(outgoingBus *types.RequestBus, bus *types.Bus, gatewayTimeout time.Duration) func(w http.ResponseWriter, r *http.Request) {
 
 	return func(w http.ResponseWriter, r *http.Request) {
 
@@ -120,7 +120,8 @@ func proxyHandler(outgoing chan *http.Request, bus *types.Bus, gatewayTimeout ti
 		}()
 
 		go func() {
-			outgoing <- req
+			outgoingBus.Send(req)
+			// outgoing <- req
 			wg.Done()
 		}()
 
@@ -128,7 +129,7 @@ func proxyHandler(outgoing chan *http.Request, bus *types.Bus, gatewayTimeout ti
 	}
 }
 
-func serveWs(outgoing chan *http.Request, bus *types.Bus, token string) func(w http.ResponseWriter, r *http.Request) {
+func serveWs(outgoingBus *types.RequestBus, bus *types.Bus, token string) func(w http.ResponseWriter, r *http.Request) {
 
 	var upgrader = websocket.Upgrader{
 		ReadBufferSize:  1024,
@@ -179,18 +180,23 @@ func serveWs(outgoing chan *http.Request, bus *types.Bus, token string) func(w h
 			}
 		}()
 
+		sub := outgoingBus.Subscribe(ws.LocalAddr().String())
+
 		go func() {
 			defer close(connectionDone)
 			for {
+
 				log.Printf("wait for request")
-				outboundRequest := <-outgoing
-				log.Printf("[%s] request written to websocket", outboundRequest.Header.Get(transport.InletsHeader))
+				select {
+				case outboundRequest := <-sub.Data:
+					log.Printf("[%s] request written to websocket", outboundRequest.Header.Get(transport.InletsHeader))
 
-				buf := new(bytes.Buffer)
+					buf := new(bytes.Buffer)
 
-				outboundRequest.Write(buf)
+					outboundRequest.Write(buf)
 
-				ws.WriteMessage(websocket.BinaryMessage, buf.Bytes())
+					ws.WriteMessage(websocket.BinaryMessage, buf.Bytes())
+				}
 			}
 
 		}()
