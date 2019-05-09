@@ -16,4 +16,4 @@ getPackage() {
 }
 
 getPackage
-echo -n $suffix
+echo ${suffix}
