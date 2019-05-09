@@ -1,6 +1,7 @@
 Version := $(shell git describe --tags --dirty)
 GitCommit := $(shell git rev-parse HEAD)
 LDFLAGS := "-s -w -X main.Version=$(Version) -X main.GitCommit=$(GitCommit)"
+PLATFORM := $(shell ./hack/platform-tag.sh)
 
 .PHONY: all
 all: docker
@@ -14,7 +15,7 @@ dist:
 
 .PHONY: docker
 docker:
-	docker build --build-arg Version=$(Version) --build-arg GIT_COMMIT=$(GitCommit) -t alexellis2/inlets:$(Version) .
+	docker build --build-arg Version=$(Version) --build-arg GIT_COMMIT=$(GitCommit) -t alexellis2/inlets:$(Version)$(PLATFORM) .
 
 .PHONY: docker-login
 docker-login:
@@ -22,4 +23,4 @@ docker-login:
 
 .PHONY: push
 push:
-	docker push alexellis2/inlets:$(Version)
+	docker push alexellis2/inlets:$(Version)$(PLATFORM)
