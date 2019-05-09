@@ -28,4 +28,4 @@ USER app
 EXPOSE 80
 
 ENTRYPOINT ["inlets"]
-CMD ["-help"]
+CMD ["--help"]
