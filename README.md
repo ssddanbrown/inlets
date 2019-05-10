@@ -204,7 +204,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: alexellis2/inlets:0.5.4
+        image: alexellis2/inlets:2.0.3
         imagePullPolicy: Always
         command: ["./inlets"]
         args:
