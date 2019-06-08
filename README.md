@@ -186,7 +186,9 @@ Exit-node:
 while [ true ] ; do sleep 5 && inlets server --upstream=http://192.168.0.28:8080 ; done
 ```
 
-### Run as a deployment on Kubernetes
+### Kubernetes application development
+
+#### Run as a deployment on Kubernetes
 
 You can even run `inlets` within your Kubernetes in Docker (kind) cluster to get ingress (incoming network) for your services such as the OpenFaaS gateway:
 
@@ -206,17 +208,73 @@ spec:
       - name: inlets
         image: alexellis2/inlets:2.0.3
         imagePullPolicy: Always
-        command: ["./inlets"]
+        command: ["inlets"]
         args:
         - "client"
         - "--upstream=http://gateway.openfaas:8080,http://endpoint.openfaas:9090"
         - "--remote=your-public-ip"
-        - "--token=AUTH_TOKEN_VALUE_HERE"
 ```
 
 Replace the line: `- "--remote=your-public-ip"` with the public IP belonging to your VPS.
 
 Alternatively, see the unofficial helm chart from the community: [inlets-helm](https://github.com/paurosello/inlets_helm).
+
+#### Use authentication from a Kubernetes secret
+
+* Create a random secret
+
+```
+$ kubectl create secret generic inlets-token --from-literal token=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1)
+secret/inlets-token created
+```
+
+* Or create a secret with the value from your remote server
+
+```
+$ export TOKEN=""
+$ kubectl create secret generic inlets-token --from-literal token=${TOKEN}
+secret/inlets-token created
+```
+
+* Bind the secret named `inlets-token` to the Deployment:
+
+```yaml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: inlets
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: inlets
+    spec:
+      containers:
+      - name: inlets
+        image: alexellis2/inlets:2.1.0
+        imagePullPolicy: Always
+        command: ["inlets"]
+        args:
+        - "client"
+        - "--remote=ws://REMOTE-IP"
+        - "--upstream=http://gateway.openfaas:8080"
+        - "--token-from=/var/inlets/token"
+        volumeMounts:
+          - name: inlets-token-volume
+            mountPath: /var/inlets/
+      volumes:
+        - name: inlets-token-volume
+          secret:
+            secretName: inlets-token
+```
+
+Optional tear-down:
+
+```
+$ kubectl delete deploy/inlets
+$ kubectl delete secret/inlets-token
+```
 
 ### Run on a VPS
 
