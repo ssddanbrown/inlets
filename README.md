@@ -211,6 +211,7 @@ spec:
         - "client"
         - "--upstream=http://gateway.openfaas:8080,http://endpoint.openfaas:9090"
         - "--remote=your-public-ip"
+        - "--token=AUTH_TOKEN_VALUE_HERE"
 ```
 
 Replace the line: `- "--remote=your-public-ip"` with the public IP belonging to your VPS.
@@ -280,7 +281,9 @@ You can get a free domain-name with a .tk / .ml or .ga TLD from https://www.free
 
 ##### Digital Ocean
 
-If you are a Digital Ocean user and use `doctl` then you can provision a host with [./hack/provision-digitalocean.sh](./hack/provision-digitalocean.sh).  Please ensure you have configured `droplet.create.ssh-keys` within your `~/.config/doctl/config.yaml`.
+If you're a DigitalOcean user and use `doctl` then you can provision a host with [./hack/provision-digitalocean.sh](./hack/provision-digitalocean.sh).  Please ensure you have configured `droplet.create.ssh-keys` within your `~/.config/doctl/config.yaml`.
+
+DigitalOcean will then email you the IP and root password for your new host. You can use it to log in and get your auth token, so that you can connect your client after that.
 
 ##### Scaleway
 
