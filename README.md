@@ -215,6 +215,8 @@ spec:
 
 Replace the line: `- "--remote=your-public-ip"` with the public IP belonging to your VPS.
 
+Alternatively, see the unofficial helm chart from the community: [inlets-helm](https://github.com/paurosello/inlets_helm).
+
 ### Run on a VPS
 
 Provisioning on a VPS will see inlets running as a systemd service.  All the usual `service` commands should be used with `inlets` as the service name.
