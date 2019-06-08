@@ -193,7 +193,7 @@ while [ true ] ; do sleep 5 && inlets server --upstream=http://192.168.0.28:8080
 You can even run `inlets` within your Kubernetes in Docker (kind) cluster to get ingress (incoming network) for your services such as the OpenFaaS gateway:
 
 ```yaml
-apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: inlets
