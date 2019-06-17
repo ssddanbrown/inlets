@@ -56,6 +56,12 @@ Unlike HTTP 1.1 which follows a synchronous request/response model websockets us
 * ~~There is no timeout for when the tunnel is disconnected~~ timeout can be configured via args on the server
 * ~~The upstream URL has to be configured on both server and client until a discovery or service advertisement mechanism is added~~ advertise on the client
 
+### Video demo
+
+Using inlets I was able to get up a public endpoint with a custom domain name for my JavaScript & Webpack [Create React App](https://github.com/facebook/create-react-app).
+
+[![https://img.youtube.com/vi/jrAqqe8N3q4/hqdefault.jpg](https://img.youtube.com/vi/jrAqqe8N3q4/maxresdefault.jpg)](https://youtu.be/jrAqqe8N3q4)
+
 ### Get started: Install the CLI
 
 You can install the CLI with a `curl` utility script, `brew` or by downloading the binary from the releases page. Once installed you'll get the `inlets` command.
