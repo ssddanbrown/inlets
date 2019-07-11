@@ -343,17 +343,39 @@ You can get a free domain-name with a .tk / .ml or .ga TLD from https://www.free
 
 [Namecheap](https://www.namecheap.com) provides wildcard TLS out of the box, but [freenom](https://www.freenom.com) only provides root/naked domain and a list of sub-domains. Domains from both providers can be moved to alternative nameservers for use with AWS Route 53 or Google Cloud DNS - this then enables wildcard DNS and the ability to get a wildcard TLS certificate from LetsEncrypt.
 
+#### Where can I host an `inlets` exit-node?
+
+You can use inlets to provide incoming connections to any network, including containers, VM and AWS Firecracker.
+
+Examples:
+
+* Green to green - from one internal LAN to another
+* Green to red - from an internal network to the Internet (i.e. Raspberry Pi cluster)
+* Red to green - to make a service on a public network accessible as if it were a local service.
+
+The following VPS providers have credit, or provisioning scripts to get an exit-node in a few moments.
+
 ##### Digital Ocean
 
 If you're a DigitalOcean user and use `doctl` then you can provision a host with [./hack/provision-digitalocean.sh](./hack/provision-digitalocean.sh).  Please ensure you have configured `droplet.create.ssh-keys` within your `~/.config/doctl/config.yaml`.
 
 DigitalOcean will then email you the IP and root password for your new host. You can use it to log in and get your auth token, so that you can connect your client after that.
 
+Datacenters for exit-nodes are available world-wide
+
+##### Civo
+
+[Civo](https://www.civo.com/) is a UK developer cloud and [offers 50 USD free credit](http://bit.ly/2Lx9d2o).
+
+Installation is currently manual and the datacenter is located in London. Create a VM of any size and then download and run inlets as a server
+
 ##### Scaleway
 
 [Scaleway](https://www.scaleway.com/) offer probably the cheapest option at 1.99 EUR / month using the "1-XS" from the "Start" tier. 
 
 If you have the Scaleway CLI installed you can provision a host with [./hack/provision-scaleway.sh](./hack/provision-scaleway.sh).
+
+Datacenters include: Paris and Amsterdam.
 
 #### Running over an SSH tunnel
 
