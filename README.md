@@ -70,7 +70,7 @@ Using inlets I was able to get up a public endpoint with a custom domain name fo
 inlets has trended on the front page of Hacker News twice.
 
 * [inlets 1.0](https://news.ycombinator.com/item?id=19189455) - 146 points, 48 comments
-* [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 47 points and counting, 10 comments
+* [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 53 points, 13 comments, and counting
 
 Twitter:
 
