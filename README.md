@@ -20,9 +20,9 @@ When combined with SSL - inlets can be used with any corporate HTTP proxy which 
 
 inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk), the founder of [OpenFaaS](https://github.com/openfaas/faas/).
 
-> The mission of [OpenFaaS](https://github.com/openfaas/faas/) is to Make Serverless Functions Simple for developers. With OpenFaaS you can package any code, binary or microservice into a Serverless Function and deploy to Kubernetes or Docker Swarm without repetitive boiler-plate coding or complex YAML files. OpenFaaS has over 15.5k GitHub stars, 180 contributors and a growing end-user community.
+> The mission of [OpenFaaS](https://github.com/openfaas/faas/) is to Make Serverless Functions Simple for developers. With OpenFaaS you can package any code, binary or microservice into a Serverless Function and deploy to Kubernetes or Docker Swarm without repetitive boiler-plate coding or complex YAML files. OpenFaaS has over 17.5k GitHub stars, 200 contributors and a growing end-user community.
 
-Make a donation to support inlets via [PayPal](https://www.paypal.me/openfaas?locale.x=en_GB).
+Sponsor Alex and get Insider Updates on all his OSS work via [GitHub Sponsors](https://github.com/users/alexellis/sponsorship)
 
 ### Goals
 
@@ -74,7 +74,7 @@ Using inlets I was able to get up a public endpoint with a custom domain name fo
 inlets has trended on the front page of Hacker News twice.
 
 * [inlets 1.0](https://news.ycombinator.com/item?id=19189455) - 146 points, 48 comments
-* [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 53 points, 13 comments, and counting
+* [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 124 points, 37 comments, and counting
 
 Twitter:
 
