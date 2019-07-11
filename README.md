@@ -52,7 +52,11 @@ Make a donation to support inlets via [PayPal](https://www.paypal.me/openfaas?lo
 
 ### Status
 
-Unlike HTTP 1.1 which follows a synchronous request/response model websockets use an asynchronous pub/sub model for sending and receiving messages. This presents a challenge for tunneling a synchronous protocol over an asynchronous bus. This is a working prototype that can be used for testing, development and to generate discussion, but is not production-ready.
+Unlike HTTP 1.1 which follows a synchronous request/response model websockets use an asynchronous pub/sub model for sending and receiving messages. This presents a challenge for tunneling a synchronous protocol over an asynchronous bus. 
+
+~~This is a working prototype that can be used for testing, development and to generate discussion, but is not production-ready.~~
+
+inlets 2.0 introduces performance enhancements and leverages parts of Kubernetes and Rancher. It uses the same tunnelling technology of k3s. It is suitable for development and may be useful in production. Your feedback would be appreciated. 
 
 * The tunnel link is secured via `--token` flag and a shared secret
 * The default configuration uses websockets without SSL `ws://`, but to enable encryption you could enable SSL `wss://`
