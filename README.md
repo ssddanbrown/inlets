@@ -42,18 +42,21 @@ Make a donation to support inlets via [PayPal](https://www.paypal.me/openfaas?lo
 * configuration to run "exit-node" as serverless container with Azure ACI / AWS Fargate
 * automatic configuration of DNS / A records
 * configure staging or production LetsEncrypt issuer using DNS01 challenge
+* tunnelling web-socket traffic
 
 #### Non-goals:
 
-* tunnelling plain (non-HTTP) traffic over TCP
+* tunnelling plain (non-HTTP and non-websocket) traffic over TCP
+
+> Note: contributions and suggestions are welcomed.
 
 ### Status
 
 Unlike HTTP 1.1 which follows a synchronous request/response model websockets use an asynchronous pub/sub model for sending and receiving messages. This presents a challenge for tunneling a synchronous protocol over an asynchronous bus. This is a working prototype that can be used for testing, development and to generate discussion, but is not production-ready.
 
-* ~~There is currently no authentication on the server component~~ The tunnel link is secured via `-token` flag and a shared secret
+* The tunnel link is secured via `--token` flag and a shared secret
 * The default configuration uses websockets without SSL `ws://`, but to enable encryption you could enable SSL `wss://`
-* ~~There is no timeout for when the tunnel is disconnected~~ timeout can be configured via args on the server
+* A timeout for requests can be configured via args on the server
 * ~~The upstream URL has to be configured on both server and client until a discovery or service advertisement mechanism is added~~ advertise on the client
 
 ### Video demo
@@ -61,6 +64,27 @@ Unlike HTTP 1.1 which follows a synchronous request/response model websockets us
 Using inlets I was able to get up a public endpoint with a custom domain name for my JavaScript & Webpack [Create React App](https://github.com/facebook/create-react-app).
 
 [![https://img.youtube.com/vi/jrAqqe8N3q4/hqdefault.jpg](https://img.youtube.com/vi/jrAqqe8N3q4/maxresdefault.jpg)](https://youtu.be/jrAqqe8N3q4)
+
+### What are people saying about inlets?
+
+inlets has trended on the front page of Hacker News twice.
+
+* [inlets 1.0](https://news.ycombinator.com/item?id=19189455) - 146 points, 48 comments
+* [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 47 points and counting, 10 comments
+
+Twitter:
+
+* ["I just transferred a 70Gb disk image from a NATed NAS to a remote NATed server with @alexellisuk inlets tunnels and a one-liner python web server" by Roman Dodin](https://twitter.com/ntdvps/status/1143071544203186176)
+* [Testing an OAuth proxy by Vivek Singh](https://twitter.com/viveksyngh/status/1142054203478564864)
+* [inlets used at KubeCon to power a live IoT demo at a booth](https://twitter.com/tobruzh/status/1130421702914129921)
+* [PR to support Risc-V by Carlos Eduardo](https://twitter.com/carlosedp/status/1140740494617645061)
+* [Recommended by Michael Hausenblas for use with local Kubernetes](https://twitter.com/mhausenblas/status/1143020953380753409)
+* [5 top facts about inlets by Alex Ellis](https://twitter.com/alexellisuk/status/1140552115204608001)
+* ["Cool! I hadn't heard of inlets until now, but I love the idea of exposing internal services this way. I've been using TOR to do this!" by Stephen Doskett, Tech Field Day](https://twitter.com/SFoskett/status/1108989190912524288)
+* ["Learn how to set up HTTPS for your local endpoints with inlets, Caddy, and DigitalOcean thanks to @alexellisuk!" by @DigitalOcean](https://twitter.com/digitalocean/status/1113440166310502400)
+
+> Note: add a PR to send your story or use-case, I'd love to hear from you.
+
 
 ### Get started: Install the CLI
 
@@ -343,6 +367,8 @@ You can get a free domain-name with a .tk / .ml or .ga TLD from https://www.free
 
 [Namecheap](https://www.namecheap.com) provides wildcard TLS out of the box, but [freenom](https://www.freenom.com) only provides root/naked domain and a list of sub-domains. Domains from both providers can be moved to alternative nameservers for use with AWS Route 53 or Google Cloud DNS - this then enables wildcard DNS and the ability to get a wildcard TLS certificate from LetsEncrypt.
 
+My recommendation: pay to use [Namecheap](https://www.namecheap.com).
+
 #### Where can I host an `inlets` exit-node?
 
 You can use inlets to provide incoming connections to any network, including containers, VM and AWS Firecracker.
@@ -357,7 +383,7 @@ The following VPS providers have credit, or provisioning scripts to get an exit-
 
 ##### Digital Ocean
 
-If you're a DigitalOcean user and use `doctl` then you can provision a host with [./hack/provision-digitalocean.sh](./hack/provision-digitalocean.sh).  Please ensure you have configured `droplet.create.ssh-keys` within your `~/.config/doctl/config.yaml`.
+If you're a [DigitalOcean](https://www.digitalocean.com) user and use `doctl` then you can provision a host with [./hack/provision-digitalocean.sh](./hack/provision-digitalocean.sh).  Please ensure you have configured `droplet.create.ssh-keys` within your `~/.config/doctl/config.yaml`.
 
 DigitalOcean will then email you the IP and root password for your new host. You can use it to log in and get your auth token, so that you can connect your client after that.
 
