@@ -389,7 +389,14 @@ Examples:
 
 The following VPS providers have credit, or provisioning scripts to get an exit-node in a few moments.
 
-##### Digital Ocean
+Installation scripts have been provided which use `systemd` as a process supervisor. This means that if inlets crashes, it will be restarted automatically and logs are available.
+
+* After installation, find your token with `sudo cat /etc/default/inlets`
+* Check logs with `sudo systemctl status inlets`
+* Restart with `sudo systemctl restart inlets`
+* Check config with `sudo systemctl cat inlets`
+
+##### DigitalOcean
 
 If you're a [DigitalOcean](https://www.digitalocean.com) user and use `doctl` then you can provision a host with [./hack/provision-digitalocean.sh](./hack/provision-digitalocean.sh).  Please ensure you have configured `droplet.create.ssh-keys` within your `~/.config/doctl/config.yaml`.
 
@@ -401,7 +408,10 @@ Datacenters for exit-nodes are available world-wide
 
 [Civo](https://www.civo.com/) is a UK developer cloud and [offers 50 USD free credit](http://bit.ly/2Lx9d2o).
 
-Installation is currently manual and the datacenter is located in London. Create a VM of any size and then download and run inlets as a server
+Installation is currently manual and the datacenter is located in London.
+
+* Create a VM of any size and then download and run inlets as a server
+* Copy over `./hack/userdata.sh` and run it on the server as `root`
 
 ##### Scaleway
 
