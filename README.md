@@ -200,6 +200,10 @@ cd $GOPATH/src/github.com/alexellis/inlets
 
 Contributions are welcome. All commits must be signed-off with `git commit -s` to accept the [Developer Certificate of Origin](https://developercertificate.org).
 
+## License & terms
+
+See the [LICENSE](./LICENSE) for usage, terms & conditions, warranty and liability information.
+
 ## Take things further
 
 You can expose an OpenFaaS or OpenFaaS Cloud deployment with `inlets` - just change `--upstream=http://127.0.0.1:3000` to `--upstream=http://127.0.0.1:8080` or `--upstream=http://127.0.0.1:31112`. You can even point at an IP address inside or outside your network for instance: `--upstream=http://192.168.0.101:8080`.
