@@ -8,7 +8,7 @@ Expose your local endpoints to the Internet
 
 inlets combines a reverse proxy and websocket tunnels to expose your internal and development endpoints to the public Internet via an exit-node. An exit-node may be a 5-10 USD VPS or any other computer with an IPv4 IP address.
 
-Why do we need this project? Similar tools such as [ngrok](https://ngrok.com/) or [Argo Tunnel](https://developers.cloudflare.com/argo-tunnel/) from [Cloudflare](https://www.cloudflare.com/) are closed-source, have limits built-in, can work out expensive and have limited support for arm/arm64. Ngrok is also often banned by corporate firewall policies meaning it can be unusable. Other open-source tunnel tools are designed to only set up a static tunnel. inlets aims to dynamically bind and discover your local services to DNS entries with automated TLS certificates to a public IP address over its websocket tunnel.
+Why do we need this project? Similar tools such as [ngrok](https://ngrok.com/) or [Argo Tunnel](https://developers.cloudflare.com/argo-tunnel/) from [Cloudflare](https://www.cloudflare.com/) are closed-source, have limits built-in, can work out expensive, and have limited support for arm/arm64. Ngrok is also often banned by corporate firewall policies meaning it can be unusable. Other open-source tunnel tools are designed to only set up a single static tunnel. inlets aims to dynamically bind and discover your local services to DNS entries with automated TLS certificates to a public IP address over a websocket tunnel.
 
 When combined with SSL - inlets can be used with any corporate HTTP proxy which supports `CONNECT`.
 
@@ -18,63 +18,70 @@ When combined with SSL - inlets can be used with any corporate HTTP proxy which 
 
 ### Who is behind this project?
 
-inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk), the founder of [OpenFaaS](https://github.com/openfaas/faas/).
+inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk). Alex is a [CNCF Ambassador](https://www.cncf.io/people/ambassadors/) and the founder of [OpenFaaS](https://github.com/openfaas/faas/).
 
-> The mission of [OpenFaaS](https://github.com/openfaas/faas/) is to Make Serverless Functions Simple for developers. With OpenFaaS you can package any code, binary or microservice into a Serverless Function and deploy to Kubernetes or Docker Swarm without repetitive boiler-plate coding or complex YAML files. OpenFaaS has over 17.5k GitHub stars, 200 contributors and a growing end-user community.
+> The mission of [OpenFaaS](https://github.com/openfaas/faas/) is to Make Serverless Functions Simple for developers. With OpenFaaS you can package any code, binary or microservice into a Serverless Function and deploy to Kubernetes or Docker without repetitive boiler-plate coding or complex YAML files. OpenFaaS has over 17.5k GitHub stars, 200 contributors, and a growing end-user community.
 
-Sponsor Alex and get Insider Updates on all his OSS work via [GitHub Sponsors](https://github.com/users/alexellis/sponsorship)
+Become an Insider to receive regular *Insider Updates* on inlets, and all his other OSS work, blogs and videos via [GitHub Sponsors](https://github.com/users/alexellis/sponsorship)
 
 ### Goals
 
 #### Initial goals:
 
 * automatically create endpoints on exit-node based upon client definitions
-  * multiplex sites on same port through use of DNS / host entries
+  * multiplex sites on same port and websocket through the use of DNS / host entries
 * link encryption using SSL over websockets (`wss://`)
 * automatic reconnect
 * authentication using service account or basic auth
 * automatic TLS provisioning for endpoints using [cert-magic](https://github.com/mholt/certmagic)
   * configure staging or production LetsEncrypt issuer using HTTP01 challenge
+* native multi-arch with ARMHF/ARM64 support
+* integration with Docker and [Kubernetes](https://kubernetes.io)
 
 #### Stretch goals:
 
-* discover and configure endpoints for Ingress definitions from Kubernetes
-* configuration to run "exit-node" as serverless container with Azure ACI / AWS Fargate
 * automatic configuration of DNS / A records
+* tunnelling websocket traffic in addition to HTTP(s)
+* discover and configure endpoints for `Ingress` definitions from [Kubernetes](https://kubernetes.io)
+* configuration to run "exit-node" as serverless container with Azure ACI / AWS Fargate
 * configure staging or production LetsEncrypt issuer using DNS01 challenge
-* tunnelling web-socket traffic
+* [get a logo for the project](https://github.com/alexellis/inlets/issues/46)
 
 #### Non-goals:
 
-* tunnelling plain (non-HTTP and non-websocket) traffic over TCP
+* tunnelling plain TCP traffic over the websocket
 
-> Note: contributions and suggestions are welcomed.
+> Note: this is a non-goal at present, but I am open to contributions
 
 ### Status
 
-Unlike HTTP 1.1 which follows a synchronous request/response model websockets use an asynchronous pub/sub model for sending and receiving messages. This presents a challenge for tunneling a synchronous protocol over an asynchronous bus.
+Unlike HTTP 1.1 which follows a synchronous request/response model websockets use an asynchronous pub/sub model for sending and receiving messages. This presents a challenge for tunneling a *synchronous protocol* over an *asynchronous bus*.
 
 ~~This is a working prototype that can be used for testing, development and to generate discussion, but is not production-ready.~~
 
-inlets 2.0 introduces performance enhancements and leverages parts of Kubernetes and Rancher. It uses the same tunnelling technology of k3s. It is suitable for development and may be useful in production. Your feedback would be appreciated.
+inlets 2.0 introduces performance enhancements and leverages parts of the Kubernetes and Rancher API. It uses the same tunnelling packages that enable node-to-node communication in [Rancher's k3s project](https://k3s.io). It is suitable for development and may be useful in production. Before deploying `inlets` into production, it is advised that you do adequate testing.
 
-* The tunnel link is secured via `--token` flag and a shared secret
+Feel free to open issues if you have comments, suggestions or contributions.
+
+* The tunnel link is secured via `--token` flag using a shared secret
 * The default configuration uses websockets without SSL `ws://`, but to enable encryption you could enable SSL `wss://`
 * A timeout for requests can be configured via args on the server
-* ~~The upstream URL has to be configured on both server and client until a discovery or service advertisement mechanism is added~~ advertise on the client
+* ~~The upstream URL has to be configured on both server and client until a discovery or service advertisement mechanism is added~~ The client can advertise upstream URLs, which it can serve
 
 ### Video demo
 
-Using inlets I was able to get up a public endpoint with a custom domain name for my JavaScript & Webpack [Create React App](https://github.com/facebook/create-react-app).
+Using inlets I was able to set up a public endpoint (with a custom domain name) for my JavaScript & Webpack [Create React App](https://github.com/facebook/create-react-app).
 
 [![https://img.youtube.com/vi/jrAqqe8N3q4/hqdefault.jpg](https://img.youtube.com/vi/jrAqqe8N3q4/maxresdefault.jpg)](https://youtu.be/jrAqqe8N3q4)
 
 ### What are people saying about inlets?
 
+> You can share about inlets using `#inletsdev`, `#inlets`, and `https://inlets.dev`.
+
 inlets has trended on the front page of Hacker News twice.
 
 * [inlets 1.0](https://news.ycombinator.com/item?id=19189455) - 146 points, 48 comments
-* [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 206 points, 65 comments, and counting
+* [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 218 points, 66 comments
 
 Twitter:
 
@@ -90,9 +97,11 @@ Twitter:
 > Note: add a PR to send your story or use-case, I'd love to hear from you.
 
 
-### Get started: Install the CLI
+## Get started
 
 You can install the CLI with a `curl` utility script, `brew` or by downloading the binary from the releases page. Once installed you'll get the `inlets` command.
+
+### Install the CLI
 
 Utility script with `curl`:
 
@@ -110,29 +119,39 @@ Via `brew`:
 brew install inlets
 ```
 
-Binaries for Linux, Darwin (MacOS) and armhf are made available via the [releases page](https://github.com/alexellis/inlets/releases). You will also find SHA checksums available if you want to verify your download.
+> Note: the `brew` distribution is maintained by the brew team, so it may lag a little behind the GitHub release.
 
-## Test it out
+Binaries are made available on the [releases page](https://github.com/alexellis/inlets/releases) for Linux (x86_64, armhf & arm64) and for Darwin (MacOS). You will also find SHA checksums available if you want to verify your download.
 
-* On the server or exit-node
+### Test it out
+
+You can run inlets between any two computers with connectivity, these could be containers, VMs, bare metal or even "loop-back" on your own laptop.
+
+See [how to provision an "exit-node" with a public IPv4 address using a VPS](#run-on-a-vps).
+
+* On the *exit-node* (or server)
 
 Start the tunnel server on a machine with a publicly-accessible IPv4 IP address such as a VPS.
 
-```bash
-inlets server --port=80
-```
-
-> Note: You can pass the `-token` argument followed by a token value to both the server and client to prevent unauthorized connections to the tunnel.
-
-Example with token:
+Example with a token for client authentication:
 
 ```bash
-token=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1); inlets server --port=8090 --token="$token"
+export token=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1)
+inlets server --port=8090 --token="$token"
 ```
 
-Note down your public IPv4 IP address i.e. 192.168.0.101
+> Note: You can pass the `--token` argument followed by a token value to both the server and client to prevent unauthorized connections to the tunnel.
 
-* On your machine behind the firewall start an example service that you want to expose to the Internet
+
+```bash
+inlets server --port=8090
+```
+
+You can also run unprotected, but this is not recommended.
+
+Note down your public IPv4 IP address.
+
+* Head over to your machine where you are running a sample service, or something you want to expose.
 
 You can use my hash-browns service for instance which generates hashes.
 
@@ -145,30 +164,44 @@ cd $GOPATH/src/github.com/alexellis/hash-browns
 port=3000 go run server.go
 ```
 
-* On your machine behind the firewall
-
-Start the tunnel client
+If you don't have Go installed, then you could run [Python's built-in HTTP server](https://docs.python.org/2/library/simplehttpserver.html):
 
 ```sh
+mkdir -p /tmp/inlets-test/
+cd /tmp/inlets-test/
+touch hello-world
+python -m SimpleHTTPServer 3000
+```
+
+* On the same machine, start the inlets client
+
+Start the tunnel client:
+
+```sh
+export REMOTE="127.0.0.1:8090"    # for testing inlets on your laptop, replace with the public IPv4
+export TOKEN="CLIENT-TOKEN-HERE"  # the client token is found on your VPS or on start-up of "inlets server"
 inlets client \
- --remote=192.168.0.101:80 \
+ --remote=$REMOTE \
  --upstream=http://127.0.0.1:3000
+ --token $TOKEN
 ```
 
-Replace the `--remote` with the address where your other machine is listening.
+* Replace the `--remote` with the address where your exit-node is running `inlets server`.
+* Replace the `--token` with the value from your server
 
-We now have an example service running (hash-browns), a tunnel server and a tunnel client.
+We now have three processes:
+* example service running (hash-browns) or Python's webserver
+* an exit-node running the tunnel server (`inlets server`)
+* a client running the tunnel client (`inlets client`)
 
-So send a request to the public IP address or hostname:
+So send a request to the inlets server - use its domain name or IP address:
+
+Assuming `gateway.mydomain.tk` points to `127.0.0.1` in `/etc/hosts` or your DNS server.
 
 ```sh
-inlets client --remote=192.168.0.101:80 --upstream  "gateway.mydomain.tk=http://127.0.0.1:3000"
-```
-
-```sh
-curl -d "hash this" http://192.168.0.101/hash -H "Host: gateway.mydomain.tk"
+curl -d "hash this" http://127.0.0.1:8090/hash -H "Host: gateway.mydomain.tk"
 # or
-curl -d "hash this" http://192.168.0.101/hash
+curl -d "hash this" http://127.0.0.1:8090/hash
 # or
 curl -d "hash this" http://gateway.mydomain.tk/hash
 ```
@@ -184,8 +217,36 @@ You will see the traffic pass between the exit node / server and your developmen
 Now check the metrics endpoint which is built-into the hash-browns example service:
 
 ```sh
-curl http://192.168.0.101/metrics | grep hash
+curl $REMOTE/metrics | grep hash
 ```
+
+You can also use multiple domain names and tie them back to different internal services.
+
+Here we start the Python server on two different ports, serving content from two different locations and then map it to two different Host headers, or domain names:
+
+```sh
+mkdir -p /tmp/store1
+cd /tmp/store1/
+touch hello-store-1
+python -m SimpleHTTPServer 8001 &
+
+
+mkdir -p /tmp/store2
+cd /tmp/store2/
+touch hello-store-2
+python -m SimpleHTTPServer 8002 &
+```
+
+```sh
+export REMOTE="127.0.0.1:8090"    # for testing inlets on your laptop, replace with the public IPv4
+export TOKEN="CLIENT-TOKEN-HERE"  # the client token is found on your VPS or on start-up of "inlets server"
+inlets client \
+ --remote=$REMOTE \
+ --token $TOKEN \
+ --upstream="store1.example.com=http://127.0.0.1:8001,store2.example.com=http://127.0.0.1:8002"
+```
+
+You can now create two DNS entries or `/etc/hosts` file entries for `store1.example.com` and `store2.example.com`, then connet through your browser.
 
 ## Development
 
