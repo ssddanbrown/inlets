@@ -375,6 +375,10 @@ $ kubectl delete deploy/inlets
 $ kubectl delete secret/inlets-token
 ```
 
+#### Try inlets with KinD (Kubernetes in Docker)
+
+Try this guide to expose services running in a [KinD cluster](https://github.com/kubernetes-sigs/kind): [Gist: inlets with KinD](https://gist.github.com/alexellis/c29dd9f1e1326618f723970185195963)
+
 ### Run on a VPS
 
 Provisioning on a VPS will see inlets running as a systemd service.  All the usual `service` commands should be used with `inlets` as the service name.
