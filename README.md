@@ -288,6 +288,11 @@ while [ true ] ; do sleep 5 && inlets server --upstream=http://192.168.0.28:8080
 
 ### Kubernetes application development
 
+Docker images are published for `x86_64` and `armhf`
+
+* `alexellis2/inlets:2.2.0`
+* `alexellis2/inlets:2.2.0-armhf`
+
 #### Run as a deployment on Kubernetes
 
 You can even run `inlets` within your Kubernetes in Docker (kind) cluster to get ingress (incoming network) for your services such as the OpenFaaS gateway:
@@ -352,7 +357,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: alexellis2/inlets:2.1.0
+        image: alexellis2/inlets:2.2.0
         imagePullPolicy: Always
         command: ["inlets"]
         args:
