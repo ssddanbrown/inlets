@@ -3,7 +3,7 @@
 
 export OWNER=alexellis
 export REPO=inlets
-export SUCCESS_CMD="$REPO --version"
+export SUCCESS_CMD="$REPO version"
 
 version=$(curl -sI https://github.com/$OWNER/$REPO/releases/latest | grep Location | awk -F"/" '{ printf "%s", $NF }' | tr -d '\r')
 
@@ -93,7 +93,7 @@ getPackage() {
             echo
             echo "  sudo cp $REPO$suffix /usr/local/bin/$REPO"
             echo
-            ./$REPO$suffix --version
+            ./$REPO$suffix version
         else
 
             echo
