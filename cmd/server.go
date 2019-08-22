@@ -72,6 +72,8 @@ func runServer(cmd *cobra.Command, _ []string) error {
 		return errors.Wrap(err, "failed to get the 'disable-transport-wrapping' value.")
 	}
 
+	fmt.Printf("Welcome to inlets! Find out more at https://github.com/alexellis/inlets\n\n")
+
 	inletsServer := server.Server{
 		Port:  port,
 		Token: token,

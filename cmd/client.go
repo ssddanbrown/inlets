@@ -109,6 +109,8 @@ func runClient(cmd *cobra.Command, _ []string) error {
 		log.Printf("Token: %q", token)
 	}
 
+	fmt.Printf("Welcome to inlets! Find out more at https://github.com/alexellis/inlets\n\n")
+
 	inletsClient := client.Client{
 		Remote:      remote,
 		UpstreamMap: upstreamMap,
