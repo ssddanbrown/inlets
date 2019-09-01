@@ -2,15 +2,18 @@ package cmd
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/morikuni/aec"
 	"github.com/spf13/cobra"
-	"os"
 )
 
 var (
 	Version   string
 	GitCommit string
 )
+
+const WelcomeMessage = "Welcome to inlets.dev! Find out more at https://github.com/alexellis/inlets\n\n"
 
 func init() {
 	inletsCmd.AddCommand(versionCmd)
@@ -33,7 +36,7 @@ See: https://github.com/alexellis/inlets for more information.`,
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Display the clients version information.",
-	Run: parseBaseCommand,
+	Run:   parseBaseCommand,
 }
 
 func parseBaseCommand(_ *cobra.Command, _ []string) {
@@ -71,7 +74,6 @@ func printLogo() {
 	inletsLogo := aec.WhiteF.Apply(inletsFigletStr)
 	fmt.Println(inletsLogo)
 }
-
 
 const inletsFigletStr = ` _       _      _            _
 (_)_ __ | | ___| |_ ___   __| | _____   __

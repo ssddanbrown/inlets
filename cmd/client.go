@@ -85,6 +85,7 @@ func runClient(cmd *cobra.Command, _ []string) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to get 'token-from' value.")
 	}
+
 	var token string
 	if len(tokenFile) > 0 {
 		fileData, err := ioutil.ReadFile(tokenFile)
@@ -109,7 +110,7 @@ func runClient(cmd *cobra.Command, _ []string) error {
 		log.Printf("Token: %q", token)
 	}
 
-	fmt.Printf("Welcome to inlets.dev! Find out more at https://github.com/alexellis/inlets\n\n")
+	fmt.Printf(WelcomeMessage)
 
 	inletsClient := client.Client{
 		Remote:      remote,
