@@ -16,6 +16,12 @@ When combined with SSL - inlets can be used with any corporate HTTP proxy which 
 
 *Conceptual diagram for inlets*
 
+## License & terms
+
+**Important**
+
+Developers wishing to use inlets within a corporate network are advised to seek approval from their administrators or management before using the tool. By downloading, using, or distributing inlets, you agree to the [LICENSE](./LICENSE) terms & conditions. No warranty or liability is provided.
+
 ### Who is behind this project?
 
 inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk). Alex is a [CNCF Ambassador](https://www.cncf.io/people/ambassadors/) and the founder of [OpenFaaS](https://github.com/openfaas/faas/).
@@ -262,10 +268,6 @@ cd $GOPATH/src/github.com/alexellis/inlets
 ```
 
 Contributions are welcome. All commits must be signed-off with `git commit -s` to accept the [Developer Certificate of Origin](https://developercertificate.org).
-
-## License & terms
-
-See the [LICENSE](./LICENSE) for usage, terms & conditions, warranty and liability information.
 
 ## Take things further
 
