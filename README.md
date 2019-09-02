@@ -57,8 +57,6 @@ Become an Insider to receive regular *Insider Updates* on inlets, and all his ot
 
 Unlike HTTP 1.1 which follows a synchronous request/response model websockets use an asynchronous pub/sub model for sending and receiving messages. This presents a challenge for tunneling a *synchronous protocol* over an *asynchronous bus*.
 
-~~This is a working prototype that can be used for testing, development and to generate discussion, but is not production-ready.~~
-
 inlets 2.0 introduces performance enhancements and leverages parts of the Kubernetes and Rancher API. It uses the same tunnelling packages that enable node-to-node communication in [Rancher's k3s project](https://k3s.io). It is suitable for development and may be useful in production. Before deploying `inlets` into production, it is advised that you do adequate testing.
 
 Feel free to open issues if you have comments, suggestions or contributions.
