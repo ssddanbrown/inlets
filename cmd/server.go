@@ -74,9 +74,13 @@ func runServer(cmd *cobra.Command, _ []string) error {
 		return errors.Wrap(err, "failed to get the 'port' value.")
 	}
 
-	controlPort, err := cmd.Flags().GetInt("control-port")
-	if err != nil {
-		return errors.Wrap(err, "failed to get the 'control-port' value.")
+	controlPort := port
+	if cmd.Flags().Changed("control-port") {
+		val, err := cmd.Flags().GetInt("control-port")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the 'control-port' value.")
+		}
+		controlPort = val
 	}
 
 	disableWrapTransport, err := cmd.Flags().GetBool("disable-transport-wrapping")

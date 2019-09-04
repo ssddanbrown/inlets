@@ -43,7 +43,9 @@ func (s *Server) Serve() {
 		http.HandleFunc("/", s.proxy)
 		http.HandleFunc("/tunnel", s.tunnel)
 
-		log.Printf("Listening on :%d\n", s.Port)
+		log.Printf("Control Plane Listening on :%d\n", s.ControlPort)
+		log.Printf("Data Plane Listening on :%d\n", s.Port)
+
 		if err := http.ListenAndServe(fmt.Sprintf(":%d", s.Port), nil); err != nil {
 			log.Fatal(err)
 		}
