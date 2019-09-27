@@ -26,7 +26,7 @@ Developers wishing to use inlets within a corporate network are advised to seek 
 
 inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk). Alex is a [CNCF Ambassador](https://www.cncf.io/people/ambassadors/) and the founder of [OpenFaaS](https://github.com/openfaas/faas/).
 
-> The mission of [OpenFaaS](https://github.com/openfaas/faas/) is to Make Serverless Functions Simple for developers. With OpenFaaS you can package any code, binary or microservice into a Serverless Function and deploy to Kubernetes or Docker without repetitive boiler-plate coding or complex YAML files. OpenFaaS has over 17.5k GitHub stars, 200 contributors, and a growing end-user community.
+> [OpenFaaS&reg;](https://github.com/openfaas/faas) makes it easy for developers to deploy event-driven functions and microservices to Kubernetes without repetitive, boiler-plate coding. Package your code or an existing binary in a Docker image to get a highly scalable endpoint with auto-scaling and metrics. The project has around 19k GitHub stars, over 240 contributors and a growing number of end-users in production.
 
 Become an Insider to receive regular *Insider Updates* on inlets, and all his other OSS work, blogs and videos via [GitHub Sponsors](https://github.com/users/alexellis/sponsorship)
 
