@@ -88,6 +88,12 @@ inlets has trended on the front page of Hacker News twice.
 * [inlets 1.0](https://news.ycombinator.com/item?id=19189455) - 146 points, 48 comments
 * [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 218 points, 66 comments
 
+Tutorials:
+
+* [Blog post - webhooks, great when you can get them by Alex Ellis](https://blog.alexellis.io/webhooks-are-great-when-you-can-get-them/)
+* [Micro-tutorial inlets with KinD by Alex Ellis](https://gist.github.com/alexellis/c29dd9f1e1326618f723970185195963)
+* [The Awesomeness of Inlets by Ruan Bekker](https://sysadmins.co.za/the-awesomeness-of-inlets/)
+
 Twitter:
 
 * ["I just transferred a 70Gb disk image from a NATed NAS to a remote NATed server with @alexellisuk inlets tunnels and a one-liner python web server" by Roman Dodin](https://twitter.com/ntdvps/status/1143071544203186176)
