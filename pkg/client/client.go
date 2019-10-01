@@ -37,7 +37,6 @@ func (c *Client) Connect() error {
 		headers.Add("Authorization", "Bearer "+c.Token)
 	}
 
-	fmt.Println(headers)
 	url := c.Remote
 	if !strings.HasPrefix(url, "ws") {
 		url = "ws://" + url
