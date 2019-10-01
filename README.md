@@ -300,7 +300,7 @@ while [ true ] ; do sleep 5 && inlets server --upstream=http://192.168.0.28:8080
 You can bind two separate TCP ports for the user-facing port and the tunnel.
 
 * `--port` - the port for users to connect to and for serving data, i.e. the *Data Plane*
-* `--control-plane` - the port for the websocket to connect to i.e. the *Control Plane*
+* `--control-port` - the port for the websocket to connect to i.e. the *Control Plane*
 
 ### Docker & Kubernetes application development
 
