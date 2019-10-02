@@ -93,6 +93,7 @@ Tutorials:
 * [Blog post - webhooks, great when you can get them by Alex Ellis](https://blog.alexellis.io/webhooks-are-great-when-you-can-get-them/)
 * [Micro-tutorial inlets with KinD by Alex Ellis](https://gist.github.com/alexellis/c29dd9f1e1326618f723970185195963)
 * [The Awesomeness of Inlets by Ruan Bekker](https://sysadmins.co.za/the-awesomeness-of-inlets/)
+* [K8Spin - What does fit in a low resources namespace? Inlets](https://medium.com/k8spin/what-does-fit-in-a-low-resources-namespace-3rd-part-inlets-6cc278835e57)
 
 Twitter:
 
