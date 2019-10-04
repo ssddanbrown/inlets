@@ -13,7 +13,7 @@ var (
 	GitCommit string
 )
 
-const WelcomeMessage = "Welcome to inlets.dev! Find out more at https://github.com/alexellis/inlets\n\n"
+const WelcomeMessage = "Welcome to inlets.dev! Find out more at https://github.com/alexellis/inlets"
 
 func init() {
 	inletsCmd.AddCommand(versionCmd)
@@ -43,14 +43,17 @@ var versionCmd = &cobra.Command{
 	Run:   parseBaseCommand,
 }
 
+func getVersion() string {
+	if len(Version) != 0 {
+		return Version
+	}
+	return "dev"
+}
+
 func parseBaseCommand(_ *cobra.Command, _ []string) {
 	printLogo()
 
-	if len(Version) == 0 {
-		fmt.Println("Version: dev")
-	} else {
-		fmt.Println("Version:", Version)
-	}
+	fmt.Println("Version:", getVersion())
 	fmt.Println("Git Commit:", GitCommit)
 	os.Exit(0)
 }

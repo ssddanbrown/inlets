@@ -61,6 +61,10 @@ Note: You can pass the --token argument followed by a token value to both the se
 
 // runClient does the actual work of reading the arguments passed to the client sub command.
 func runClient(cmd *cobra.Command, _ []string) error {
+
+	log.Printf("%s", WelcomeMessage)
+	log.Printf("Starting client - version %s", getVersion())
+
 	upstream, err := cmd.Flags().GetString("upstream")
 	if err != nil {
 		return errors.Wrap(err, "failed to get 'upstream' value")
@@ -109,8 +113,6 @@ func runClient(cmd *cobra.Command, _ []string) error {
 	if len(token) > 0 && printToken {
 		log.Printf("Token: %q", token)
 	}
-
-	fmt.Printf(WelcomeMessage)
 
 	inletsClient := client.Client{
 		Remote:      remote,

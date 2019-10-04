@@ -40,6 +40,9 @@ func init() {
 // runServer does the actual work of reading the arguments passed to the server sub command.
 func runServer(cmd *cobra.Command, _ []string) error {
 
+	log.Printf("%s", WelcomeMessage)
+	log.Printf("Starting server - version %s", getVersion())
+
 	tokenFile, err := cmd.Flags().GetString("token-from")
 	if err != nil {
 		return errors.Wrap(err, "failed to get 'token-from' value.")
@@ -87,8 +90,6 @@ func runServer(cmd *cobra.Command, _ []string) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to get the 'disable-transport-wrapping' value.")
 	}
-
-	fmt.Printf(WelcomeMessage)
 
 	inletsServer := server.Server{
 		Port:        port,
