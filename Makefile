@@ -15,7 +15,7 @@ dist:
 
 .PHONY: docker
 docker:
-	docker build --build-arg Version=$(Version) --build-arg GIT_COMMIT=$(GitCommit) -t alexellis2/inlets:$(Version)$(PLATFORM) .
+	docker build --build-arg VERSION=$(Version) --build-arg GIT_COMMIT=$(GitCommit) -t alexellis2/inlets:$(Version)$(PLATFORM) .
 
 .PHONY: docker-login
 docker-login:
