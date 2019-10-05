@@ -42,13 +42,13 @@ Become an Insider to receive regular *Insider Updates* on inlets, and all his ot
 * automatic TLS provisioning for endpoints using [cert-magic](https://github.com/mholt/certmagic)
   * configure staging or production LetsEncrypt issuer using HTTP01 challenge
 * native multi-arch with ARMHF/ARM64 support
-* integration with Docker and [Kubernetes](https://kubernetes.io)
+* Dockerfile and Kubernetes YAML files
 
 #### Stretch goals:
 
-* automatic configuration of DNS / A records
+* discover and implement Service type `LoadBalancer` for Kubernetes - [inlets-operator](https://github.com/alexellis/inlets-operator)
 * tunnelling websocket traffic in addition to HTTP(s)
-* discover and configure endpoints for `Ingress` definitions from [Kubernetes](https://kubernetes.io)
+* automatic configuration of DNS / A records
 * configuration to run "exit-node" as serverless container with Azure ACI / AWS Fargate
 * configure staging or production LetsEncrypt issuer using DNS01 challenge
 * [get a logo for the project](https://github.com/alexellis/inlets/issues/46)
@@ -57,7 +57,7 @@ Become an Insider to receive regular *Insider Updates* on inlets, and all his ot
 
 * tunnelling plain TCP traffic over the websocket
 
-> Note: this is a non-goal at present, but I am open to contributions
+  This use-case is covered by inlets-pro, ask me about early access to [inlets-pro](mailto:alex@openfaas.com).
 
 ### Status
 
@@ -89,7 +89,7 @@ inlets has trended on the front page of Hacker News twice.
 * [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 218 points, 66 comments
 
 Tutorials:
-
+* [Get a LoadBalancer for your private Kubernetes cluster with inlets-operator by Alex Ellis](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/)
 * [Blog post - webhooks, great when you can get them by Alex Ellis](https://blog.alexellis.io/webhooks-are-great-when-you-can-get-them/)
 * [Micro-tutorial inlets with KinD by Alex Ellis](https://gist.github.com/alexellis/c29dd9f1e1326618f723970185195963)
 * [The Awesomeness of Inlets by Ruan Bekker](https://sysadmins.co.za/the-awesomeness-of-inlets/)
