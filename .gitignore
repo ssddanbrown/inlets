@@ -1,4 +1,6 @@
 bin
 .vscode
-inlets*
 !inlets.go
+inlets
+inlets-linux
+
