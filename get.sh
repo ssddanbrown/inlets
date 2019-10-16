@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script was adapted from https://github.com/openfaas/cli.openfaas.com/blob/master/get.sh
 
-export OWNER=alexellis
+export OWNER=inlets
 export REPO=inlets
 export SUCCESS_CMD="$REPO version"
 
@@ -72,7 +72,7 @@ getPackage() {
         rm $targetFile
     fi
 
-    url=https://github.com/alexellis/$REPO/releases/download/$version/$REPO$suffix
+    url=https://github.com/inlets/$REPO/releases/download/$version/$REPO$suffix
     echo "Downloading package $url as $targetFile"
 
     curl -sSLf $url --output $targetFile
@@ -116,3 +116,4 @@ getPackage() {
 
 hasCli
 getPackage
+
