@@ -19,9 +19,9 @@ dist:
 
 .PHONY: docker
 docker:
-	docker build --build-arg VERSION=$(Version) --build-arg GIT_COMMIT=$(GitCommit) -t alexellis2/inlets:$(Version)-amd64 .
-	docker build --build-arg VERSION=$(Version) --build-arg GIT_COMMIT=$(GitCommit) --build-arg OPTS="GOARCH=arm64" -t alexellis2/inlets:$(Version)-arm64 .
-	docker build --build-arg VERSION=$(Version) --build-arg GIT_COMMIT=$(GitCommit) --build-arg OPTS="GOARCH=arm GOARM=6" -t alexellis2/inlets:$(Version)-armhf .
+	docker build --build-arg VERSION=$(Version) --build-arg GIT_COMMIT=$(GitCommit) -t inlets/inlets:$(Version)-amd64 .
+	docker build --build-arg VERSION=$(Version) --build-arg GIT_COMMIT=$(GitCommit) --build-arg OPTS="GOARCH=arm64" -t inlets/inlets:$(Version)-arm64 .
+	docker build --build-arg VERSION=$(Version) --build-arg GIT_COMMIT=$(GitCommit) --build-arg OPTS="GOARCH=arm GOARM=6" -t inlets/inlets:$(Version)-armhf .
 
 .PHONY: docker-login
 docker-login:
@@ -29,13 +29,13 @@ docker-login:
 
 .PHONY: push
 push:
-	docker push alexellis2/inlets:$(Version)-amd64
-	docker push alexellis2/inlets:$(Version)-arm64
-	docker push alexellis2/inlets:$(Version)-armhf
+	docker push inlets/inlets:$(Version)-amd64
+	docker push inlets/inlets:$(Version)-arm64
+	docker push inlets/inlets:$(Version)-armhf
 
 .PHONY: manifest
 manifest:
-	docker manifest create --amend alexellis2/inlets:$(Version) alexellis2/inlets:$(Version)-amd64 alexellis2/inlets:$(Version)-arm64 alexellis2/inlets:$(Version)-armhf
-	docker manifest annotate alexellis2/inlets:$(Version) alexellis2/inlets:$(Version)-arm64 --os linux --arch arm64
-	docker manifest annotate alexellis2/inlets:$(Version) alexellis2/inlets:$(Version)-armhf --os linux --arch arm --variant v6
-	docker manifest push alexellis2/inlets:$(Version)
+	docker manifest create --amend inlets/inlets:$(Version) inlets/inlets:$(Version)-amd64 inlets/inlets:$(Version)-arm64 inlets/inlets:$(Version)-armhf
+	docker manifest annotate inlets/inlets:$(Version) inlets/inlets:$(Version)-arm64 --os linux --arch arm64
+	docker manifest annotate inlets/inlets:$(Version) inlets/inlets:$(Version)-armhf --os linux --arch arm --variant v6
+	docker manifest push inlets/inlets:$(Version)
