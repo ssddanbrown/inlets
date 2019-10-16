@@ -13,7 +13,7 @@ var (
 	GitCommit string
 )
 
-const WelcomeMessage = "Welcome to inlets.dev! Find out more at https://github.com/alexellis/inlets"
+const WelcomeMessage = "Welcome to inlets.dev! Find out more at https://github.com/inlets/inlets"
 
 func init() {
 	inletsCmd.AddCommand(versionCmd)
@@ -33,7 +33,7 @@ You can also use inlets to bridge connect between private networks.
 It is strongly recommended to put a reverse proxy with TLS/SSL enabled such as 
 Nginx or Caddy in front of your inlets server to enable an encrypted tunnel.
 
-See: https://github.com/alexellis/inlets for more information.`,
+See: https://github.com/inlets/inlets for more information.`,
 	Run: runInlets,
 }
 

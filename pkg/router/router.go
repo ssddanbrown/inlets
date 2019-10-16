@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/alexellis/inlets/pkg/transport"
+	"github.com/inlets/inlets/pkg/transport"
 	"github.com/rancher/remotedialer"
 )
 

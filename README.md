@@ -2,7 +2,7 @@
 
 Expose your local endpoints to the Internet
 
-[![Build Status](https://travis-ci.org/alexellis/inlets.svg?branch=master)](https://travis-ci.org/alexellis/inlets) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Go Report Card](https://goreportcard.com/badge/github.com/alexellis/inlets)](https://goreportcard.com/report/github.com/alexellis/inlets) [![Documentation](https://godoc.org/github.com/alexellis/inlets?status.svg)](http://godoc.org/github.com/alexellis/inlets)
+[![Build Status](https://travis-ci.org/inlets/inlets.svg?branch=master)](https://travis-ci.org/inlets/inlets) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Go Report Card](https://goreportcard.com/badge/github.com/inlets/inlets)](https://goreportcard.com/report/github.com/inlets/inlets) [![Documentation](https://godoc.org/github.com/inlets/inlets?status.svg)](http://godoc.org/github.com/inlets/inlets)
 
 ## Intro
 
@@ -46,12 +46,12 @@ Become an Insider to receive regular *Insider Updates* on inlets, and all his ot
 
 #### Stretch goals:
 
-* discover and implement Service type `LoadBalancer` for Kubernetes - [inlets-operator](https://github.com/alexellis/inlets-operator)
+* discover and implement Service type `LoadBalancer` for Kubernetes - [inlets-operator](https://github.com/inlets/inlets-operator)
 * tunnelling websocket traffic in addition to HTTP(s)
 * automatic configuration of DNS / A records
 * configuration to run "exit-node" as serverless container with Azure ACI / AWS Fargate
 * configure staging or production LetsEncrypt issuer using DNS01 challenge
-* [get a logo for the project](https://github.com/alexellis/inlets/issues/46)
+* [get a logo for the project](https://github.com/inlets/inlets/issues/46)
 
 #### Non-goals:
 
@@ -137,7 +137,7 @@ brew install inlets
 
 > Note: the `brew` distribution is maintained by the brew team, so it may lag a little behind the GitHub release.
 
-Binaries are made available on the [releases page](https://github.com/alexellis/inlets/releases) for Linux (x86_64, armhf & arm64), Windows (experimental), and for Darwin (MacOS). You will also find SHA checksums available if you want to verify your download.
+Binaries are made available on the [releases page](https://github.com/inlets/inlets/releases) for Linux (x86_64, armhf & arm64), Windows (experimental), and for Darwin (MacOS). You will also find SHA checksums available if you want to verify your download.
 
 ### Test it out
 
@@ -271,8 +271,8 @@ For development you will need Golang 1.10 or 1.11 on both the exit-node or serve
 You can get the code like this:
 
 ```bash
-go get -u github.com/alexellis/inlets
-cd $GOPATH/src/github.com/alexellis/inlets
+go get -u github.com/inlets/inlets
+cd $GOPATH/src/github.com/inlets/inlets
 ```
 
 Contributions are welcome. All commits must be signed-off with `git commit -s` to accept the [Developer Certificate of Origin](https://developercertificate.org).
@@ -308,7 +308,7 @@ You can bind two separate TCP ports for the user-facing port and the tunnel.
 
 Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
 
-* `alexellis2/inlets:2.5.2`
+* `inlets/inlets:2.6.0`
 
 #### Run as a deployment on Kubernetes
 
@@ -333,7 +333,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: alexellis2/inlets:2.5.2
+        image: inlets/inlets:2.6.0
         imagePullPolicy: Always
         command: ["inlets"]
         args:
@@ -384,7 +384,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: alexellis2/inlets:2.5.2
+        image: inlets/inlets:2.6.0
         imagePullPolicy: Always
         command: ["inlets"]
         args:
@@ -465,7 +465,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: alexellis2/inlets:2.5.2
+        image: inlets/inlets:2.6.0
         imagePullPolicy: Always
         command: ["inlets"]
         args:
