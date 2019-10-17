@@ -73,12 +73,6 @@ Feel free to open issues if you have comments, suggestions or contributions.
 * ~~The upstream URL has to be configured on both server and client until a discovery or service advertisement mechanism is added~~ The client can advertise upstream URLs, which it can serve
 * The tunnel transport is wrapped by default which strips CORS headers from responses, but you can disable it with the `--disable-transport-wrapping` flag on the server
 
-### Video demo
-
-Using inlets I was able to set up a public endpoint (with a custom domain name) for my JavaScript & Webpack [Create React App](https://github.com/facebook/create-react-app).
-
-[![https://img.youtube.com/vi/jrAqqe8N3q4/hqdefault.jpg](https://img.youtube.com/vi/jrAqqe8N3q4/maxresdefault.jpg)](https://youtu.be/jrAqqe8N3q4)
-
 ### What are people saying about inlets?
 
 > You can share about inlets using `#inletsdev`, `#inlets`, and `https://inlets.dev`.
@@ -266,30 +260,27 @@ inlets client \
 
 You can now create two DNS entries or `/etc/hosts` file entries for `store1.example.com` and `store2.example.com`, then connet through your browser.
 
-## Development
-
-For development you will need Golang 1.10 or 1.11 on both the exit-node or server and the client.
-
-You can get the code like this:
-
-```bash
-go get -u github.com/inlets/inlets
-cd $GOPATH/src/github.com/inlets/inlets
-```
-
-Contributions are welcome. All commits must be signed-off with `git commit -s` to accept the [Developer Certificate of Origin](https://developercertificate.org).
-
 ## Going further
 
-### Docker & Kubernetes application development
+### Docs & Featured tutorials
 
-Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
-
-* `inlets/inlets:2.6.1`
+Tutorial: [HTTPS for your local endpoints with inlets and Caddy](https://blog.alexellis.io/https-inlets-local-endpoints/)
 
 Docs: [Inlets & Kubernetes recipes](./docs/kubernetes.md)
 
 Docs: [Run Inlets on a VPS](./docs/vps.md)
+
+### Video demo
+
+Using inlets I was able to set up a public endpoint (with a custom domain name) for my JavaScript & Webpack [Create React App](https://github.com/facebook/create-react-app).
+
+[![https://img.youtube.com/vi/jrAqqe8N3q4/hqdefault.jpg](https://img.youtube.com/vi/jrAqqe8N3q4/maxresdefault.jpg)](https://youtu.be/jrAqqe8N3q4)
+
+### Docker
+
+Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
+
+* `inlets/inlets:2.6.1
 
 ### Multiple services with on exit-node
 
@@ -303,3 +294,16 @@ You can bind two separate TCP ports for the user-facing port and the tunnel.
 
 * `--port` - the port for users to connect to and for serving data, i.e. the *Data Plane*
 * `--control-port` - the port for the websocket to connect to i.e. the *Control Plane*
+
+## Development
+
+For development you will need Golang 1.10 or 1.11 on both the exit-node or server and the client.
+
+You can get the code like this:
+
+```bash
+go get -u github.com/inlets/inlets
+cd $GOPATH/src/github.com/inlets/inlets
+```
+
+Contributions are welcome. All commits must be signed-off with `git commit -s` to accept the [Developer Certificate of Origin](https://developercertificate.org).
