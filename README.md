@@ -138,11 +138,11 @@ brew install inlets
 
 Binaries are made available on the [releases page](https://github.com/inlets/inlets/releases) for Linux (x86_64, armhf & arm64), Windows (experimental), and for Darwin (MacOS). You will also find SHA checksums available if you want to verify your download.
 
-### Test it out
+### Quickstart tutorial
 
 You can run inlets between any two computers with connectivity, these could be containers, VMs, bare metal or even "loop-back" on your own laptop.
 
-See [how to provision an "exit-node" with a public IPv4 address using a VPS](#run-on-a-vps).
+See [how to provision an "exit-node" with a public IPv4 address using a VPS](./docs/vps.md).
 
 * On the *exit-node* (or server)
 
@@ -279,32 +279,7 @@ cd $GOPATH/src/github.com/inlets/inlets
 
 Contributions are welcome. All commits must be signed-off with `git commit -s` to accept the [Developer Certificate of Origin](https://developercertificate.org).
 
-## Take things further
-
-You can expose an OpenFaaS or OpenFaaS Cloud deployment with `inlets` - just change `--upstream=http://127.0.0.1:3000` to `--upstream=http://127.0.0.1:8080` or `--upstream=http://127.0.0.1:31112`. You can even point at an IP address inside or outside your network for instance: `--upstream=http://192.168.0.101:8080`.
-
-You can build a basic supervisor script for `inlets` in case of a crash, it will re-connect within 5 seconds:
-
-In this example the Host/Client is acting as a relay for OpenFaaS running on port 8080 on the IP 192.168.0.28 within the internal network.
-
-Host/Client:
-
-```sh
-while [ true ] ; do sleep 5 && inlets client --upstream=http://192.168.0.28:8080 --remote=exit.my.club  ; done
-```
-
-Exit-node:
-
-```sh
-while [ true ] ; do sleep 5 && inlets server --upstream=http://192.168.0.28:8080 ; done
-```
-
-## Bind a different port for the control-plane
-
-You can bind two separate TCP ports for the user-facing port and the tunnel.
-
-* `--port` - the port for users to connect to and for serving data, i.e. the *Data Plane*
-* `--control-port` - the port for the websocket to connect to i.e. the *Control Plane*
+## Going further
 
 ### Docker & Kubernetes application development
 
@@ -312,300 +287,19 @@ Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
 
 * `inlets/inlets:2.6.1`
 
-#### Run as a deployment on Kubernetes
+Docs: [Inlets & Kubernetes recipes](./docs/kubernetes.md)
 
-You can run the client inside Kubernetes to expose your local services to the Internet, or another network.
+Docs: [Run Inlets on a VPS](./docs/vps.md)
 
-Here's an example showing how to get ingress into your cluster for your OpenFaaS gateway and for Prometheus:
+### Multiple services with on exit-node
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: inlets
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: inlets
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: inlets
-    spec:
-      containers:
-      - name: inlets
-        image: inlets/inlets:2.6.1
-        imagePullPolicy: Always
-        command: ["inlets"]
-        args:
-        - "client"
-        - "--upstream=http://gateway.openfaas:8080,http://prometheus.openfaas:9090"
-        - "--remote=your-public-ip"
-```
+You can expose an OpenFaaS or OpenFaaS Cloud deployment with `inlets` - just change `--upstream=http://127.0.0.1:3000` to `--upstream=http://127.0.0.1:8080` or `--upstream=http://127.0.0.1:31112`. You can even point at an IP address inside or outside your network for instance: `--upstream=http://192.168.0.101:8080`.
 
-Replace the line: `- "--remote=your-public-ip"` with the public IP belonging to your VPS.
+When using the scripts in `hack` to configure inlets with system, the process will restart if the tunnel crashes.
 
-Alternatively, see the unofficial helm chart from the community: [inlets-helm](https://github.com/paurosello/inlets_helm).
+### Bind a different port for the control-plane
 
-#### Use authentication from a Kubernetes secret
+You can bind two separate TCP ports for the user-facing port and the tunnel.
 
-In production, you should always use a secret to protect your exit-node. You will need a way of passing that to your server and inlets allows you to read a Kubernetes secret.
-
-* Create a random secret
-
-```
-$ kubectl create secret generic inlets-token --from-literal token=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1)
-secret/inlets-token created
-```
-
-* Or create a secret with the value from your remote server
-
-```
-$ export TOKEN=""
-$ kubectl create secret generic inlets-token --from-literal token=${TOKEN}
-secret/inlets-token created
-```
-
-* Bind the secret named `inlets-token` to the Deployment:
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: inlets
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: inlets
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: inlets
-    spec:
-      containers:
-      - name: inlets
-        image: inlets/inlets:2.6.1
-        imagePullPolicy: Always
-        command: ["inlets"]
-        args:
-        - "client"
-        - "--remote=ws://REMOTE-IP"
-        - "--upstream=http://gateway.openfaas:8080"
-        - "--token-from=/var/inlets/token"
-        volumeMounts:
-          - name: inlets-token-volume
-            mountPath: /var/inlets/
-      volumes:
-        - name: inlets-token-volume
-          secret:
-            secretName: inlets-token
-```
-
-Optional tear-down:
-
-```
-$ kubectl delete deploy/inlets
-$ kubectl delete secret/inlets-token
-```
-
-#### Use your Kubernetes cluster as an exit-node
-
-You can use a Kubernetes cluster which has public IP addresses, an IngressController, or a LoadBalancer to run one or more exit-nodes.
-
-* Create a random secret
-
-```
-$ kubectl create secret generic inlets-token --from-literal token=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1)
-secret/inlets-token created
-```
-
-* Or create a secret with the value from your remote server
-
-```
-$ export TOKEN=""
-$ kubectl create secret generic inlets-token --from-literal token=${TOKEN}
-secret/inlets-token created
-```
-
-* Create a `Service`
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: inlets
-  labels:
-    app: inlets
-spec:
-  type: ClusterIP
-  ports:
-    - port: 8000
-      protocol: TCP
-      targetPort: 8000
-  selector:
-    app: inlets
-```
-
-* Create a `Deployment`:
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: inlets
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: inlets
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: inlets
-    spec:
-      containers:
-      - name: inlets
-        image: inlets/inlets:2.6.1
-        imagePullPolicy: Always
-        command: ["inlets"]
-        args:
-        - "server"
-        - "--token-from=/var/inlets/token"
-        volumeMounts:
-          - name: inlets-token-volume
-            mountPath: /var/inlets/
-      volumes:
-        - name: inlets-token-volume
-          secret:
-            secretName: inlets-token
-```
-
-You can now create an `Ingress` record, or `LoadBalancer` to connect to your server.
-Note that clients connecting to this server will have to specify port 8000 for their remote, as the default is 80.
-
-#### Try inlets with KinD (Kubernetes in Docker)
-
-Try this guide to expose services running in a [KinD cluster](https://github.com/kubernetes-sigs/kind):
-
-[Micro-tutorial inlets with KinD](https://gist.github.com/alexellis/c29dd9f1e1326618f723970185195963)
-
-### Run on a VPS
-
-Provisioning on a VPS will see inlets running as a systemd service.  All the usual `service` commands should be used with `inlets` as the service name.
-
-Inlets uses a token to prevent unauthorized access to the server component.  A known token can be configured by amending [userdata.sh](./hack/userdata.sh) prior to provisioning
-
-```sh
-# Enables randomly generated authentication token by default.
-# Change the value here if you desire a specific token value.
-export INLETSTOKEN=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1)
-```
-
-If the token value is randomly generated then you will need to access the VPS in order to obtain the token value.
-
-```sh
-cat /etc/default/inlets
-```
-
-#### How do I enable TLS / HTTPS?
-
-* Create a DNS A record for your exit-node IP and the DNS entry `exit.domain.com` (replace as necessary).
-
-* Download Caddy from the [Releases page](https://github.com/mholt/caddy/releases).
-
-* Enter this text into a Caddyfile replacing `exit.domain.com` with your subdomain.
-
-```Caddyfile
-exit.domain.com
-
-proxy / 127.0.0.1:8000 {
-  transparent
-}
-
-proxy /tunnel 127.0.0.1:8000 {
-  transparent
-  websocket
-}
-```
-
-* Run `inlets server --port 8000`
-
-* Run `caddy`
-
-Caddy will now ask you for your email address and after that will obtain a TLS certificate for you.
-
-* On the client run the following, adding any other parameters you need for `--upstream`
-
-```
-inlets client --remote wss://exit.domain.com
-```
-
-> Note: wss indicates to use port 443 for TLS.
-
-You now have a secure TLS link between your client(s) and your server on the exit node and for your site to serve traffic over.
-
-#### Where can I get a cheap / free domain-name?
-
-You can get a free domain-name with a .tk / .ml or .ga TLD from https://www.freenom.com - make sure the domain has at least 4 letters to get it for free. You can also get various other domains starting as cheap as 1-2USD from https://www.namecheap.com
-
-[Namecheap](https://www.namecheap.com) provides wildcard TLS out of the box, but [freenom](https://www.freenom.com) only provides root/naked domain and a list of sub-domains. Domains from both providers can be moved to alternative nameservers for use with AWS Route 53 or Google Cloud DNS - this then enables wildcard DNS and the ability to get a wildcard TLS certificate from LetsEncrypt.
-
-My recommendation: pay to use [Namecheap](https://www.namecheap.com).
-
-#### Where can I host an `inlets` exit-node?
-
-You can use inlets to provide incoming connections to any network, including containers, VM and AWS Firecracker.
-
-Examples:
-
-* Green to green - from one internal LAN to another
-* Green to red - from an internal network to the Internet (i.e. Raspberry Pi cluster)
-* Red to green - to make a service on a public network accessible as if it were a local service.
-
-The following VPS providers have credit, or provisioning scripts to get an exit-node in a few moments.
-
-Installation scripts have been provided which use `systemd` as a process supervisor. This means that if inlets crashes, it will be restarted automatically and logs are available.
-
-* After installation, find your token with `sudo cat /etc/default/inlets`
-* Check logs with `sudo systemctl status inlets`
-* Restart with `sudo systemctl restart inlets`
-* Check config with `sudo systemctl cat inlets`
-
-##### DigitalOcean
-
-If you're a [DigitalOcean](https://www.digitalocean.com) user and use `doctl` then you can provision a host with [./hack/provision-digitalocean.sh](./hack/provision-digitalocean.sh).  Please ensure you have configured `droplet.create.ssh-keys` within your `~/.config/doctl/config.yaml`.
-
-DigitalOcean will then email you the IP and root password for your new host. You can use it to log in and get your auth token, so that you can connect your client after that.
-
-Datacenters for exit-nodes are available world-wide
-
-##### Civo
-
-[Civo](https://www.civo.com/) is a UK developer cloud and [offers 50 USD free credit](http://bit.ly/2Lx9d2o).
-
-Installation is currently manual and the datacenter is located in London.
-
-* Create a VM of any size and then download and run inlets as a server
-* Copy over `./hack/userdata.sh` and run it on the server as `root`
-
-##### Scaleway
-
-[Scaleway](https://www.scaleway.com/) offer probably the cheapest option at 1.99 EUR / month using the "1-XS" from the "Start" tier.
-
-If you have the Scaleway CLI installed you can provision a host with [./hack/provision-scaleway.sh](./hack/provision-scaleway.sh).
-
-Datacenters include: Paris and Amsterdam.
-
-#### Running over an SSH tunnel
-
-You can tunnel over SSH if you are not using a reverse proxy that enables SSL. This encrypts the traffic over the tunnel.
-
-On your client, create a tunnel to the exit-node:
-
-```
-ssh -L 8000:127.0.0.1:80 exit-node-ip
-```
-
-Now for the `--remote` address use `--remote ws://127.0.0.1:8000`
+* `--port` - the port for users to connect to and for serving data, i.e. the *Data Plane*
+* `--control-port` - the port for the websocket to connect to i.e. the *Control Plane*
