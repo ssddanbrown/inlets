@@ -30,9 +30,9 @@ inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk). Alex 
 
 Become an Insider to receive regular *Insider Updates* on inlets, and all his other OSS work, blogs and videos via [GitHub Sponsors](https://github.com/users/alexellis/sponsorship)
 
-### Goals
+### Backlog & goals
 
-#### Initial goals:
+#### Completed
 
 * automatically create endpoints on exit-node based upon client definitions
   * multiplex sites on same port and websocket through the use of DNS / host entries
@@ -43,17 +43,17 @@ Become an Insider to receive regular *Insider Updates* on inlets, and all his ot
   * configure staging or production LetsEncrypt issuer using HTTP01 challenge
 * native multi-arch with ARMHF/ARM64 support
 * Dockerfile and Kubernetes YAML files
-
-#### Stretch goals:
-
-* discover and implement Service type `LoadBalancer` for Kubernetes - [inlets-operator](https://github.com/inlets/inlets-operator)
+* discover and implement `Service` type of `LoadBalancer` for Kubernetes - [inlets-operator](https://github.com/inlets/inlets-operator)
 * tunnelling websocket traffic in addition to HTTP(s)
+* [get a logo for the project](https://github.com/inlets/inlets/issues/46)
+
+#### Stretch goals
+
 * automatic configuration of DNS / A records
 * configuration to run "exit-node" as serverless container with Azure ACI / AWS Fargate
 * configure staging or production LetsEncrypt issuer using DNS01 challenge
-* [get a logo for the project](https://github.com/inlets/inlets/issues/46)
 
-#### Non-goals:
+#### Non-goals
 
 * tunnelling plain TCP traffic over the websocket
 
@@ -269,6 +269,8 @@ Tutorial: [HTTPS for your local endpoints with inlets and Caddy](https://blog.al
 Docs: [Inlets & Kubernetes recipes](./docs/kubernetes.md)
 
 Docs: [Run Inlets on a VPS](./docs/vps.md)
+
+Tutorial: [Get a LoadBalancer for your private Kubernetes cluster with inlets-operator](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/)
 
 ### Video demo
 
