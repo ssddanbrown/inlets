@@ -75,7 +75,7 @@ Feel free to open issues if you have comments, suggestions or contributions.
 
 ### What are people saying about inlets?
 
-> You can share about inlets using `#inletsdev`, `#inlets`, and `https://inlets.dev`.
+> You can share about inlets using `@inletsdev`, `#inletsdev`, and `https://inlets.dev`.
 
 inlets has trended on the front page of Hacker News twice.
 
@@ -105,6 +105,8 @@ Twitter:
 * ["See how Inlets helped me to expose my local endpoints for my homelab that sits behind a Carrier-Grade NAT"](https://twitter.com/ruanbekker/status/1161399537417801728)
 
 > Note: add a PR to send your story or use-case, I'd love to hear from you.
+
+See [ADOPTERS.md](./ADOPTERS.md) for what companies are doing with inlets today.
 
 ## Get started
 
