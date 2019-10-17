@@ -3,4 +3,4 @@ bin
 !inlets.go
 inlets
 inlets-linux
-
+inlets-darwin

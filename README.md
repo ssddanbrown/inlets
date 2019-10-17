@@ -112,7 +112,6 @@ Twitter:
 
 > Note: add a PR to send your story or use-case, I'd love to hear from you.
 
-
 ## Get started
 
 You can install the CLI with a `curl` utility script, `brew` or by downloading the binary from the releases page. Once installed you'll get the `inlets` command.
@@ -174,6 +173,9 @@ You can use my hash-browns service for instance which generates hashes.
 Install hash-browns or run your own HTTP server
 
 ```sh
+export GO111MODULE=off
+export GOPATH=$HOME/go/
+
 go get -u github.com/alexellis/hash-browns
 cd $GOPATH/src/github.com/alexellis/hash-browns
 
@@ -308,7 +310,7 @@ You can bind two separate TCP ports for the user-facing port and the tunnel.
 
 Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
 
-* `inlets/inlets:2.6.0`
+* `inlets/inlets:2.6.1`
 
 #### Run as a deployment on Kubernetes
 
@@ -333,7 +335,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: inlets/inlets:2.6.0
+        image: inlets/inlets:2.6.1
         imagePullPolicy: Always
         command: ["inlets"]
         args:
@@ -384,7 +386,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: inlets/inlets:2.6.0
+        image: inlets/inlets:2.6.1
         imagePullPolicy: Always
         command: ["inlets"]
         args:
@@ -465,7 +467,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: inlets/inlets:2.6.0
+        image: inlets/inlets:2.6.1
         imagePullPolicy: Always
         command: ["inlets"]
         args:
