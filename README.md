@@ -28,8 +28,6 @@ inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk). Alex 
 
 > [OpenFaaS&reg;](https://github.com/openfaas/faas) makes it easy for developers to deploy event-driven functions and microservices to Kubernetes without repetitive, boiler-plate coding. Package your code or an existing binary in a Docker image to get a highly scalable endpoint with auto-scaling and metrics. The project has around 19k GitHub stars, over 240 contributors and a growing number of end-users in production.
 
-Become an Insider to receive regular *Insider Updates* on inlets, and all his other OSS work, blogs and videos via [GitHub Sponsors](https://github.com/users/alexellis/sponsorship)
-
 ### Backlog & goals
 
 #### Completed
@@ -113,6 +111,8 @@ See [ADOPTERS.md](./ADOPTERS.md) for what companies are doing with inlets today.
 You can install the CLI with a `curl` utility script, `brew` or by downloading the binary from the releases page. Once installed you'll get the `inlets` command.
 
 ### Install the CLI
+
+> Note: `inlets` is made available free-of-charge, but you can support its ongoing development through [GitHub Sponsors](https://insiders.openfaas.io/) 💪
 
 Utility script with `curl`:
 
