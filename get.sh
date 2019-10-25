@@ -88,9 +88,9 @@ getPackage() {
 
             echo
             echo "============================================================"
-            echo "==   The script was run as a user who is unable to write  =="
-            echo "==   to $BINLOCATION. To complete the installation the  =="
-            echo "==   following commands may need to be run manually.      =="
+            echo "  The script was run as a user who is unable to write"
+            echo "  to $BINLOCATION. To complete the installation the"
+            echo "  following commands may need to be run manually."
             echo "============================================================"
             echo
             echo "  sudo cp $REPO$suffix $BINLOCATION/$REPO"
