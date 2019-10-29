@@ -71,6 +71,13 @@ Feel free to open issues if you have comments, suggestions or contributions.
 * ~~The upstream URL has to be configured on both server and client until a discovery or service advertisement mechanism is added~~ The client can advertise upstream URLs, which it can serve
 * The tunnel transport is wrapped by default which strips CORS headers from responses, but you can disable it with the `--disable-transport-wrapping` flag on the server
 
+### Related projects
+
+* [inlets](https://github.com/inlets/inlets) - open-source L7 HTTP tunnel and reverse proxy
+* [inlets-pro](https://github.com/inlets/inlets-pro-pkg) - commercial L4 TCP load-balancer
+* [inlets-operator](https://github.com/inlets/inlets-operator) - deep integration for inlets in Kubernetes, expose Service type LoadBalancer
+* [inletsctl](https://github.com/inlets/inletsctl) - CLI tool to provision exit-nodes for use with inlets or inlets-pro
+
 ### What are people saying about inlets?
 
 > You can share about inlets using `@inletsdev`, `#inletsdev`, and `https://inlets.dev`.
