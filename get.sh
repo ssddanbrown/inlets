@@ -32,13 +32,21 @@ getPackage() {
     userid=$(id -u)
 
     suffix=""
+
     case $uname in
     "Darwin")
     suffix="-darwin"
     ;;
+    "MINGW"*)
+    suffix=".exe"
+    BINLOCATION="$HOME/bin"
+    mkdir -p $BINLOCATION
+
+    ;;
     "Linux")
         arch=$(uname -m)
         echo $arch
+
         case $arch in
         "aarch64")
         suffix="-arm64"
@@ -52,17 +60,17 @@ getPackage() {
     ;;
     esac
 
-    targetFile="/tmp/$REPO$suffix"
+    targetFile="/tmp/$REPO"
 
     if [ "$userid" != "0" ]; then
-        targetFile="$(pwd)/$REPO$suffix"
+        targetFile="$(pwd)/$REPO"
     fi
 
     if [ -e $targetFile ]; then
         rm $targetFile
     fi
 
-    url=https://github.com/inlets/$REPO/releases/download/$version/$REPO$suffix
+    url=https://github.com/$OWNER/$REPO/releases/download/$version/$REPO$suffix
     echo "Downloading package $url as $targetFile"
 
     curl -sSLf $url --output $targetFile
@@ -82,13 +90,26 @@ getPackage() {
             echo "  following commands may need to be run manually."
             echo "============================================================"
             echo
-            echo "  sudo cp $REPO$suffix $BINLOCATION/$REPO"
+            echo "  sudo cp $REPO $BINLOCATION/$REPO"
             echo
-            ./$REPO$suffix version
+
         else
 
             echo
             echo "Running with sufficient permissions to attempt to move $REPO to $BINLOCATION"
+
+            if [ ! -w "$BINLOCATION/$REPO" ] && [ -f "$BINLOCATION/$REPO" ]; then
+
+            echo
+            echo "================================================================"
+            echo "  $BINLOCATION/$REPO already exists and is not writeable"
+            echo "  by the current user.  Please adjust the binary ownership"
+            echo "  or run sh/bash with sudo." 
+            echo "================================================================"
+            echo
+            exit 1
+
+            fi
 
             mv $targetFile $BINLOCATION/$REPO
 
@@ -107,4 +128,3 @@ getPackage() {
 
 hasCli
 getPackage
-
