@@ -3,6 +3,7 @@
 Expose your local endpoints to the Internet
 
 [![Build Status](https://travis-ci.org/inlets/inlets.svg?branch=master)](https://travis-ci.org/inlets/inlets) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Go Report Card](https://goreportcard.com/badge/github.com/inlets/inlets)](https://goreportcard.com/report/github.com/inlets/inlets) [![Documentation](https://godoc.org/github.com/inlets/inlets?status.svg)](http://godoc.org/github.com/inlets/inlets) [![Derek App](https://alexellis.o6s.io/badge?owner=inlets&repo=inlets)](https://github.com/alexellis/derek/)
+[![Setup Automated](https://img.shields.io/badge/setup-automated-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
 
 ## Intro
 
@@ -318,5 +319,9 @@ You can get the code like this:
 go get -u github.com/inlets/inlets
 cd $GOPATH/src/github.com/inlets/inlets
 ```
+
+Alternatively, you can get everything setup right in the browser with a single click using [Gitpod](https://gitpod.io):
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/inlets/inlets)
 
 Contributions are welcome. All commits must be signed-off with `git commit -s` to accept the [Developer Certificate of Origin](https://developercertificate.org).
