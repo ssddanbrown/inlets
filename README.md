@@ -144,6 +144,8 @@ brew install inlets
 
 Binaries are made available on the [releases page](https://github.com/inlets/inlets/releases) for Linux (x86_64, armhf & arm64), Windows (experimental), and for Darwin (MacOS). You will also find SHA checksums available if you want to verify your download.
 
+Windows users are encouraged to use [git bash](https://git-scm.com/downloads) to install the inlets binary.
+
 ### Quickstart tutorial
 
 You can run inlets between any two computers with connectivity, these could be containers, VMs, bare metal or even "loop-back" on your own laptop.
