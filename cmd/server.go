@@ -68,6 +68,11 @@ func runServer(cmd *cobra.Command, _ []string) error {
 		token = tokenVal
 	}
 
+	if tokenEnv, ok := os.LookupEnv("TOKEN"); ok && len(tokenEnv) > 0 {
+		fmt.Printf("Token read from environment variable.\n")
+		token = tokenEnv
+	}
+
 	printToken, err := cmd.Flags().GetBool("print-token")
 	if err != nil {
 		return errors.Wrap(err, "failed to get 'print-token' value.")
