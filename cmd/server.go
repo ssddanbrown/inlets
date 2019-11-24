@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"os"
+	"strconv"
 
 	"github.com/inlets/inlets/pkg/server"
 	"github.com/pkg/errors"
@@ -87,6 +89,10 @@ func runServer(cmd *cobra.Command, _ []string) error {
 			return errors.Wrap(err, "failed to get the 'control-port' value.")
 		}
 		controlPort = val
+	}
+
+	if portVal, exists := os.LookupEnv("PORT"); exists && len(portVal) > 0 {
+		port, _ = strconv.Atoi(portVal)
 	}
 
 	disableWrapTransport, err := cmd.Flags().GetBool("disable-transport-wrapping")
