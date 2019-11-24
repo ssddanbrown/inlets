@@ -93,6 +93,7 @@ func runServer(cmd *cobra.Command, _ []string) error {
 
 	if portVal, exists := os.LookupEnv("PORT"); exists && len(portVal) > 0 {
 		port, _ = strconv.Atoi(portVal)
+		controlPort = port
 	}
 
 	disableWrapTransport, err := cmd.Flags().GetBool("disable-transport-wrapping")
