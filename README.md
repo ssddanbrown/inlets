@@ -98,6 +98,7 @@ Tutorials:
 * [K8Spin - What does fit in a low resources namespace? Inlets](https://medium.com/k8spin/what-does-fit-in-a-low-resources-namespace-3rd-part-inlets-6cc278835e57)
 * [Exposing Magnificent Image Classifier with inlets](https://blog.baeke.info/2019/07/17/exposing-a-local-endpoint-with-inlets/)
 * ["Securely access external applications as Kubernetes Services, from your laptop or from any other host, using inlets"](https://twitter.com/BanzaiCloud/status/1164168218954670080)
+* [Using local services in Gitpod with inlets](https://www.gitpod.io/blog/local-services-in-gitpod/)
 
 Twitter:
 
