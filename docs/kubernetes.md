@@ -1,6 +1,6 @@
 # Inlets & Kubernetes recipes
 
-## Run as a deployment on Kubernetes
+## 1) Run as a deployment on Kubernetes
 
 You can run the client inside Kubernetes to expose your local services to the Internet, or another network.
 
@@ -15,15 +15,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: inlets
+      app: inlets
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: inlets
+        app: inlets
     spec:
       containers:
       - name: inlets
-        image: inlets/inlets:2.6.1
+        image: inlets/inlets:2.6.3
         imagePullPolicy: Always
         command: ["inlets"]
         args:
@@ -36,7 +36,7 @@ Replace the line: `- "--remote=your-public-ip"` with the public IP belonging to 
 
 Alternatively, see the unofficial helm chart from the community: [inlets-helm](https://github.com/paurosello/inlets_helm).
 
-## Use authentication from a Kubernetes secret
+## 2) Use authentication from a Kubernetes secret
 
 In production, you should always use a secret to protect your exit-node. You will need a way of passing that to your server and inlets allows you to read a Kubernetes secret.
 
@@ -66,15 +66,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: inlets
+      app: inlets
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: inlets
+        app: inlets
     spec:
       containers:
       - name: inlets
-        image: inlets/inlets:2.6.1
+        image: inlets/inlets:2.6.3
         imagePullPolicy: Always
         command: ["inlets"]
         args:
@@ -147,15 +147,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: inlets
+      app: inlets
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: inlets
+        app: inlets
     spec:
       containers:
       - name: inlets
-        image: inlets/inlets:2.6.1
+        image: inlets/inlets:2.6.3
         imagePullPolicy: Always
         command: ["inlets"]
         args:
@@ -173,7 +173,7 @@ spec:
 You can now create an `Ingress` record, or `LoadBalancer` to connect to your server.
 Note that clients connecting to this server will have to specify port 8000 for their remote, as the default is 80.
 
-## Try inlets with KinD (Kubernetes in Docker)
+## 3) Try inlets with KinD (Kubernetes in Docker)
 
 Try this guide to expose services running in a [KinD cluster](https://github.com/kubernetes-sigs/kind).
 
