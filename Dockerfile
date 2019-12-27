@@ -1,4 +1,7 @@
-FROM golang:1.11-alpine as build
+FROM golang:1.12-alpine as build
+
+ENV GO111MODULE=off
+ENV CGO_ENABLED=0
 
 WORKDIR /go/src/github.com/inlets/inlets
 
