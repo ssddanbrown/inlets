@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
+	"github.com/rancher/norman/metrics"
 	"github.com/sirupsen/logrus"
 )
 
@@ -79,6 +80,7 @@ func (p *peer) start(ctx context.Context, s *Server) {
 		TLSClientConfig: &tls.Config{
 			InsecureSkipVerify: true,
 		},
+		HandshakeTimeout: HandshakeTimeOut,
 	}
 
 outer:
@@ -89,12 +91,14 @@ outer:
 		default:
 		}
 
+		metrics.IncSMTotalAddPeerAttempt(p.id)
 		ws, _, err := dialer.Dial(p.url, headers)
 		if err != nil {
 			logrus.Errorf("Failed to connect to peer %s [local ID=%s]: %v", p.url, s.PeerID, err)
 			time.Sleep(5 * time.Second)
 			continue
 		}
+		metrics.IncSMTotalPeerConnected(p.id)
 
 		session := NewClientSession(func(string, string) bool { return true }, ws)
 		session.dialer = func(network, address string) (net.Conn, error) {
@@ -106,7 +110,7 @@ outer:
 		}
 
 		s.sessions.addListener(session)
-		_, err = session.Serve()
+		_, err = session.Serve(context.Background())
 		s.sessions.removeListener(session)
 		session.Close()
 

@@ -4,6 +4,7 @@
 package client
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"strings"
@@ -45,6 +46,6 @@ func (c *Client) Connect() error {
 		url = "ws://" + url
 	}
 	for {
-		remotedialer.ClientConnect(url+"/tunnel", headers, nil, allowsAllow, nil)
+		remotedialer.ClientConnect(context.Background(), url+"/tunnel", headers, nil, allowsAllow, nil)
 	}
 }
