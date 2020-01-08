@@ -13,6 +13,8 @@ Expose your local endpoints to the Internet or to another network, traversing fi
 
 [Follow @inletsdev on Twitter](https://twitter.com/inletsdev)
 
+[English](./README.md) | [中文文档](./README_CN.md)
+
 ## Intro
 
 inlets combines a reverse proxy and websocket tunnels to expose your internal and development endpoints to the public Internet via an exit-node. An exit-node may be a 5-10 USD VPS or any other computer with an IPv4 IP address.
@@ -346,7 +348,7 @@ You can bind two separate TCP ports for the user-facing port and the tunnel.
 * `--port` - the port for users to connect to and for serving data, i.e. the *Data Plane*
 * `--control-port` - the port for the websocket to connect to i.e. the *Control Plane*
 
-## Development
+### Development
 
 [![Documentation](https://godoc.org/github.com/inlets/inlets?status.svg)](http://godoc.org/github.com/inlets/inlets)
 
