@@ -91,15 +91,18 @@ inlets has trended on the front page of Hacker News twice.
 * [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 218 points, 66 comments
 
 Tutorials:
-* [Get a LoadBalancer for your private Kubernetes cluster with inlets-operator by Alex Ellis](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/)
-* [Blog post - webhooks, great when you can get them by Alex Ellis](https://blog.alexellis.io/webhooks-are-great-when-you-can-get-them/)
-* [Micro-tutorial inlets with KinD by Alex Ellis](https://gist.github.com/alexellis/c29dd9f1e1326618f723970185195963)
+* [HTTPS for your local endpoints with inlets and Caddy - Alex Ellis](https://blog.alexellis.io/https-inlets-local-endpoints/)
+* [Build a 10 USD Raspberry Pi Tunnel Gateway](https://blog.alexellis.io/raspberry-pi-zero-tunnel-gateway/)
+* [Get a LoadBalancer for your private Kubernetes cluster with inlets-operator - Alex Ellis](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/)
+* [Webhooks, great when you can get them - Alex Ellis](https://blog.alexellis.io/webhooks-are-great-when-you-can-get-them/)
+
 * [The Awesomeness of Inlets by Ruan Bekker](https://sysadmins.co.za/the-awesomeness-of-inlets/)
 * [K8Spin - What does fit in a low resources namespace? Inlets](https://medium.com/k8spin/what-does-fit-in-a-low-resources-namespace-3rd-part-inlets-6cc278835e57)
 * [Exposing Magnificent Image Classifier with inlets](https://blog.baeke.info/2019/07/17/exposing-a-local-endpoint-with-inlets/)
 * ["Securely access external applications as Kubernetes Services, from your laptop or from any other host, using inlets"](https://twitter.com/BanzaiCloud/status/1164168218954670080)
-* [Using local services in Gitpod with inlets](https://www.gitpod.io/blog/local-services-in-gitpod/)
 * [Setting up an EC2 Instance as an Inlets Exit Node](https://mbacchi.github.io/2019/08/21/inlets-aws-ec2.html)
+* [Micro-tutorial inlets with KinD by Alex Ellis](https://gist.github.com/alexellis/c29dd9f1e1326618f723970185195963)
+* [Using local services in Gitpod with inlets](https://www.gitpod.io/blog/local-services-in-gitpod/)
 
 Twitter:
 
