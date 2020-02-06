@@ -2,7 +2,7 @@
 
 Cloud Native Tunnel written in Go
 
-What's this for? Exposing your local endpoints to the Internet or to another network, traversing firewalls, and NAT.
+What's this for? Exposing your local endpoints to the Internet or to another network, traversing firewalls and NAT.
 
 [![Build Status](https://travis-ci.com/inlets/inlets.svg?branch=master)](https://travis-ci.com/inlets/inlets)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
