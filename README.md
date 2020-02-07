@@ -115,6 +115,7 @@ Community tutorials:
 * [Setting up a GCE Instance as an Inlets Exit Node](https://pretired.dazwilkin.com/posts/200122/)
 * [Scheduling Kubernetes workloads to Raspberry Pi using Inlets and Crossplane](https://github.com/crossplaneio/tbs/blob/master/episodes/9/assets/README.md) by [Daniel Mangum](https://github.com/hasheddan)
   * Also checkout the live [demo](https://youtu.be/RVAFEAnirZA)
+* [Micro-tutorial inlets with minikube and Free plan IBM Kubernetes Services (IKS)](https://github.com/csantanapr/inlets-iks-to-minikube-tutorial/blob/master/README.md) by [Carlos Santana](https://twitter.com/csantanapr)
 
 Twitter:
 
