@@ -24,6 +24,10 @@ The [Derek bot](https://github.com/alexellis/derek) will enforce this policy, if
 
 This project is licensed under the MIT License.
 
+### Reporting a suspected vulnerability / security issue
+
+If you would like to report a suspected vulnerability / security issue, please email alex@openfaas.com. Bear in mind that this is a community project, and it may take a few days to get back to you. If you have a working code sample in a private GitHub repo, please feel free to give access to that also.
+
 #### Sign your work
 
 The sign-off is a simple line at the end of the explanation for a patch. Your
