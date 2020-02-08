@@ -99,10 +99,12 @@ inlets has trended on the front page of Hacker News twice.
 * [inlets 2.0](https://news.ycombinator.com/item?id=20410552) - 218 points, 66 comments
 
 Official tutorials:
-* [HTTPS for your local endpoints with inlets and Caddy - Alex Ellis](https://blog.alexellis.io/https-inlets-local-endpoints/)
-* [Build a 10 USD Raspberry Pi Tunnel Gateway](https://blog.alexellis.io/raspberry-pi-zero-tunnel-gateway/)
-* [Get a LoadBalancer for your private Kubernetes cluster with inlets-operator - Alex Ellis](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/)
-* [Webhooks, great when you can get them - Alex Ellis](https://blog.alexellis.io/webhooks-are-great-when-you-can-get-them/)
+* [HTTPS for your local endpoints with inlets and Caddy](https://blog.alexellis.io/https-inlets-local-endpoints/) - Alex Ellis
+* [Build a 10 USD Raspberry Pi Tunnel Gateway](https://blog.alexellis.io/raspberry-pi-zero-tunnel-gateway/) - Alex Ellis
+* [Share work with clients using inlets](https://blog.alexellis.io/share-work-using-inlets/) - Alex Ellis
+* [Get a LoadBalancer for your private Kubernetes cluster with inlets-operator](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/) - Alex Ellis
+* [Webhooks, great when you can get them](https://blog.alexellis.io/webhooks-are-great-when-you-can-get-them/) - Alex Ellis
+* [Loan a cloud IP to your minikube cluster](https://blog.alexellis.io/loan-an-ip-to-your-minikube-cluster/) - Alex Ellis
 
 Community tutorials:
 * [The Awesomeness of Inlets by Ruan Bekker](https://sysadmins.co.za/the-awesomeness-of-inlets/)
@@ -113,9 +115,8 @@ Community tutorials:
 * [Micro-tutorial inlets with KinD by Alex Ellis](https://gist.github.com/alexellis/c29dd9f1e1326618f723970185195963)
 * [Using local services in Gitpod with inlets](https://www.gitpod.io/blog/local-services-in-gitpod/)
 * [Setting up a GCE Instance as an Inlets Exit Node](https://pretired.dazwilkin.com/posts/200122/)
-* [Scheduling Kubernetes workloads to Raspberry Pi using Inlets and Crossplane](https://github.com/crossplaneio/tbs/blob/master/episodes/9/assets/README.md) by [Daniel Mangum](https://github.com/hasheddan)
-  * Also checkout the live [demo](https://youtu.be/RVAFEAnirZA)
-* [Micro-tutorial inlets with minikube and Free plan IBM Kubernetes Services (IKS)](https://github.com/csantanapr/inlets-iks-to-minikube-tutorial/blob/master/README.md) by [Carlos Santana](https://twitter.com/csantanapr)
+* [Scheduling Kubernetes workloads to Raspberry Pi using Inlets and Crossplane](https://github.com/crossplaneio/tbs/blob/master/episodes/9/assets/README.md) and [YouTube Live](https://youtu.be/RVAFEAnirZA) by [Daniel Mangum](https://github.com/hasheddan)
+* [inlets with minikube and IBM Kubernetes Services (IKS) free plan](https://github.com/csantanapr/inlets-iks-to-minikube-tutorial/blob/master/README.md) by [Carlos Santana](https://twitter.com/csantanapr)
 
 Twitter:
 
