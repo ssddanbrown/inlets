@@ -27,9 +27,11 @@ When combined with SSL - inlets can be used with any corporate HTTP proxy which 
 
 ## News: Docs and new SWAG Store launched!
 
-* Read our new documentation at [docs.inlets.dev](https://docs.inlets.dev)
+Read our documentation for inlets/-pro inletsctl and inlets-operator, all under one roof.
 
- Covers inlets/-pro inletsctl and inlets-operator, all under one roof.
+* **New** - [docs.inlets.dev](https://docs.inlets.dev)
+
+For self-service orders, or email [sales@openfaas.com](mailto:sales@openfaas.com) for a bulk order including shipping discounts.
 
 * Buy your own [soft-cotton inlets t-shirt and SWAG](https://gumroad.com/openfaas/)
 
