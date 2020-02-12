@@ -21,16 +21,16 @@ Why do we need this project? Similar tools such as [ngrok](https://ngrok.com/) o
 
 When combined with SSL - inlets can be used with any corporate HTTP proxy which supports `CONNECT`.
 
-![](docs/inlets.png)
+![Conceptual diagram](docs/inlets.png)
 
 *Conceptual diagram for inlets*
 
 ## News: Docs and new SWAG Store launched!
 
-* Read our new documentation for inlets/-pro inletsctl and inlets-operator, all under one roof
+* Read our new documentation at [docs.inlets.dev](https://docs.inlets.dev)
 
- [docs.inlets.dev](https://docs.inlets.dev)
- 
+ Covers inlets/-pro inletsctl and inlets-operator, all under one roof.
+
 * Buy your own [soft-cotton inlets t-shirt and SWAG](https://gumroad.com/openfaas/)
 
 ## License & terms
