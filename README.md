@@ -25,6 +25,14 @@ When combined with SSL - inlets can be used with any corporate HTTP proxy which 
 
 *Conceptual diagram for inlets*
 
+## News: Docs and new SWAG Store launched!
+
+* Read our new documentation for inlets/-pro inletsctl and inlets-operator, all under one roof
+
+ [docs.inlets.dev](https://docs.inlets.dev)
+ 
+* Buy your own [soft-cotton inlets t-shirt and SWAG](https://gumroad.com/openfaas/)
+
 ## License & terms
 
 **Important**
