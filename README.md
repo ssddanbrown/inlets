@@ -47,6 +47,12 @@ inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk). Alex 
 
 > [OpenFaaS&reg;](https://github.com/openfaas/faas) makes it easy for developers to deploy event-driven functions and microservices to Kubernetes without repetitive, boiler-plate coding. Package your code or an existing binary in a Docker image to get a highly scalable endpoint with auto-scaling and metrics. The project has around 19k GitHub stars, over 240 contributors and a growing number of end-users in production.
 
+#### **New** SWAG Store launched
+
+<img src="https://pbs.twimg.com/media/EQuxmEJWoAAP0Ga?format=jpg&name=small" width=300>
+
+Head over to the new [Inlets & OpenFaaS SWAG store](https://gumroad.com/openfaas) to get your very own t-shirt.
+
 ### Backlog & goals
 
 #### Completed
@@ -68,13 +74,15 @@ inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk). Alex 
 
 * automatic configuration of DNS / A records
 * configuration to run "exit-node" as serverless container with Azure ACI / AWS Fargate
-* configure staging or production LetsEncrypt issuer using DNS01 challenge
 
-#### Non-goals
 
-* tunnelling plain TCP traffic over the websocket
+#### Inlets PRO
 
-  This use-case is covered by inlets-pro, ask me about early access to [inlets-pro](mailto:alex@openfaas.com).
+The following features / use-cases are covered by [inlets.pro](https://github.com/inlets/inlets-pro).
+
+* Tunnel L4 TCP traffic in addition to HTTP/s at L7
+* Automated TLS - including via inletsctl/inlets-operator
+* Commercial services & support
 
 ### Status
 
@@ -94,10 +102,10 @@ Feel free to open issues if you have comments, suggestions or contributions.
 
 Inlets is [listed on the Cloud Native Landscape](https://landscape.cncf.io/category=service-proxy&format=card-mode&grouping=category&sort=stars) as a Service Proxy
 
-* [inlets](https://github.com/inlets/inlets) - open-source L7 HTTP tunnel and reverse proxy
-* [inlets-pro](https://github.com/inlets/inlets-pro-pkg) - L4 TCP load-balancer
-* [inlets-operator](https://github.com/inlets/inlets-operator) - deep integration for inlets in Kubernetes, expose Service type LoadBalancer
-* [inletsctl](https://github.com/inlets/inletsctl) - CLI tool to provision exit-nodes for use with inlets or inlets-pro
+* [inlets](https://github.com/inlets/inlets) - Cloud Native Tunnel for L7 / HTTP traffic written in Go
+* [inlets-pro](https://github.com/inlets/inlets-pro-pkg) - Cloud Native Tunnel for L4 TCP
+* [inlets-operator](https://github.com/inlets/inlets-operator) - Public IPs for your private Kubernetes Services and CRD
+* [inletsctl](https://github.com/inlets/inletsctl) - Automate the cloud for fast HTTP (L7) and TCP (L4) tunnels
 
 ### What are people saying about inlets?
 
