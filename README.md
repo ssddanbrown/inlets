@@ -7,9 +7,9 @@ What's this for? Exposing your local endpoints to the Internet or to another net
 [![Build Status](https://travis-ci.com/inlets/inlets.svg?branch=master)](https://travis-ci.com/inlets/inlets)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Report Card](https://goreportcard.com/badge/github.com/inlets/inlets)](https://goreportcard.com/report/github.com/inlets/inlets)
-[![Documentation](https://godoc.org/github.com/inlets/inlets?status.svg)](http://godoc.org/github.com/inlets/inlets)
-[![Setup Automated](https://img.shields.io/badge/setup-automated-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
 ![GitHub All Releases](https://img.shields.io/github/downloads/inlets/inlets/total)
+
+[Follow @inletsdev on Twitter](https://twitter.com/inletsdev)
 
 ## Intro
 
@@ -75,7 +75,6 @@ Head over to the new [Inlets & OpenFaaS SWAG store](https://gumroad.com/openfaas
 * automatic configuration of DNS / A records
 * configuration to run "exit-node" as serverless container with Azure ACI / AWS Fargate
 
-
 #### Inlets PRO
 
 The following features / use-cases are covered by [inlets.pro](https://github.com/inlets/inlets-pro).
@@ -125,6 +124,7 @@ Official tutorials:
 * [Loan a cloud IP to your minikube cluster](https://blog.alexellis.io/loan-an-ip-to-your-minikube-cluster/) - Alex Ellis
 
 Community tutorials:
+
 * [The Awesomeness of Inlets by Ruan Bekker](https://sysadmins.co.za/the-awesomeness-of-inlets/)
 * [K8Spin - What does fit in a low resources namespace? Inlets](https://medium.com/k8spin/what-does-fit-in-a-low-resources-namespace-3rd-part-inlets-6cc278835e57)
 * [Exposing Magnificent Image Classifier with inlets](https://blog.baeke.info/2019/07/17/exposing-a-local-endpoint-with-inlets/)
@@ -347,6 +347,8 @@ You can bind two separate TCP ports for the user-facing port and the tunnel.
 * `--control-port` - the port for the websocket to connect to i.e. the *Control Plane*
 
 ## Development
+
+[![Documentation](https://godoc.org/github.com/inlets/inlets?status.svg)](http://godoc.org/github.com/inlets/inlets)
 
 For development you will need Golang 1.10 or 1.11 on both the exit-node or server and the client.
 
