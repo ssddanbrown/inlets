@@ -1,19 +1,19 @@
-# inlets OSS
+## Inlets is a Cloud Native Tunnel written in Go
 
-Cloud Native Tunnel written in Go
+<img src="docs/inlets-logo-sm.png" width="150px">
 
-What's this for? Exposing your local endpoints to the Internet or to another network, traversing firewalls and NAT.
+Expose your local endpoints to the Internet or to another network, traversing firewalls and NAT.
+
 
 [![Build Status](https://travis-ci.com/inlets/inlets.svg?branch=master)](https://travis-ci.com/inlets/inlets)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Report Card](https://goreportcard.com/badge/github.com/inlets/inlets)](https://goreportcard.com/report/github.com/inlets/inlets)
 ![GitHub All Releases](https://img.shields.io/github/downloads/inlets/inlets/total)
 
+
 [Follow @inletsdev on Twitter](https://twitter.com/inletsdev)
 
 ## Intro
-
-<img src="https://raw.githubusercontent.com/inlets/media/master/assets/inlets-logo.png" width="150px">
 
 inlets combines a reverse proxy and websocket tunnels to expose your internal and development endpoints to the public Internet via an exit-node. An exit-node may be a 5-10 USD VPS or any other computer with an IPv4 IP address.
 
