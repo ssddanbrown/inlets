@@ -35,7 +35,7 @@ Read our documentation for inlets/-pro inletsctl and inlets-operator, all under 
 
 For self-service orders, or email [sales@openfaas.com](mailto:sales@openfaas.com) for a bulk order including shipping discounts.
 
-* Buy your own [soft-cotton inlets t-shirt and SWAG](https://gumroad.com/openfaas/)
+* Buy your own [inlets t-shirt, hoodie or mug](https://store.openfaas.com/)
 
 ## License & terms
 
@@ -53,7 +53,7 @@ inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk). Alex 
 
 <img src="https://pbs.twimg.com/media/EQuxmEJWoAAP0Ga?format=jpg&name=small" width=300>
 
-Head over to the new [Inlets & OpenFaaS SWAG store](https://gumroad.com/openfaas) to get your very own t-shirt.
+Head over to the new [OpenFaaS Ltd SWAG store](https://store.openfaas.com/) to get your very own t-shirt.
 
 ### Backlog & goals
 
