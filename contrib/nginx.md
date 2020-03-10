@@ -21,4 +21,5 @@ server {
     }
 }
 ```
-You can even secure your connection with SSL via your own certificate, or via Letsencrypt!
+
+You can even secure your connection with SSL via your own certificate, or use Letsencrypt.
