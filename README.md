@@ -62,8 +62,8 @@ Head over to the new [OpenFaaS Ltd SWAG store](https://store.openfaas.com/) to g
 * automatically create endpoints on exit-node based upon client definitions
   * multiplex sites on same port and websocket through the use of DNS / host entries
 * link encryption using SSL over websockets (`wss://`)
+* authentication for server and client
 * automatic reconnect
-* authentication using service account or basic auth
 * automatic TLS provisioning for endpoints using [cert-magic](https://github.com/mholt/certmagic)
   * configure staging or production LetsEncrypt issuer using HTTP01 challenge
 * native multi-arch with ARMHF/ARM64 support
