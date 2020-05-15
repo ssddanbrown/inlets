@@ -337,6 +337,17 @@ Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
 
 * `inlets/inlets:2.6.3`
 
+### Bind to a different adapter, or to localhost
+
+By default the inlets server will bind to all adapters and addresses on your machine.
+
+At times, you may wish to change this, so that you can "hide" the HTTP websocket behind a reverse proxy, adding TLS termination and link-level encryption without exposing the plain HTTP port to the network or Internet.
+
+Usage:
+
+* `--bind-addr 127.0.0.1`
+* `--bind-addr 10.0.101.20`
+
 ### Bind a different port for the control-plane
 
 You can bind two separate TCP ports for the user-facing port and the tunnel.
