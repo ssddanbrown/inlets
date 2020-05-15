@@ -42,7 +42,6 @@ inlets 由 [Alex Ellis](https://twitter.com/alexellisuk) 开发。Alex 是一名
 * 利用 SSL over Websockets 实现链路加密（`wss://`）
 * 自动重连
 * 通过 Service Account 或 HTTP Basic Auth 实现权限认证
-* 使用 [cert-magic](https://github.com/mholt/certmagic) 自动申请 TLS 证书
   * 通过 HTTP01 challenge 使用 LetsEncrypt Staging 或 Production 签发证书
 * 原生跨平台支持，包括 ARMHF 和 ARM64 架构
 * 提供 Dockerfile 以及 Kubernetes YAML 文件

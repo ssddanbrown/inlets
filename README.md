@@ -64,18 +64,12 @@ Head over to the new [OpenFaaS Ltd SWAG store](https://store.openfaas.com/) to g
 * link encryption using SSL over websockets (`wss://`)
 * authentication for server and client
 * automatic reconnect
-* automatic TLS provisioning for endpoints using [cert-magic](https://github.com/mholt/certmagic)
-  * configure staging or production LetsEncrypt issuer using HTTP01 challenge
 * native multi-arch with ARMHF/ARM64 support
 * Dockerfile and Kubernetes YAML files
 * discover and implement `Service` type of `LoadBalancer` for Kubernetes - [inlets-operator](https://github.com/inlets/inlets-operator)
 * tunnelling websocket traffic in addition to HTTP(s)
 * [get a logo for the project](https://github.com/inlets/inlets/issues/46)
-
-#### Stretch goals
-
-* automatic configuration of DNS / A records
-* configuration to run "exit-node" as serverless container with Azure ACI / AWS Fargate
+* TLS certificates when used with a reverse proxy like Nginx, Caddy or Traefik
 
 #### Inlets PRO
 
