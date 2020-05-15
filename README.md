@@ -323,6 +323,14 @@ Using inlets I was able to set up a public endpoint (with a custom domain name) 
 
 [![https://img.youtube.com/vi/jrAqqe8N3q4/hqdefault.jpg](https://img.youtube.com/vi/jrAqqe8N3q4/maxresdefault.jpg)](https://youtu.be/jrAqqe8N3q4)
 
+## Advanced usage
+
+### Kubernetes
+
+Automate inlets exit server creation and tunnel clients with the [inlets-operator](https://github.com/inlets/inlets-operator)
+
+Or see the examples in the [docs/kubernetes.md](docs/kubernetes.md) file for how to run either part of the tunnel manually.
+
 ### Docker
 
 Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
@@ -344,17 +352,27 @@ By default, the server code can access any host. The client specifies a number o
 
 This is off by default, however when set to true, only hosts in `--upstream` can be accessed by the server. It could prevent a bad actor from accessing other hosts on your network.
 
-### Multiple services with on exit-node
+### Tunnelling multiple services
 
-You can expose an OpenFaaS or OpenFaaS Cloud deployment with `inlets` - just change `--upstream=http://127.0.0.1:3000` to `--upstream=http://127.0.0.1:8080` or `--upstream=http://127.0.0.1:31112`. You can even point at an IP address inside or outside your network for instance: `--upstream=http://192.168.0.101:8080`.
+You can expose multiple hosts through the `--upstream` flag using a comma-delimited list.
 
-When using the scripts in `hack` to configure inlets with system, the process will restart if the tunnel crashes.
+```bash
+inlets client --remote ws://$IP:8080 \
+  --upstream "openfaas.example.com=http://127.0.0.1:8080,prometheus.example.com=http://127.0.0.1:9090"
+```
+
+You can also forward everything to a single host such as:
+
+```bash
+inlets client --remote ws://$IP:8080 \
+  --upstream "http://nginx.svc.default"
+```
 
 ### Development
 
 [![Documentation](https://godoc.org/github.com/inlets/inlets?status.svg)](http://godoc.org/github.com/inlets/inlets)
 
-For development you will need Golang 1.10 or 1.11 on both the exit-node or server and the client.
+For development you will need [Golang 1.13 or newer](https://golang.org/dl/)
 
 You can get the code like this:
 
