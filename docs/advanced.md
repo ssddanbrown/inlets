@@ -20,6 +20,12 @@ By default the inlets server will bind to all adapters and addresses on your mac
 
 At times, you may wish to change this, so that you can "hide" the HTTP websocket behind a reverse proxy, adding TLS termination and link-level encryption without exposing the plain HTTP port to the network or Internet.
 
+The diagram below shows how inlets can act as a VPN, when only binding tunnelled services to the local adapter or a private network:
+
+![Tunnelling, but not exposing a service](./inlets-private.png)
+
+> Tunnelling, but not exposing a service.
+
 Usage:
 
 * `--bind-addr 127.0.0.1`
