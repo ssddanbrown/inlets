@@ -38,7 +38,7 @@ Alternatively, see the unofficial helm chart from the community: [inlets-helm](h
 
 ## 2) Use authentication from a Kubernetes secret
 
-In production, you should always use a secret to protect your exit-node. You will need a way of passing that to your server and inlets allows you to read a Kubernetes secret.
+In production, you should always use a secret to protect your exit-server. You will need a way of passing that to your server and inlets allows you to read a Kubernetes secret.
 
 * Create a random secret
 
@@ -98,9 +98,9 @@ $ kubectl delete deploy/inlets
 $ kubectl delete secret/inlets-token
 ```
 
-## Use your Kubernetes cluster as an exit-node
+## Use your Kubernetes cluster as an exit-server
 
-You can use a Kubernetes cluster which has public IP addresses, an IngressController, or a LoadBalancer to run one or more exit-nodes.
+You can use a Kubernetes cluster which has public IP addresses, an IngressController, or a LoadBalancer to run one or more exit-servers.
 
 * Create a random secret
 
@@ -275,7 +275,7 @@ curl -sLSf https://get.inlets.dev | sudo sh
 curl -sLSf https://raw.githubusercontent.com/inlets/inletsctl/master/get.sh | sudo sh
 ```
 
-### Start an exit-node on your laptop (inlets server)
+### Start an exit-server on your laptop (inlets server)
 
 Find the IP of your Ethernet or WiFi connection via `ifconfig`, mine was `192.168.0.14`
 

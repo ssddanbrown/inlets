@@ -29,9 +29,9 @@ var inletsCmd = &cobra.Command{
 	Long: `
 Inlets combines a reverse proxy and websocket tunnels to expose your internal 
 and development endpoints on another network, or to the public Internet via 
-an exit-node.
+an exit-server.
 
-An exit-node may be a 5-10 USD VPS or any other computer with an IPv4 IP address. 
+An exit-server may be a 5 USD VPS or any other computer with an IPv4 IP address. 
 You can also use inlets to bridge connect between private networks, only 
 exposing the services on loopback or a private IP address.
 

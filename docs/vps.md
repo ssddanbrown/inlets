@@ -18,7 +18,7 @@ cat /etc/default/inlets
 
 ## How do I enable TLS / HTTPS?
 
-* Create a DNS A record for your exit-node IP and the DNS entry `exit.domain.com` (replace as necessary).
+* Create a DNS A record for your exit-server IP and the DNS entry `exit.domain.com` (replace as necessary).
 
 * Download Caddy from the [Releases page](https://github.com/mholt/caddy/releases).
 
@@ -51,7 +51,7 @@ inlets client --remote wss://exit.domain.com
 
 > Note: wss indicates to use port 443 for TLS.
 
-You now have a secure TLS link between your client(s) and your server on the exit node and for your site to serve traffic over.
+You now have a secure TLS link between your client(s) and your server on the exit server and for your site to serve traffic over.
 
 ## Where can I get a cheap / free domain-name?
 
@@ -61,7 +61,7 @@ You can get a free domain-name with a .tk / .ml or .ga TLD from https://www.free
 
 My recommendation: pay to use [Namecheap](https://www.namecheap.com).
 
-## Where can I host an `inlets` exit-node?
+## Where can I host an `inlets` exit-server?
 
 You can use inlets to provide incoming connections to any network, including containers, VM and AWS Firecracker.
 
@@ -71,7 +71,7 @@ Examples:
 * Green to red - from an internal network to the Internet (i.e. Raspberry Pi cluster)
 * Red to green - to make a service on a public network accessible as if it were a local service.
 
-The following VPS providers have credit, or provisioning scripts to get an exit-node in a few moments.
+The following VPS providers have credit, or provisioning scripts to get an exit-server in a few moments.
 
 Installation scripts have been provided which use `systemd` as a process supervisor. This means that if inlets crashes, it will be restarted automatically and logs are available.
 
@@ -86,7 +86,7 @@ If you're a [DigitalOcean](https://www.digitalocean.com) user and use `doctl` th
 
 DigitalOcean will then email you the IP and root password for your new host. You can use it to log in and get your auth token, so that you can connect your client after that.
 
-Datacenters for exit-nodes are available world-wide
+Datacenters for exit-servers are available world-wide
 
 ### Civo
 
@@ -109,10 +109,10 @@ Datacenters include: Paris and Amsterdam.
 
 You can tunnel over SSH if you are not using a reverse proxy that enables SSL. This encrypts the traffic over the tunnel.
 
-On your client, create a tunnel to the exit-node:
+On your client, create a tunnel to the exit-server:
 
 ```
-ssh -L 8000:127.0.0.1:80 exit-node-ip
+ssh -L 8000:127.0.0.1:80 exit-server-ip
 ```
 
 Now for the `--remote` address use `--remote ws://127.0.0.1:8000`

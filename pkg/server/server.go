@@ -19,7 +19,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/proxy"
 )
 
-// Server for the exit-node of inlets
+// Server for the exit-server of inlets
 type Server struct {
 
 	// Port serves data to clients

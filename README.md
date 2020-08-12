@@ -17,7 +17,7 @@ Expose your local endpoints to the Internet or to another network, traversing fi
 
 ## Intro
 
-inlets&reg; combines a reverse proxy and websocket tunnels to expose your internal and development endpoints to the public Internet via an exit-node. An exit-node may be a 5-10 USD VPS or any other computer with an IPv4 IP address. You can also tunnel services without exposing them on the Internet, making inlets a suitable replacement for a VPN.
+inlets&reg; combines a reverse proxy and websocket tunnels to expose your internal and development endpoints to the public Internet via an exit-server. An exit-server may be a 5-10 USD VPS or any other computer with an IPv4 IP address. You can also tunnel services without exposing them on the Internet, making inlets a suitable replacement for a VPN.
 
 Why do we need this project? Similar tools such as [ngrok](https://ngrok.com/) or [Argo Tunnel](https://developers.cloudflare.com/argo-tunnel/) from [Cloudflare](https://www.cloudflare.com/) are closed-source, have limits built-in, can work out expensive, and have limited support for arm/arm64. Ngrok is also often banned by corporate firewall policies meaning it can be unusable. Other open-source tunnel tools are designed to only set up a single static tunnel. inlets aims to dynamically bind and discover your local services to DNS entries with automated TLS certificates to a public IP address over a websocket tunnel.
 
@@ -53,7 +53,7 @@ Developers wishing to use inlets within a corporate network are advised to seek 
 
 #### Completed
 
-* automatically create endpoints on exit-node based upon client definitions
+* automatically create endpoints on exit-server based upon client definitions
   * multiplex sites on same port and websocket through the use of DNS / host entries
 * link encryption using SSL over websockets (`wss://`)
 * authentication for server and client

@@ -2,9 +2,9 @@
 
 This tutorial shows you how the inlets client and server components work together, using your laptop to run both parts of the tunnel.
 
-> See also: [how to provision an "exit-node" with a public IPv4 address using a VPS](./docs/vps.md).
+> See also: [how to provision an "exit-server" with a public IPv4 address using a VPS](./docs/vps.md).
 
-* On the *exit-node* (or server)
+* On the *exit-server* (or server)
 
 Start the tunnel server on a machine with a publicly-accessible IPv4 IP address such as a VPS.
 
@@ -61,12 +61,12 @@ inlets client \
  --token=$TOKEN
 ```
 
-* Replace the `--remote` with the address where your exit-node is running `inlets server`.
+* Replace the `--remote` with the address where your exit-server is running `inlets server`.
 * Replace the `--token` with the value from your server
 
 We now have three processes:
 * example service running (hash-browns) or Python's webserver
-* an exit-node running the tunnel server (`inlets server`)
+* an exit-server running the tunnel server (`inlets server`)
 * a client running the tunnel client (`inlets client`)
 
 So send a request to the inlets server - use its domain name or IP address:
@@ -81,7 +81,7 @@ curl -d "hash this" http://127.0.0.1:8090/hash
 curl -d "hash this" http://gateway.mydomain.tk/hash
 ```
 
-You will see the traffic pass between the exit node / server and your development machine. You'll see the hash message appear in the logs as below:
+You will see the traffic pass between the exit server / server and your development machine. You'll see the hash message appear in the logs as below:
 
 ```sh
 ~/go/src/github.com/alexellis/hash-browns$ port=3000 go run main.go
