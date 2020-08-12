@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: inlets/inlets:2.6.3
+        image: inlets/inlets:2.7.4
         imagePullPolicy: Always
         command: ["inlets"]
         args:
@@ -74,7 +74,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: inlets/inlets:2.6.3
+        image: inlets/inlets:2.7.4
         imagePullPolicy: Always
         command: ["inlets"]
         args:
@@ -155,7 +155,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: inlets/inlets:2.6.3
+        image: inlets/inlets:2.7.4
         imagePullPolicy: Always
         command: ["inlets"]
         args:

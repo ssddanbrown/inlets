@@ -10,7 +10,7 @@ Or see the examples in the [docs/kubernetes.md](docs/kubernetes.md) file for how
 
 Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
 
-* `inlets/inlets:2.6.3`
+* `inlets/inlets:2.7.4`
 
 Check on the Docker Hub for the [latest tag](https://hub.docker.com/r/inlets/inlets/tags).
 
