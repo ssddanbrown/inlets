@@ -1,15 +1,15 @@
-## inlets &reg; is a Cloud Native Tunnel written in Go
+## inlets is a Cloud Native Tunnel written in Go
 
 <img src="docs/inlets-logo-sm.png" width="150px">
 
-Expose your local endpoints to the Internet or to another network, traversing firewalls and NAT.
+Expose your local endpoints to the Internet or to another network, traversing firewalls, proxies, and NAT.
 
 
 [![Build Status](https://travis-ci.com/inlets/inlets.svg?branch=master)](https://travis-ci.com/inlets/inlets)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Report Card](https://goreportcard.com/badge/github.com/inlets/inlets)](https://goreportcard.com/report/github.com/inlets/inlets)
+[![Documentation](https://godoc.org/github.com/inlets/inlets?status.svg)](http://godoc.org/github.com/inlets/inlets)
 ![GitHub All Releases](https://img.shields.io/github/downloads/inlets/inlets/total)
-
 
 [Follow @inletsdev on Twitter](https://twitter.com/inletsdev)
 
@@ -17,7 +17,7 @@ Expose your local endpoints to the Internet or to another network, traversing fi
 
 ## Intro
 
-inlets &reg; combines a reverse proxy and websocket tunnels to expose your internal and development endpoints to the public Internet via an exit-node. An exit-node may be a 5-10 USD VPS or any other computer with an IPv4 IP address.
+inlets&reg; combines a reverse proxy and websocket tunnels to expose your internal and development endpoints to the public Internet via an exit-node. An exit-node may be a 5-10 USD VPS or any other computer with an IPv4 IP address. You can also tunnel services without exposing them on the Internet, making inlets a suitable replacement for a VPN.
 
 Why do we need this project? Similar tools such as [ngrok](https://ngrok.com/) or [Argo Tunnel](https://developers.cloudflare.com/argo-tunnel/) from [Cloudflare](https://www.cloudflare.com/) are closed-source, have limits built-in, can work out expensive, and have limited support for arm/arm64. Ngrok is also often banned by corporate firewall policies meaning it can be unusable. Other open-source tunnel tools are designed to only set up a single static tunnel. inlets aims to dynamically bind and discover your local services to DNS entries with automated TLS certificates to a public IP address over a websocket tunnel.
 
@@ -96,13 +96,13 @@ Inlets is a Cloud Native Tunnel and is [listed on the Cloud Native Landscape](ht
 * [inlets-operator](https://github.com/inlets/inlets-operator) - Public IPs for your private Kubernetes Services and CRD
 * [inletsctl](https://github.com/inlets/inletsctl) - Automate the cloud for fast HTTP (L7) and TCP (L4) tunnels
 
-## Get started
+## Get inlets
 
 You can install the CLI with a `curl` utility script, `brew` or by downloading the binary from the releases page. Once installed you'll get the `inlets` command.
 
 ### Install the CLI
 
-> Note: `inlets` is made available free-of-charge, but you can support its ongoing development through [GitHub Sponsors](https://insiders.openfaas.io/) 💪
+> Note: `inlets` is made available free-of-charge, but you can support its ongoing development and sign up for updates through [GitHub Sponsors](https://github.com/sponsors/alexellis/) 💪
 
 Utility script with `curl`:
 
@@ -126,6 +126,8 @@ Binaries are made available on the [releases page](https://github.com/inlets/inl
 
 Windows users are encouraged to use [git bash](https://git-scm.com/downloads) to install the inlets binary.
 
+## Using inlets
+
 ### Video demo
 
 Using inlets I was able to set up a public endpoint (with a custom domain name) for my JavaScript & Webpack [Create React App](https://github.com/facebook/create-react-app).
@@ -136,129 +138,9 @@ Using inlets I was able to set up a public endpoint (with a custom domain name) 
 
 You can run inlets between any two computers with connectivity, these could be containers, VMs, bare metal or even "loop-back" on your own laptop.
 
-See [how to provision an "exit-node" with a public IPv4 address using a VPS](./docs/vps.md).
+Try the [quickstart tutorial now](./docs/quickstart.md) on your local computer.
 
-* On the *exit-node* (or server)
-
-Start the tunnel server on a machine with a publicly-accessible IPv4 IP address such as a VPS.
-
-Example with a token for client authentication:
-
-```bash
-export token=$(head -c 16 /dev/urandom | shasum | cut -d" " -f1)
-inlets server --port=8090 --token=$token
-```
-
-> Note: You can pass the `--token` argument followed by a token value to both the server and client to prevent unauthorized connections to the tunnel.
-
-
-```bash
-inlets server --port=8090
-```
-
-You can also run unprotected, but this is not recommended.
-
-Note down your public IPv4 IP address.
-
-* Head over to your machine where you are running a sample service, or something you want to expose.
-
-You can use my hash-browns service for instance which generates hashes.
-
-Install hash-browns or run your own HTTP server
-
-```sh
-export GO111MODULE=off
-export GOPATH=$HOME/go/
-
-go get -u github.com/alexellis/hash-browns
-port=3000 $GOPATH/bin/hash-browns
-```
-
-If you don't have Go installed, then you could run [Python's built-in HTTP server](https://docs.python.org/2/library/simplehttpserver.html):
-
-```sh
-mkdir -p /tmp/inlets-test/
-cd /tmp/inlets-test/
-touch hello-world
-python -m SimpleHTTPServer 3000
-```
-
-* On the same machine, start the inlets client
-
-Start the tunnel client:
-
-```sh
-export REMOTE="127.0.0.1:8090"    # for testing inlets on your laptop, replace with the public IPv4
-export TOKEN="CLIENT-TOKEN-HERE"  # the client token is found on your VPS or on start-up of "inlets server"
-inlets client \
- --remote=$REMOTE \
- --upstream=http://127.0.0.1:3000 \
- --token=$TOKEN
-```
-
-* Replace the `--remote` with the address where your exit-node is running `inlets server`.
-* Replace the `--token` with the value from your server
-
-We now have three processes:
-* example service running (hash-browns) or Python's webserver
-* an exit-node running the tunnel server (`inlets server`)
-* a client running the tunnel client (`inlets client`)
-
-So send a request to the inlets server - use its domain name or IP address:
-
-Assuming `gateway.mydomain.tk` points to `127.0.0.1` in `/etc/hosts` or your DNS server.
-
-```sh
-curl -d "hash this" http://127.0.0.1:8090/hash -H "Host: gateway.mydomain.tk"
-# or
-curl -d "hash this" http://127.0.0.1:8090/hash
-# or
-curl -d "hash this" http://gateway.mydomain.tk/hash
-```
-
-You will see the traffic pass between the exit node / server and your development machine. You'll see the hash message appear in the logs as below:
-
-```sh
-~/go/src/github.com/alexellis/hash-browns$ port=3000 go run main.go
-2018/12/23 20:15:00 Listening on port: 3000
-"hash this"
-```
-
-Now check the metrics endpoint which is built-into the hash-browns example service:
-
-```sh
-curl $REMOTE/metrics | grep hash
-```
-
-You can also use multiple domain names and tie them back to different internal services.
-
-Here we start the Python server on two different ports, serving content from two different locations and then map it to two different Host headers, or domain names:
-
-```sh
-mkdir -p /tmp/store1
-cd /tmp/store1/
-touch hello-store-1
-python -m SimpleHTTPServer 8001 &
-
-
-mkdir -p /tmp/store2
-cd /tmp/store2/
-touch hello-store-2
-python -m SimpleHTTPServer 8002 &
-```
-
-```sh
-export REMOTE="127.0.0.1:8090"    # for testing inlets on your laptop, replace with the public IPv4
-export TOKEN="CLIENT-TOKEN-HERE"  # the client token is found on your VPS or on start-up of "inlets server"
-inlets client \
- --remote=$REMOTE \
- --upstream="store1.example.com=http://127.0.0.1:8001,store2.example.com=http://127.0.0.1:8002" \
- --token=$TOKEN
-```
-
-You can now create two DNS entries or `/etc/hosts` file entries for `store1.example.com` and `store2.example.com`, then connect through your browser.
-
-## Docs & Featured tutorials
+### Documentation & tutorials
 
 inlets and inlets PRO now has a dedicated documentation site:
 
@@ -267,65 +149,12 @@ Official docs: [docs.inlets.dev](https://docs.inlets.dev)
 Other inlets OSS documentation & tutorials:
 
 * Tutorial: [HTTPS for your local endpoints with inlets and Caddy](https://blog.alexellis.io/https-inlets-local-endpoints/)
+* Docs: [Quickstart tutorial on your laptop](./docs/quickstart.md)
 * Docs: [Inlets & Kubernetes recipes](./docs/kubernetes.md)
 * Docs: [Run Inlets on a VPS](./docs/vps.md)
 * Tutorial: [Get a LoadBalancer for your private Kubernetes cluster with inlets-operator](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/)
 
-## Advanced usage
-
-### Kubernetes
-
-Automate inlets exit server creation and tunnel clients with the [inlets-operator](https://github.com/inlets/inlets-operator)
-
-Or see the examples in the [docs/kubernetes.md](docs/kubernetes.md) file for how to run either part of the tunnel manually.
-
-### Docker
-
-Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
-
-* `inlets/inlets:2.6.3`
-
-### Bind to a different adapter, or to localhost
-
-By default the inlets server will bind to all adapters and addresses on your machine.
-
-At times, you may wish to change this, so that you can "hide" the HTTP websocket behind a reverse proxy, adding TLS termination and link-level encryption without exposing the plain HTTP port to the network or Internet.
-
-Usage:
-
-* `--bind-addr 127.0.0.1`
-* `--bind-addr 10.0.101.20`
-
-### Bind a different port for the control-plane
-
-You can bind two separate TCP ports for the user-facing port and the tunnel.
-
-* `--port` - the port for users to connect to and for serving data, i.e. the *Data Plane*
-* `--control-port` - the port for the websocket to connect to i.e. the *Control Plane*
-
-### Strict forwarding policy
-
-By default, the server code can access any host. The client specifies a number of upstream hosts via `--upstream`. If you want these to be the only hosts that the server can connect to, then enable strict forwarding.
-
-* `--strict-forwarding`
-
-This is off by default, however when set to true, only hosts in `--upstream` can be accessed by the server. It could prevent a bad actor from accessing other hosts on your network.
-
-### Tunnelling multiple services
-
-You can expose multiple hosts through the `--upstream` flag using a comma-delimited list.
-
-```bash
-inlets client --remote ws://$IP:8080 \
-  --upstream "openfaas.example.com=http://127.0.0.1:8080,prometheus.example.com=http://127.0.0.1:9090"
-```
-
-You can also forward everything to a single host such as:
-
-```bash
-inlets client --remote ws://$IP:8080 \
-  --upstream "http://nginx.svc.default"
-```
+See also: [advanced usage of inlets including Docker, Kubernetes, multiple-services, and binding to private IPs](./docs/advanced.md)
 
 ### Appendix
 
@@ -378,22 +207,7 @@ See [ADOPTERS.md](./ADOPTERS.md) for what companies are doing with inlets today.
 
 #### Development
 
-[![Documentation](https://godoc.org/github.com/inlets/inlets?status.svg)](http://godoc.org/github.com/inlets/inlets)
-
-For development you will need [Golang 1.13 or newer](https://golang.org/dl/)
-
-You can get the code like this:
-
-```bash
-go get -u github.com/inlets/inlets
-cd $GOPATH/src/github.com/inlets/inlets
-```
-
-Alternatively, you can get everything setup right in the browser with a single click using [Gitpod](https://gitpod.io):
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/inlets/inlets)
-
-Contributions are welcome. All commits must be signed-off with `git commit -s` to accept the [Developer Certificate of Origin](https://developercertificate.org).
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 #### Other Kubernetes port-forwarding tooling
 

@@ -1,0 +1,57 @@
+## Advanced usage of inlets
+
+### With Kubernetes
+
+Automate inlets exit server creation and tunnel clients with the [inlets-operator](https://github.com/inlets/inlets-operator)
+
+Or see the examples in the [docs/kubernetes.md](docs/kubernetes.md) file for how to run either part of the tunnel manually.
+
+### Docker images
+
+Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
+
+* `inlets/inlets:2.6.3`
+
+Check on the Docker Hub for the [latest tag](https://hub.docker.com/r/inlets/inlets/tags).
+
+### Bind to a different adapter, or to localhost
+
+By default the inlets server will bind to all adapters and addresses on your machine.
+
+At times, you may wish to change this, so that you can "hide" the HTTP websocket behind a reverse proxy, adding TLS termination and link-level encryption without exposing the plain HTTP port to the network or Internet.
+
+Usage:
+
+* `--bind-addr 127.0.0.1`
+* `--bind-addr 10.0.101.20`
+
+### Bind a different port for the control-plane
+
+You can bind two separate TCP ports for the user-facing port and the tunnel.
+
+* `--port` - the port for users to connect to and for serving data, i.e. the *Data Plane*
+* `--control-port` - the port for the websocket to connect to i.e. the *Control Plane*
+
+### Strict forwarding policy
+
+By default, the server code can access any host. The client specifies a number of upstream hosts via `--upstream`. If you want these to be the only hosts that the server can connect to, then enable strict forwarding.
+
+* `--strict-forwarding`
+
+This is off by default, however when set to true, only hosts in `--upstream` can be accessed by the server. It could prevent a bad actor from accessing other hosts on your network.
+
+### Tunnelling multiple services
+
+You can expose multiple hosts through the `--upstream` flag using a comma-delimited list.
+
+```bash
+inlets client --remote ws://$IP:8080 \
+  --upstream "openfaas.example.com=http://127.0.0.1:8080,prometheus.example.com=http://127.0.0.1:9090"
+```
+
+You can also forward everything to a single host such as:
+
+```bash
+inlets client --remote ws://$IP:8080 \
+  --upstream "http://nginx.svc.default"
+```
