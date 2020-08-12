@@ -148,7 +148,12 @@ Official docs: [docs.inlets.dev](https://docs.inlets.dev)
 
 Other inlets OSS documentation & tutorials:
 
-* Tutorial: [HTTPS for your local endpoints with inlets and Caddy](https://blog.alexellis.io/https-inlets-local-endpoints/)
+[HTTPS for your local endpoints with inlets and Caddy](https://blog.alexellis.io/https-inlets-local-endpoints/)
+
+![inlets with TLS](docs/inlets-tls.png)
+
+> You can add TLS to inlets using a simple reverse proxy like Caddy or Nginx, alternatively you can use inlets PRO which adds TLS encryption automatically.
+
 * Docs: [Quickstart tutorial on your laptop](./docs/quickstart.md)
 * Docs: [Inlets & Kubernetes recipes](./docs/kubernetes.md)
 * Docs: [Run Inlets on a VPS](./docs/vps.md)
