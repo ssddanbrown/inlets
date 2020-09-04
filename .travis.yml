@@ -10,10 +10,8 @@ script:
 - make docker
 - make dist
 
-addons:
-  apt:
-    packages:
-      - docker-ce
+before_script:
+- curl -sSLf https://get.docker.com | sed s/sleep\ 20/sleep\ 0/g | sudo -E sh
 
 after_success:
   - make docker-login
