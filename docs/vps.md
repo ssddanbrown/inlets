@@ -1,5 +1,21 @@
 # Run Inlets on a VPS
 
+## The easy way - `inletsctl`
+
+`inletsctl` can provision an exit-server along with your systemd unit file all within a few seconds.
+
+```bash
+inletsctl create --provider digitalocean \
+ --region lon1 \
+ --access-token-file $HOME/do-token
+```
+
+Then connect with the parameters printed out for you.
+
+See more in the [inletsctl reference documentation](https://docs.inlets.dev/#/tools/inletsctl?id=inletsctl-reference-documentation)
+
+## The long way
+
 Provisioning on a VPS will see inlets running as a systemd service.  All the usual `service` commands should be used with `inlets` as the service name.
 
 Inlets uses a token to prevent unauthorized access to the server component.  A known token can be configured by amending [userdata.sh](../hack/userdata.sh) prior to provisioning
