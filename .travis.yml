@@ -10,6 +10,11 @@ script:
 - make docker
 - make dist
 
+addons:
+  apt:
+    packages:
+      - docker-ce
+
 after_success:
   - make docker-login
   - make push
