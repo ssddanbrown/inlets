@@ -27,11 +27,27 @@ docker:
 docker-login:
 	echo -n "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
+.PHONY: docker-login-ghcr
+docker-login-ghcr:
+	echo -n "${GHCR_PASSWORD}" | docker login -u "${GHCR_USERNAME}" --password-stdin ghcr.io
+
 .PHONY: push
 push:
 	docker push inlets/inlets:$(Version)-amd64
 	docker push inlets/inlets:$(Version)-arm64
 	docker push inlets/inlets:$(Version)-armhf
+
+.PHONY: tag-ghcr
+tag-ghcr:
+	docker tag inlets/inlets:$(Version)-amd64 ghcr.io/inlets/inlets:$(Version)-amd64
+	docker tag inlets/inlets:$(Version)-arm64 ghcr.io/inlets/inlets:$(Version)-arm64
+	docker tag inlets/inlets:$(Version)-armhf ghcr.io/inlets/inlets:$(Version)-armhf
+
+.PHONY: push-ghcr
+push-ghcr:
+	docker push ghcr.io/inlets/inlets:$(Version)-amd64
+	docker push ghcr.io/inlets/inlets:$(Version)-arm64
+	docker push ghcr.io/inlets/inlets:$(Version)-armhf
 
 .PHONY: manifest
 manifest:
@@ -39,3 +55,10 @@ manifest:
 	docker manifest annotate inlets/inlets:$(Version) inlets/inlets:$(Version)-arm64 --os linux --arch arm64
 	docker manifest annotate inlets/inlets:$(Version) inlets/inlets:$(Version)-armhf --os linux --arch arm --variant v6
 	docker manifest push inlets/inlets:$(Version)
+
+.PHONY: manifest-ghcr
+manifest-ghcr:
+	docker manifest create --amend ghcr.io/inlets/inlets:$(Version) ghcr.io/inlets/inlets:$(Version)-amd64 ghcr.io/inlets/inlets:$(Version)-arm64 ghcr.io/inlets/inlets:$(Version)-armhf
+	docker manifest annotate ghcr.io/inlets/inlets:$(Version) ghcr.io/inlets/inlets:$(Version)-arm64 --os linux --arch arm64
+	docker manifest annotate ghcr.io/inlets/inlets:$(Version) ghcr.io/inlets/inlets:$(Version)-armhf --os linux --arch arm --variant v6
+	docker manifest push ghcr.io/inlets/inlets:$(Version)

@@ -14,6 +14,10 @@ after_success:
   - make docker-login
   - make push
   - make manifest
+  - make docker-login-ghcr
+  - make tag-ghcr
+  - make push-ghcr
+  - make manifest-ghcr
 
 before_deploy:
   - ./ci/hashgen.sh
