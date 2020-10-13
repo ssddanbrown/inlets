@@ -32,11 +32,13 @@ deploy:
   file:
     - ./bin/inlets
     - ./bin/inlets-darwin
+    - ./bin/inlets-freebsd
     - ./bin/inlets-armhf
     - ./bin/inlets-arm64
     - ./bin/inlets.exe
     - ./bin/inlets.sha256
     - ./bin/inlets-darwin.sha256
+    - ./bin/inlets-freebsd.sha256
     - ./bin/inlets-armhf.sha256
     - ./bin/inlets-arm64.sha256
     - ./bin/inlets.exe.sha256
