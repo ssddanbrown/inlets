@@ -32,6 +32,10 @@ RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} CGO_ENABLED=0 go build -mod=vendor -ld
 
 FROM scratch
 
+ARG REPO_URL
+
+LABEL org.opencontainers.image.source $REPO_URL
+
 COPY --from=builder /etc/passwd /etc/group /etc/
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /usr/bin/inlets /usr/bin/
