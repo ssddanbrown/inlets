@@ -27,21 +27,11 @@ When combined with SSL - inlets can be used with any corporate HTTP proxy which 
 
 *Conceptual diagram for inlets*
 
-### Who is behind this project?
+## Built for developers by developers
 
-inlets is brought to you by [Alex Ellis](https://twitter.com/alexellisuk). Alex is a [CNCF Ambassador](https://www.cncf.io/people/ambassadors/) and the founder of [OpenFaaS](https://github.com/openfaas/faas/).
-
-> [OpenFaaS&reg;](https://github.com/openfaas/faas) makes it easy for developers to deploy event-driven functions and microservices to Kubernetes without repetitive, boiler-plate coding. Package your code or an existing binary in a Docker image to get a highly scalable endpoint with auto-scaling and metrics. The project has around 21k GitHub stars, over 270 contributors and a growing number of end-users in production.
-
-#### SWAG and merchandise
-
-Head over to the new [OpenFaaS Ltd SWAG store](https://store.openfaas.com/) to get your very own branded inlets hoodie, t-shirt and mug.
-
-<img src="https://pbs.twimg.com/media/EQuxmEJWoAAP0Ga?format=jpg&name=small" width=300>
-
-#### Insiders subscription
-
-Buy an [Insiders Subscription](https://insiders.openfaas.io/) to get regular updates on the inlets, openfaas, k3sup, arkade along with hints and tips on Go, Docker and Kubernetes.
+<a href="https://github.com/sponsors/alexellis/">
+<img alt="Sponsor this project" src="https://github.com/alexellis/alexellis/blob/master/sponsor-today.png" width="65%" height="65%">
+</a>
 
 ## License & terms
 
@@ -172,6 +162,12 @@ Read community tutorials, the launch posts on Hacker News, and send a PR if you 
 ### Using inlets at work or in production?
 
 See [ADOPTERS.md](./ADOPTERS.md) for what companies are doing with inlets today.
+
+#### SWAG and merchandise
+
+Head over to the new [OpenFaaS Ltd SWAG store](https://store.openfaas.com/) to get your very own branded inlets hoodie, t-shirt and mug.
+
+<img src="https://pbs.twimg.com/media/EQuxmEJWoAAP0Ga?format=jpg&name=small" width=300>
 
 ### Development
 
