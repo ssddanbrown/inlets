@@ -51,16 +51,18 @@ Developers wishing to use inlets within a corporate network are advised to seek 
 * native multi-arch with ARMHF/ARM64 support
 * Dockerfile and Kubernetes YAML files
 * discover and implement `Service` type of `LoadBalancer` for Kubernetes - [inlets-operator](https://github.com/inlets/inlets-operator)
-* tunnelling websocket traffic in addition to HTTP(s)
+* tunnelling websockets
 * [get a logo for the project](https://github.com/inlets/inlets/issues/46)
-* TLS certificates when used with a reverse proxy like Nginx, Caddy or Traefik
+* TLS certificates when used with a reverse proxy, or inlets PRO
 
 #### Inlets PRO
 
-The following features / use-cases are covered by [inlets.pro](https://github.com/inlets/inlets-pro).
+The following features / use-cases are covered by [inlets PRO](https://inlets.dev).
 
-* Tunnel L4 TCP traffic in addition to HTTP/s at L7
-* Automated TLS - including via inletsctl/inlets-operator
+* Tunnel L4 TCP traffic such as websockets, databases, reverse proxies, remote desktop and SSH
+* Expose multiple ports from the same client - i.e. 80 and 443
+* Run a reverse proxy or Kubernetes IngressController directly on your host
+* Automated TLS for the websocket
 * Commercial services & support
 
 ### Status
@@ -81,8 +83,8 @@ Feel free to open issues if you have comments, suggestions or contributions.
 
 Inlets is a Cloud Native Tunnel and is [listed on the Cloud Native Landscape](https://landscape.cncf.io/category=service-proxy&format=card-mode&grouping=category&sort=stars) under *Service Proxies*.
 
+* [inlets-pro](https://inlets.dev) - Cloud Native Tunnel for L4 TCP
 * [inlets](https://github.com/inlets/inlets) - Cloud Native Tunnel for L7 / HTTP traffic written in Go
-* [inlets-pro](https://github.com/inlets/inlets-pro-pkg) - Cloud Native Tunnel for L4 TCP
 * [inlets-operator](https://github.com/inlets/inlets-operator) - Public IPs for your private Kubernetes Services and CRD
 * [inletsctl](https://github.com/inlets/inletsctl) - Automate the cloud for fast HTTP (L7) and TCP (L4) tunnels
 
@@ -135,14 +137,6 @@ Try the [quickstart tutorial now](./docs/quickstart.md) on your local computer.
 inlets and inlets PRO now has a dedicated documentation site:
 
 Official docs: [docs.inlets.dev](https://docs.inlets.dev)
-
-Other inlets OSS documentation & tutorials:
-
-[HTTPS for your local endpoints with inlets and Caddy](https://blog.alexellis.io/https-inlets-local-endpoints/)
-
-![inlets with TLS](docs/inlets-tls.png)
-
-> You can add TLS to inlets using a simple reverse proxy like Caddy or Nginx, alternatively you can use inlets PRO which adds TLS encryption automatically.
 
 * Docs: [Quickstart tutorial on your laptop](./docs/quickstart.md)
 * Docs: [Inlets & Kubernetes recipes](./docs/kubernetes.md)
