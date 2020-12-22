@@ -155,7 +155,6 @@ brew install inlets
 
 你可以在任何两台互相连接的「电脑」之间运行 inlets，「电脑」可以是两个容器，虚拟机，物理机，甚至你笔记本的环回网络也可以。
 
-推荐阅读 [how to provision an "exit-server" with a public IPv4 address using a VPS](./docs/vps.md)。
 
 * 以下步骤在 *出口节点*（又称服务端）执行。
 
@@ -284,8 +283,6 @@ inlets client \
 教程：[HTTPS for your local endpoints with inlets and Caddy](https://blog.alexellis.io/https-inlets-local-endpoints/)
 
 文档：[Inlets & Kubernetes recipes](./docs/kubernetes.md)
-
-文档：[Run Inlets on a VPS](./docs/vps.md)
 
 教程：[Get a LoadBalancer for your private Kubernetes cluster with inlets-operator](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/)
 

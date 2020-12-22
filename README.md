@@ -146,7 +146,6 @@ Other inlets OSS documentation & tutorials:
 
 * Docs: [Quickstart tutorial on your laptop](./docs/quickstart.md)
 * Docs: [Inlets & Kubernetes recipes](./docs/kubernetes.md)
-* Docs: [Run Inlets on a VPS](./docs/vps.md)
 * Tutorial: [Get a LoadBalancer for your private Kubernetes cluster with inlets-operator](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/)
 
 See also: [advanced usage of inlets including Docker, Kubernetes, multiple-services, and binding to private IPs](./docs/advanced.md)

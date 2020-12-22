@@ -2,8 +2,6 @@
 
 This tutorial shows you how the inlets client and server components work together, using your laptop to run both parts of the tunnel.
 
-> See also: [how to provision an "exit-server" with a public IPv4 address using a VPS](./vps.md).
-
 * On the *exit-server* (or server)
 
 Start the tunnel server on a machine with a publicly-accessible IPv4 IP address such as a VPS.
