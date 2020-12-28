@@ -55,15 +55,16 @@ Developers wishing to use inlets within a corporate network are advised to seek 
 * [get a logo for the project](https://github.com/inlets/inlets/issues/46)
 * TLS certificates when used with a reverse proxy, or inlets PRO
 
-#### Inlets PRO
+#### inlets PRO
 
-The following features / use-cases are covered by [inlets PRO](https://inlets.dev).
+The following features / use-cases are covered by [inlets PRO](https://inlets.dev):
 
 * Tunnel L4 TCP traffic such as websockets, databases, reverse proxies, remote desktop and SSH
 * Expose multiple ports from the same client - i.e. 80 and 443
 * Run a reverse proxy or Kubernetes IngressController directly on your host
-* Automated TLS for the websocket
+* Automated TLS for the control-plane
 * Commercial services & support
+* Documentation, blog posts, tutorials and videos
 
 ### Status
 
