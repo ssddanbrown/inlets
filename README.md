@@ -85,9 +85,9 @@ Feel free to open issues if you have comments, suggestions or contributions.
 inlets is a Cloud Native Tunnel and is [listed on the Cloud Native Landscape](https://landscape.cncf.io/category=service-proxy&format=card-mode&grouping=category&sort=stars) under *Service Proxies*.
 
 * [inlets PRO](https://inlets.dev) - Cloud Native Tunnel - TCP, HTTP & websockets with automated TLS encryption
-* [inlets](https://github.com/inlets/inlets) - Cloud Native Tunnel for HTTP only - configure TLS separately
 * [inlets-operator](https://github.com/inlets/inlets-operator) - Public IPs for your private Kubernetes Services and CRD
 * [inletsctl](https://github.com/inlets/inletsctl) - The fastest way to create self-hosted exit-servers
+* [inlets](https://github.com/inlets/inlets) - Cloud Native Tunnel for HTTP only - configure TLS separately, not available for inletsctl or inlets-operator
 
 ## Get inlets
 
