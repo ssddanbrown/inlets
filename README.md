@@ -39,23 +39,34 @@ When combined with SSL - inlets can be used with any corporate HTTP proxy which 
 
 Developers wishing to use inlets within a corporate network are advised to seek approval from their administrators or management before using the tool. By downloading, using, or distributing inlets, you agree to the [LICENSE](./LICENSE) terms & conditions. No warranty or liability is provided.
 
-### Backlog & goals
+## About inlets
 
-#### Completed
+inlets uses a websocket to create to create a tunnel between a client and a server. The server is typically a machine with a public IP address, and the client is on a private network with no public address.
 
-* automatically create endpoints on exit-server based upon client definitions
-  * multiplex sites on same port and websocket through the use of DNS / host entries
-* link encryption using SSL over websockets (`wss://`)
-* authentication for server and client
-* automatic reconnect
-* native multi-arch with ARMHF/ARM64 support
-* Dockerfile and Kubernetes YAML files
-* discover and implement `Service` type of `LoadBalancer` for Kubernetes - [inlets-operator](https://github.com/inlets/inlets-operator)
-* tunnelling websockets
-* [get a logo for the project](https://github.com/inlets/inlets/issues/46)
-* TLS certificates when used with a reverse proxy, or inlets PRO
+inlets is considered production-ready, but you should do some testing before you depend on it, or use [inlets PRO](https://inlets.dev/) which is commercially supported.
 
-#### inlets PRO
+### Private or public tunnels?
+
+* A public tunnel is where you expose the private service to users via the server's public IP
+* A private tunnel is where you start a tunnel to a server and only expose it on the server's LAN address
+
+### Features
+
+* Tunnel HTTP or websockets
+* Client announces the tunnelled services to the server
+* Expose multiple sites on same port through the use of DNS entries and a `Host` header
+* Upgrade to link encryption using TLS for websockets (`wss://`) with an external add-on, or [inlets PRO](https://inlets.dev)
+* Shared authentication token for the client and server
+* Automatic reconnects for when the connection drops
+
+Distribution:
+
+* Binaries and Docker images for multiple architecture - Intel and ARM
+* Kubernetes YAML files and Dockerfile
+* systemd unit file for client/server
+* Native Kubernetes Service and LoadBalancer integration with [inlets-operator](https://github.com/inlets/inlets-operator)
+
+### Going to production with inlets PRO
 
 The following features / use-cases are covered by [inlets PRO](https://inlets.dev):
 
@@ -65,20 +76,6 @@ The following features / use-cases are covered by [inlets PRO](https://inlets.de
 * Automated TLS for the control-plane
 * Commercial services & support
 * Documentation, blog posts, tutorials and videos
-
-### Status
-
-Unlike HTTP 1.1 which follows a synchronous request/response model websockets use an asynchronous pub/sub model for sending and receiving messages. This presents a challenge for tunneling a *synchronous protocol* over an *asynchronous bus*.
-
-inlets 2.0 introduces performance enhancements and leverages parts of the Kubernetes and Rancher API. It uses the same tunnelling packages that enable node-to-node communication in [Rancher's k3s project](https://k3s.io). It is suitable for development and may be useful in production. Before deploying `inlets` into production, it is advised that you do adequate testing.
-
-Feel free to open issues if you have comments, suggestions or contributions.
-
-* The tunnel link is secured via `--token` flag using a shared secret
-* The default configuration uses websockets without SSL `ws://`, but to enable encryption you could enable SSL `wss://`
-* A timeout for requests can be configured via args on the server
-* ~~The upstream URL has to be configured on both server and client until a discovery or service advertisement mechanism is added~~ The client can advertise upstream URLs, which it can serve
-* The tunnel transport is wrapped by default which strips CORS headers from responses, but you can disable it with the `--disable-transport-wrapping` flag on the server
 
 ### inlets projects
 
@@ -135,7 +132,7 @@ Try the [quickstart tutorial now](./docs/quickstart.md) on your local computer.
 
 ### Documentation & tutorials
 
-inlets and inlets PRO now has a dedicated documentation site:
+inlets and inlets PRO have their own documentation site:
 
 Official docs: [docs.inlets.dev](https://docs.inlets.dev)
 
