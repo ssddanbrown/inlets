@@ -4,7 +4,6 @@
 
 Expose your local endpoints to the Internet or to another network, traversing firewalls, proxies, and NAT.
 
-
 [![Build Status](https://travis-ci.com/inlets/inlets.svg?branch=master)](https://travis-ci.com/inlets/inlets)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Report Card](https://goreportcard.com/badge/github.com/inlets/inlets)](https://goreportcard.com/report/github.com/inlets/inlets)
@@ -19,25 +18,31 @@ Expose your local endpoints to the Internet or to another network, traversing fi
 
 inlets&reg; combines a reverse proxy and websocket tunnels to expose your internal and development endpoints to the public Internet via an exit-server. An exit-server may be a 5-10 USD VPS or any other computer with an IPv4 IP address. You can also tunnel services without exposing them on the Internet, making inlets a suitable replacement for a VPN.
 
-Why do we need this project? Similar tools such as [ngrok](https://ngrok.com/) or [Argo Tunnel](https://developers.cloudflare.com/argo-tunnel/) from [Cloudflare](https://www.cloudflare.com/) are closed-source, have limits built-in, can work out expensive, and have limited support for arm/arm64. Ngrok is also often banned by corporate firewall policies meaning it can be unusable. Other open-source tunnel tools are designed to only set up a single static tunnel. inlets aims to dynamically bind and discover your local services to DNS entries with automated TLS certificates to a public IP address over a websocket tunnel.
+Why do we need this project? Similar tools such as [ngrok](https://ngrok.com/) or [Argo Tunnel](https://developers.cloudflare.com/argo-tunnel/) from [Cloudflare](https://www.cloudflare.com/) are closed-source, have limits built-in, can work out expensive, and have limited support for arm/arm64. Ngrok is also often banned by corporate firewall policies meaning it can be unusable. Other open-source tunnel tools are designed to only set up a single static tunnel.
 
-When combined with SSL - inlets can be used with any corporate HTTP proxy which supports `CONNECT`.
+With inlets you can set up your own self-hosted tunnel, copy over the static binary and start tunnelling traffic without any arbitrary limits or restrictions. When combined with TLS, inlets can be used with most corporate HTTP proxies.
 
 ![Conceptual diagram](docs/inlets.png)
 
 *Conceptual diagram for inlets*
 
-## Built for developers by developers
+## Do you use inlets? Sponsor the author
+
+Alex is the primary author and maintainer of inlets, if you use the project, become a sponsor of the project on GitHub.
 
 <a href="https://github.com/sponsors/inlets/">
 <img alt="Sponsor this project" src="https://github.com/alexellis/alexellis/blob/master/sponsor-today.png" width="90%">
 </a>
 
-## License & terms
+### SWAG and merchandise
 
-**Important**
+Head over to the new [SWAG store](https://store.openfaas.com/) to get your very own branded inlets hoodie, t-shirt and mug.
 
-Developers wishing to use inlets within a corporate network are advised to seek approval from their administrators or management before using the tool. By downloading, using, or distributing inlets, you agree to the [LICENSE](./LICENSE) terms & conditions. No warranty or liability is provided.
+<a href="https://store.openfaas.com/">
+<img src="docs/inlets-swag.jpg" alt="Inlets SWAG">
+</a>
+
+> Support the project by purchasing inlets SWAG or [sponsoring on GitHub](https://github.com/sponsors/inlets)
 
 ## About inlets
 
@@ -150,15 +155,15 @@ Read community tutorials, the launch posts on Hacker News, and send a PR if you 
 
 > You can share about inlets using `@inletsdev`, `#inletsdev`, and `https://inlets.dev`.
 
-### Using inlets at work or in production?
+## Disclaimer
 
-See [ADOPTERS.md](./ADOPTERS.md) for what companies are doing with inlets today.
+**Important**
 
-### SWAG and merchandise
+Developers wishing to use inlets within a corporate network are advised to seek approval from their administrators or management before using the tool. By downloading, using, or distributing inlets, you agree to the [LICENSE](./LICENSE) terms & conditions. No warranty or liability is provided.
 
-Head over to the new [OpenFaaS Ltd SWAG store](https://store.openfaas.com/) to get your very own branded inlets hoodie, t-shirt and mug.
+### Do you use inlets or inlets PRO?
 
-<img src="https://pbs.twimg.com/media/EQuxmEJWoAAP0Ga?format=jpg&name=small" width=300>
+Add an entry to the [ADOPTERS.md](./ADOPTERS.md) file with your use-case.
 
 ### Development
 
