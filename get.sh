@@ -128,3 +128,18 @@ getPackage() {
 
 hasCli
 getPackage
+
+echo ""
+echo "================================================================"
+echo "inlets is free and Open Source software. It is developed by     "
+echo "Alex Ellis. Become a GitHub sponsor for the project, so that he "
+echo "can continue to make it available to you, for free."
+echo ""
+echo "https://github.com/sponsors/inlets/"
+echo ""
+echo "Or to remove this message, check out inlets PRO"
+echo ""
+echo "https://inlets.dev"
+echo ""
+echo "================================================================"
+echo ""
