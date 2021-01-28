@@ -34,16 +34,6 @@ Alex is the primary author and maintainer of inlets, if you use the project, bec
 <img alt="Sponsor this project" src="https://github.com/alexellis/alexellis/blob/master/sponsor-today.png" width="90%">
 </a>
 
-### SWAG and merchandise
-
-Head over to the new [SWAG store](https://store.openfaas.com/) to get your very own branded inlets hoodie, t-shirt and mug.
-
-<a href="https://store.openfaas.com/">
-<img src="docs/inlets-swag.jpg" alt="Inlets SWAG">
-</a>
-
-> Support the project by purchasing inlets SWAG or [sponsoring on GitHub](https://github.com/sponsors/inlets)
-
 ## About inlets
 
 inlets uses a websocket to create to create a tunnel between a client and a server. The server is typically a machine with a public IP address, and the client is on a private network with no public address.
@@ -155,15 +145,23 @@ Read community tutorials, the launch posts on Hacker News, and send a PR if you 
 
 > You can share about inlets using `@inletsdev`, `#inletsdev`, and `https://inlets.dev`.
 
-## Disclaimer
-
-**Important**
-
-Developers wishing to use inlets within a corporate network are advised to seek approval from their administrators or management before using the tool. By downloading, using, or distributing inlets, you agree to the [LICENSE](./LICENSE) terms & conditions. No warranty or liability is provided.
-
 ### Do you use inlets or inlets PRO?
 
 Add an entry to the [ADOPTERS.md](./ADOPTERS.md) file with your use-case.
+
+## SWAG and merchandise
+
+Head over to the new [SWAG store](https://store.openfaas.com/) to get your very own branded inlets hoodie, t-shirt and mug.
+
+<a href="https://store.openfaas.com/">
+<img src="docs/inlets-swag.jpg" alt="Inlets SWAG">
+</a>
+
+> Support the project by purchasing inlets SWAG or [sponsoring on GitHub](https://github.com/sponsors/inlets)
+
+## Disclaimer
+
+Developers wishing to use inlets within a corporate network are advised to seek approval from their administrators or management before using the tool. By downloading, using, or distributing inlets, you agree to the [LICENSE](./LICENSE) terms & conditions. No warranty or liability is provided.
 
 ### Development
 
