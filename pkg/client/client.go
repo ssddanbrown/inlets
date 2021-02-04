@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 
 	"github.com/inlets/inlets/pkg/transport"
 	"github.com/rancher/remotedialer"
@@ -91,5 +92,6 @@ func (c *Client) Connect() error {
 
 	for {
 		remotedialer.ClientConnect(context.Background(), url+"/tunnel", headers, nil, filter, nil)
+		time.Sleep(time.Second * 2)
 	}
 }
