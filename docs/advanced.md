@@ -28,8 +28,8 @@ The diagram below shows how inlets can act as a VPN, when only binding tunnelled
 
 Usage:
 
-* `--bind-addr 127.0.0.1`
-* `--bind-addr 10.0.101.20`
+* `--control-addr 127.0.0.1`
+* `--control-addr 10.0.101.20`
 
 ### Bind a different port for the control-plane
 
@@ -51,13 +51,13 @@ This is off by default, however when set to true, only hosts in `--upstream` can
 You can expose multiple hosts through the `--upstream` flag using a comma-delimited list.
 
 ```bash
-inlets client --remote ws://$IP:8080 \
+inlets client --url ws://$IP:8080 \
   --upstream "openfaas.example.com=http://127.0.0.1:8080,prometheus.example.com=http://127.0.0.1:9090"
 ```
 
 You can also forward everything to a single host such as:
 
 ```bash
-inlets client --remote ws://$IP:8080 \
+inlets client --url ws://$IP:8080 \
   --upstream "http://nginx.svc.default"
 ```

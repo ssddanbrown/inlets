@@ -54,12 +54,12 @@ Start the tunnel client:
 export REMOTE="127.0.0.1:8090"    # for testing inlets on your laptop, replace with the public IPv4
 export TOKEN="CLIENT-TOKEN-HERE"  # the client token is found on your VPS or on start-up of "inlets server"
 inlets client \
- --remote=$REMOTE \
+ --url=$REMOTE \
  --upstream=http://127.0.0.1:3000 \
  --token=$TOKEN
 ```
 
-* Replace the `--remote` with the address where your exit-server is running `inlets server`.
+* Replace the `--url` with the address where your exit-server is running `inlets server`.
 * Replace the `--token` with the value from your server
 
 We now have three processes:
@@ -114,7 +114,7 @@ python -m SimpleHTTPServer 8002 &
 export REMOTE="127.0.0.1:8090"    # for testing inlets on your laptop, replace with the public IPv4
 export TOKEN="CLIENT-TOKEN-HERE"  # the client token is found on your VPS or on start-up of "inlets server"
 inlets client \
- --remote=$REMOTE \
+ --url=$REMOTE \
  --upstream="store1.example.com=http://127.0.0.1:8001,store2.example.com=http://127.0.0.1:8002" \
  --token=$TOKEN
 ```

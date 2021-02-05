@@ -16,8 +16,6 @@ var (
 	GitCommit string
 )
 
-const WelcomeMessage = "Welcome to inlets.dev! Find out more at https://github.com/inlets/inlets"
-
 func init() {
 	inletsCmd.AddCommand(versionCmd)
 }

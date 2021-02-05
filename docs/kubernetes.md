@@ -29,10 +29,10 @@ spec:
         args:
         - "client"
         - "--upstream=http://gateway.openfaas:8080,http://prometheus.openfaas:9090"
-        - "--remote=your-public-ip"
+        - "--url=your-public-ip"
 ```
 
-Replace the line: `- "--remote=your-public-ip"` with the public IP belonging to your VPS.
+Replace the line: `- "--url=your-public-ip"` with the public IP belonging to your VPS.
 
 Alternatively, see the unofficial helm chart from the community: [inlets-helm](https://github.com/paurosello/inlets_helm).
 
@@ -79,7 +79,7 @@ spec:
         command: ["inlets"]
         args:
         - "client"
-        - "--remote=ws://REMOTE-IP"
+        - "--url=ws://REMOTE-IP"
         - "--upstream=http://gateway.openfaas:8080"
         - "--token-from=/var/inlets/token"
         volumeMounts:

@@ -22,24 +22,33 @@ var serverCmd = &cobra.Command{
 	Short: `Start the tunnel server.`,
 	Long: `Start the tunnel server on a machine with a publicly-accessible IPv4 IP 
 address such as a VPS.
-
-Example: inlets server -p 80 
-Example: inlets server --port 80 --control-port 8080
-
 Note: You can pass the --token argument followed by a token value to both the 
 server and client to prevent unauthorized connections to the tunnel.`,
 	RunE: runServer,
+	Example: `  # Bind the data and control plane to 80 and 8080
+  inlets server --port 80 \
+    --control-port 8080
+  
+  # Bind the control-plane to 127.0.0.1:
+  inlets server --port 80 \
+    --control-port 8001 \
+    --control-addr 127.0.0.1`,
 }
 
 func init() {
 
 	serverCmd.Flags().IntP("port", "p", 8000, "port for server and for tunnel")
+	serverCmd.Flags().IntP("control-port", "c", 8001, "control port for tunnel")
+
+	serverCmd.Flags().String("data-addr", "0.0.0.0", "address the server should serve tunneled services on")
+	serverCmd.Flags().String("control-addr", "0.0.0.0", "address tunnel clients should connect to")
+
 	serverCmd.Flags().StringP("token", "t", "", "token for authentication")
-	serverCmd.Flags().Bool("print-token", true, "prints the token in server mode")
 	serverCmd.Flags().StringP("token-from", "f", "", "read the authentication token from a file")
+
+	serverCmd.Flags().Bool("print-token", false, "prints the token in server mode")
+
 	serverCmd.Flags().Bool("disable-transport-wrapping", false, "disable wrapping the transport that removes CORS headers for example")
-	serverCmd.Flags().IntP("control-port", "c", 8080, "control port for tunnel")
-	serverCmd.Flags().StringP("bind-addr", "b", "", "address the server should be bound to")
 
 	inletsCmd.AddCommand(serverCmd)
 }
@@ -47,7 +56,7 @@ func init() {
 // runServer does the actual work of reading the arguments passed to the server sub command.
 func runServer(cmd *cobra.Command, _ []string) error {
 
-	log.Printf("%s", WelcomeMessage)
+	fmt.Printf("%s", WelcomeMessage)
 	log.Printf("Starting server - version %s", getVersion())
 
 	tokenFile, err := cmd.Flags().GetString("token-from")
@@ -111,15 +120,21 @@ func runServer(cmd *cobra.Command, _ []string) error {
 		return errors.Wrap(err, "failed to get the 'disable-transport-wrapping' value.")
 	}
 
-	bindAddr, err := cmd.Flags().GetString("bind-addr")
+	dataAddr, err := cmd.Flags().GetString("control-addr")
 	if err != nil {
-		return errors.Wrap(err, "failed to get the 'bind-addr' value.")
+		return errors.Wrap(err, "failed to get the 'control-addr' value.")
+	}
+
+	controlAddr, err := cmd.Flags().GetString("control-addr")
+	if err != nil {
+		return errors.Wrap(err, "failed to get the 'control-addr' value.")
 	}
 
 	inletsServer := server.Server{
 		Port:        port,
 		ControlPort: controlPort,
-		BindAddr:    bindAddr,
+		DataAddr:    dataAddr,
+		ControlAddr: controlAddr,
 		Token:       token,
 
 		DisableWrapTransport: disableWrapTransport,
