@@ -18,7 +18,7 @@ import (
 func init() {
 	inletsCmd.AddCommand(clientCmd)
 
-	clientCmd.Flags().StringP("url", "r", "ws://127.0.0.1:8000", "server address i.e. ws://127.0.0.1:8000")
+	clientCmd.Flags().StringP("url", "r", "", "server address i.e. ws://127.0.0.1:8000")
 	clientCmd.Flags().StringP("upstream", "u", "", "upstream server i.e. http://127.0.0.1:3000")
 	clientCmd.Flags().StringP("token", "t", "", "authentication token")
 	clientCmd.Flags().StringP("token-from", "f", "", "read the authentication token from a file")
@@ -150,6 +150,13 @@ func runClient(cmd *cobra.Command, _ []string) error {
 
 	if len(token) > 0 && printToken {
 		log.Printf("Token: %q", token)
+	}
+
+	if len(url) == 0 {
+		return fmt.Errorf("--url is required")
+	}
+	if strings.HasPrefix(url, "ws://") == false && strings.HasPrefix(url, "wss://") == false {
+		return fmt.Errorf("--url should be prefixed with ws:// (insecure) or wss:// (secure)")
 	}
 
 	if strings.HasPrefix(url, "ws://") {

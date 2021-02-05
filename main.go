@@ -4,6 +4,9 @@
 package main
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/inlets/inlets/cmd"
 	"github.com/sirupsen/logrus"
 )
@@ -21,6 +24,7 @@ func main() {
 	customFormatter.FullTimestamp = true
 
 	if err := cmd.Execute(Version, GitCommit); err != nil {
-		panic(err)
+		fmt.Fprintf(os.Stderr, "Error:\n%s\n", err.Error())
+		os.Exit(1)
 	}
 }
