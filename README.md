@@ -99,12 +99,6 @@ curl -sLS https://get.inlets.dev | sh
 curl -sLS https://get.inlets.dev | sudo sh
 ```
 
-Via `brew`:
-
-```bash
-brew install inlets
-```
-
 > Note: the `brew` distribution is maintained by the brew team, so it may lag a little behind the GitHub release.
 
 Binaries are made available on the [releases page](https://github.com/inlets/inlets/releases) for Linux (x86_64, armhf & arm64), Windows (experimental), and for Darwin (MacOS). You will also find SHA checksums available if you want to verify your download.
