@@ -64,7 +64,7 @@ Now connect to the tunnel using the data-port `8000` and the server's IP:
 echo Browse your files at: http://$EXIT_SERVER_IP:8000
 ```
 
-You can change the data-port from 8000 to 80, however if you wish to serve traffic to clients over the Internet, you will need to configure TLS for the server.
+You can change the data-port from 8000 to 80, however if you wish to serve traffic to clients over the Internet, you will need to configure TLS for the server using a separate reverse proxy.
 
-inlets PRO configures encryption for you, without the need to install any additional software, see how it works in this example: [Quick-start: expose a local websites with HTTPS](https://docs.inlets.dev/#/get-started/quickstart-caddy)
+A [personal license for inlets PRO](https://inlets.dev/) can be used at work and at home. It can configures encryption for you using TLS, without the need to install any additional software, see how it works in this example: [Quick-start: expose a local websites with HTTPS](https://docs.inlets.dev/#/get-started/quickstart-caddy)
 
