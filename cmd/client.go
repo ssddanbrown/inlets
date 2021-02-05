@@ -26,7 +26,6 @@ func init() {
 	clientCmd.Flags().Bool("strict-forwarding", true, "forward only to the upstream URLs specified")
 
 	clientCmd.Flags().Bool("insecure", false, "allow the client to connect to a server without encryption")
-
 }
 
 type UpstreamParser interface {
