@@ -143,15 +143,9 @@ Read community tutorials, the launch posts on Hacker News, and send a PR if you 
 
 Add an entry to the [ADOPTERS.md](./ADOPTERS.md) file with your use-case.
 
-## SWAG and merchandise
+## Sponsorship
 
-Head over to the new [SWAG store](https://store.openfaas.com/) to get your very own branded inlets hoodie, t-shirt and mug.
-
-<a href="https://store.openfaas.com/">
-<img src="docs/inlets-swag.jpg" alt="Inlets SWAG">
-</a>
-
-> Support the project by purchasing inlets SWAG or [sponsoring on GitHub](https://github.com/sponsors/inlets)
+Support the project by becoming a [GitHub Sponsor](https://github.com/sponsors/inlets)
 
 ## Disclaimer
 
