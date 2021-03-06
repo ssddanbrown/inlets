@@ -39,10 +39,11 @@ Start the tunnel client:
 
 ```sh
 export EXIT_SERVER_IP="192.168.0.100"
-export UPSTREAM=http://127.0.0.1:8000
+export UPSTREAM="http://127.0.0.1:8000"
 
+export CONTROL_PORT="8001"
 inlets client \
- --url ws://$EXIT_SERVER_IP \
+ --url ws://$EXIT_SERVER_IP:$CONTROL_PORT \
  --upstream=$UPSTREAM \
  --token=$TOKEN
 ```
@@ -66,5 +67,8 @@ echo Browse your files at: http://$EXIT_SERVER_IP:8000
 
 You can change the data-port from 8000 to 80, however if you wish to serve traffic to clients over the Internet, you will need to configure TLS for the server using a separate reverse proxy.
 
-A [personal license for inlets PRO](https://inlets.dev/) can be used at work and at home. It can configures encryption for you using TLS, without the need to install any additional software, see how it works in this example: [Quick-start: expose a local websites with HTTPS](https://docs.inlets.dev/#/get-started/quickstart-caddy)
+A [personal license for inlets PRO](https://inlets.dev/) can be used at work and at home. It can configures encryption for you using TLS, without the need to install any additional software.
+
+Upgrade and see how it works in this example: [Quick-start: expose a local websites with HTTPS](https://docs.inlets.dev/#/get-started/quickstart-caddy)
+
 
