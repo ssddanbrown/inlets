@@ -67,8 +67,11 @@ echo Browse your files at: http://$EXIT_SERVER_IP:8000
 
 You can change the data-port from 8000 to 80, however if you wish to serve traffic to clients over the Internet, you will need to configure TLS for the server using a separate reverse proxy.
 
+## See also:
+
 A [personal license for inlets PRO](https://inlets.dev/) can be used at work and at home. It can configures encryption for you using TLS, without the need to install any additional software.
 
-Upgrade and see how it works in this example: [Quick-start: expose a local websites with HTTPS](https://docs.inlets.dev/#/get-started/quickstart-caddy)
-
-
+* [Quick-start: expose a local websites with HTTPS with inlets PRO](https://docs.inlets.dev/#/get-started/quickstart-caddy)
+* [Tunnel SSH with inlets PRO](https://docs.inlets.dev/#/get-started/quickstart-tcp-ssh)
+* [Quick-start: Tunnel a private database over inlets PRO](https://docs.inlets.dev/#/get-started/quickstart-tcp-database)
+* [Use inlets PRO with Kubernetes](docs/kubernetes.md)

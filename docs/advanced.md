@@ -1,18 +1,18 @@
 ## Advanced usage of inlets
 
-### With Kubernetes
+### Kubernetes operator
 
-Automate inlets exit server creation and tunnel clients with the [inlets-operator](https://github.com/inlets/inlets-operator)
+Automate tunnels for LoadBalancers and Ingress: [inlets-operator](https://github.com/inlets/inlets-operator)
 
-Or see the examples in the [docs/kubernetes.md](docs/kubernetes.md) file for how to run either part of the tunnel manually.
+See also: [Helm chart for inlets PRO](https://github.com/inlets/inlets-pro/tree/master/chart) client and server tunnels
 
 ### Docker images
 
 Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
 
-* `inlets/inlets:2.7.4`
+* `ghcr.io/inlets/inlets:3.0.1`
 
-Check on the Docker Hub for the [latest tag](https://hub.docker.com/r/inlets/inlets/tags).
+Check on the Docker Hub for the [latest tag](https://github.com/orgs/inlets/packages/container/package/inlets).
 
 ### Bind to a different adapter, or to localhost
 
