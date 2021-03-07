@@ -28,11 +28,13 @@ With inlets you can set up your own self-hosted tunnel, copy over the static bin
 
 ## Do you use inlets? Sponsor the author
 
-Alex is the primary author and maintainer of inlets, if you use the project, become a sponsor of the project on GitHub.
+Alex is the maintainer of inlets, if you use the project, become a sponsor of the project on GitHub.
 
 <a href="https://github.com/sponsors/inlets/">
 <img alt="Sponsor this project" src="https://github.com/alexellis/alexellis/blob/master/sponsor-today.png" width="90%">
 </a>
+
+[Checkout the tiers now](https://github.com/sponsors/inlets/)
 
 ## About inlets
 
@@ -145,7 +147,9 @@ Add an entry to the [ADOPTERS.md](./ADOPTERS.md) file with your use-case.
 
 ## Sponsorship
 
-Support the project by becoming a [GitHub Sponsor](https://github.com/sponsors/inlets)
+You can become a GitHub Sponsor as an individual user or company.
+
+[Sponsor alex](https://github.com/sponsors/alexellis) or [Sponsor inlets](https://github.com/sponsors/inlets)
 
 ## Disclaimer
 
@@ -158,6 +162,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 #### Other Kubernetes port-forwarding tooling
 
 * [`kubectl port-forward`](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) - built into the Kubernetes CLI, forwards a single port to the local computer.
+* [inlets PRO](https://inlets.dev/) - exit-server automation, multiple ports, TCP and automatic Let's Encrypt
 * [kubefwd](https://github.com/txn2/kubefwd) - Kubernetes utility to port-forward multiple services to your local computer.
 * [kurun](https://github.com/banzaicloud/kurun) - Run main.go in Kubernetes with one command, also port-forward your app into Kubernetes.
 
