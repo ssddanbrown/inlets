@@ -2,7 +2,7 @@
 
 <img src="docs/inlets-logo-sm.png" width="150px">
 
-Expose your local endpoints to the Internet or to another network, traversing firewalls, proxies, and NAT.
+Expose your local endpoints to the Internet or within a remote network, without touching firewalls.
 
 [![Build Status](https://travis-ci.com/inlets/inlets.svg?branch=master)](https://travis-ci.com/inlets/inlets)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -16,11 +16,11 @@ Expose your local endpoints to the Internet or to another network, traversing fi
 
 ## Intro
 
-inlets&reg; combines a reverse proxy and websocket tunnels to expose your internal and development endpoints to the public Internet via an exit-server. An exit-server may be a 5-10 USD VPS or any other computer with an IPv4 IP address. You can also tunnel services without exposing them on the Internet, making inlets a suitable replacement for a VPN.
+inlets &reg; is how you connect services between different networks. You won't have to think about managing firewalls, NAT or VPNs again. Services can be tunnelled securely over a websocket and accessed on a remote network privately, or exposed on the Internet using an exit-server (5-10USD / mo).
 
-Why do we need this project? Similar tools such as [ngrok](https://ngrok.com/) or [Argo Tunnel](https://developers.cloudflare.com/argo-tunnel/) from [Cloudflare](https://www.cloudflare.com/) are closed-source, have limits built-in, can work out expensive, and have limited support for arm/arm64. Ngrok is also often banned by corporate firewall policies meaning it can be unusable. Other open-source tunnel tools are designed to only set up a single static tunnel.
+Why do we need this project? Similar tools such as [ngrok](https://ngrok.com/) and [Argo Tunnel](https://developers.cloudflare.com/argo-tunnel/) from [Cloudflare](https://www.cloudflare.com/) are closed-source, have limits built-in, can work out expensive, and have limited support for arm/arm64, Docker and Kubernetes. Ngrok's domain is also often banned by corporate firewall policies meaning it can be unusable. Other open-source tunnel tools are designed to only set up a single static tunnel.
 
-With inlets you can set up your own self-hosted tunnel, copy over the static binary and start tunnelling traffic without any arbitrary limits or restrictions. When combined with TLS, inlets can be used with most corporate HTTP proxies.
+With inlets you can set up your own self-hosted tunnel, copy over the static binary and start tunnelling traffic without any arbitrary limits or restrictions. When used with TLS, inlets can be used with most corporate HTTP proxies.
 
 ![Conceptual diagram](docs/inlets.png)
 
@@ -28,24 +28,24 @@ With inlets you can set up your own self-hosted tunnel, copy over the static bin
 
 ## Do you use inlets? Sponsor the author
 
-Alex is the maintainer of inlets, if you use the project, become a sponsor of the project on GitHub.
+Alex is the maintainer of inlets, if you use the project, become a sponsor on GitHub.
 
 <a href="https://github.com/sponsors/inlets/">
 <img alt="Sponsor this project" src="https://github.com/alexellis/alexellis/blob/master/sponsor-today.png" width="90%">
 </a>
 
-[Checkout the tiers now](https://github.com/sponsors/inlets/)
+[Find out more now](https://github.com/sponsors/inlets/)
 
 ## About inlets
 
 inlets uses a websocket to create to create a tunnel between a client and a server. The server is typically a machine with a public IP address, and the client is on a private network with no public address.
 
-inlets is considered production-ready, but you should do some testing before you depend on it, or use [inlets PRO](https://inlets.dev/) which is commercially supported.
+inlets is considered production-ready, but you should do some testing before you depend on it. For a commercially-supported solution, see [inlets PRO](https://inlets.dev/), which enables additional use-cases, has more thorough testing and secure defaults.
 
 ### Private or public tunnels?
 
+* A private tunnel is where you start a tunnel to a server and only expose it on the server's LAN address (this can replace the use-cases where you would use a VPN or Kubernetes federation)
 * A public tunnel is where you expose the private service to users via the server's public IP
-* A private tunnel is where you start a tunnel to a server and only expose it on the server's LAN address
 
 ### Features
 
@@ -68,6 +68,7 @@ Distribution:
 The following features / use-cases are covered by [inlets PRO](https://inlets.dev):
 
 * Tunnel L4 TCP traffic such as websockets, databases, reverse proxies, remote desktop and SSH
+* Tunnel L7 HTTPS / REST traffic - with automated Let's Encrypt support 
 * Expose multiple ports from the same client - i.e. 80 and 443
 * Run a reverse proxy or Kubernetes IngressController directly on your host
 * Automated TLS for the control-plane
