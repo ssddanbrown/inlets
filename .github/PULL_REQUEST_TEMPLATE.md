@@ -7,6 +7,13 @@
 <!--- see how your change affects other areas of the code, etc. -->
 
 
+## Are you a GitHub Sponsor for inlets?
+
+* Yes/No
+
+[Check on GitHub](https://github.com/sponsors/inlets/)
+
+
 ## How are existing users impacted? What migration steps/scripts do we need?
 
 
