@@ -38,7 +38,7 @@ Alex is the maintainer of inlets, if you use the project, become a sponsor on Gi
 
 ## About inlets
 
-inlets uses a websocket to create to create a tunnel between a client and a server. The server is typically a machine with a public IP address, and the client is on a private network with no public address.
+inlets uses a websocket to create a tunnel between a client and a server. The server is typically a machine with a public IP address, and the client is on a private network with no public address.
 
 inlets is considered production-ready, but you should do some testing before you depend on it. For a commercially-supported solution, see [inlets PRO](https://inlets.dev/), which enables additional use-cases, has more thorough testing and secure defaults.
 
