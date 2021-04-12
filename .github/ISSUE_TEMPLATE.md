@@ -24,12 +24,6 @@
 <!--- How has this issue affected you? What are you trying to accomplish? -->
 <!--- Providing context helps us come up with a solution that is most useful in the real world -->
 
-## Are you a GitHub Sponsor for inlets?
-
-* Yes/No
-
-[Check on GitHub](https://github.com/sponsors/inlets/)
-
 ## Your Environment
 <!--- Include as many relevant details about the environment you experienced the bug in -->
 
@@ -41,3 +35,9 @@
 
 * Link to your project or a code example to reproduce issue:
 
+
+## Are you a GitHub Sponsor (Yes/No?)
+
+Check at: https://github.com/sponsors/inlets
+- [ ] Yes
+- [ ] No
