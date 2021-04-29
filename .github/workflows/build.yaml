@@ -41,4 +41,4 @@ jobs:
             VERSION=latest-dev
             GIT_COMMIT=${{ github.sha }}
             REPO_URL=https://github.com/${{ env.USER_REPO }}
-          tags: inlets/inlets:${{ github.sha }}
+          tags: ghcr.io/inlets/inlets:${{ github.sha }}

@@ -8,11 +8,9 @@ See also: [Helm chart for inlets PRO](https://github.com/inlets/inlets-pro/tree/
 
 ### Docker images
 
-Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf`
+Docker images are published as multi-arch for `x86_64`, `arm64` and `armhf` on the GitHub Container Registry
 
-* `ghcr.io/inlets/inlets:3.0.1`
-
-Check on the Docker Hub for the [latest tag](https://github.com/orgs/inlets/packages/container/package/inlets).
+* [See the latest versions here](https://github.com/orgs/inlets/packages/container/package/inlets)
 
 ### Bind to a different adapter, or to localhost
 

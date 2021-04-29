@@ -21,7 +21,7 @@ dist:
 .PHONY: docker-local
 docker-local:
 	docker build \
-		-t inlets/inlets:$(Version) .
+		-t ghcr.io/inlets/inlets:$(Version) .
 
 .PHONY: docker
 docker:
@@ -31,28 +31,14 @@ docker:
 		--build-arg VERSION=$(Version) --build-arg GIT_COMMIT=$(GitCommit) \
 		--platform linux/amd64,linux/arm/v6,linux/arm64 \
 		--output "type=image,push=false" \
-		--tag inlets/inlets:$(Version) .
+		--tag ghcr.io/inlets/inlets:$(Version) .
 
 .PHONY: docker-login
 docker-login:
-	echo -n "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-
-.PHONY: docker-login-ghcr
-docker-login-ghcr:
 	echo -n "${GHCR_PASSWORD}" | docker login -u "${GHCR_USERNAME}" --password-stdin ghcr.io
 
 .PHONY: push
 push:
-	@docker buildx create --use --name=multiarch --node multiarch && \
-	docker buildx build \
-		--progress=plain \
-		--build-arg VERSION=$(Version) --build-arg GIT_COMMIT=$(GitCommit) \
-		--platform linux/amd64,linux/arm/v6,linux/arm64 \
-		--output "type=image,push=true" \
-		--tag inlets/inlets:$(Version) .
-
-.PHONY: push-ghcr
-push-ghcr:
 	@docker buildx create --use --name=multiarch --node multiarch && \
 	docker buildx build \
 		--progress=plain \
