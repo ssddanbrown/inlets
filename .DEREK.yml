@@ -1,14 +1,12 @@
 curators:
  - alexellis
  - Waterdrips
- - utsavanand2
 
 features:
  - dco_check
  - comments
  - pr_description_required
  - release_notes
-# - hacktoberfest
 
 custom_messages:
   - name: slack
