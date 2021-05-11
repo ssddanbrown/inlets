@@ -7,11 +7,11 @@
 <!--- see how your change affects other areas of the code, etc. -->
 
 
-## Are you a GitHub Sponsor for inlets?
+## Are you a GitHub Sponsor (Yes/No?)
 
-* Yes/No
-
-[Check on GitHub](https://github.com/sponsors/inlets/)
+Check at: https://github.com/sponsors/inlets
+- [ ] Yes
+- [ ] No
 
 
 ## How are existing users impacted? What migration steps/scripts do we need?
