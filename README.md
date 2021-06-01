@@ -79,10 +79,10 @@ The following features / use-cases are covered by [inlets PRO](https://inlets.de
 
 inlets is a Cloud Native Tunnel and is [listed on the Cloud Native Landscape](https://landscape.cncf.io/category=service-proxy&format=card-mode&grouping=category&sort=stars) under *Service Proxies*.
 
-* [inlets PRO](https://inlets.dev) - Cloud Native Tunnel - TCP, HTTP & websockets with automated TLS encryption
-* [inlets-operator](https://github.com/inlets/inlets-operator) - Public IPs for your private Kubernetes Services and CRD
-* [inletsctl](https://github.com/inlets/inletsctl) - The fastest way to create self-hosted exit-servers
-* [inlets](https://github.com/inlets/inlets) - Cloud Native Tunnel for HTTP only - configure TLS separately, not available for inletsctl or inlets-operator
+* [inlets PRO](https://inlets.dev) - Secure HTTP(s) and TCP tunnels with automated TLS encryption. Replaces inlets.
+* [inlets-operator](https://github.com/inlets/inlets-operator) - Public IPs for your private Kubernetes Services and CRD using inlets PRO
+* [inletsctl](https://github.com/inlets/inletsctl) - The fastest way to create self-hosted exit-servers using inlets PRO
+* [inlets](https://github.com/inlets/inlets) - Cloud Native Tunnel for HTTP only - **no** tutorials, automation, TLS, TCP or Kubernetes integration available. Superseded by inlets PRO
 
 ## Get inlets
 
@@ -108,13 +108,15 @@ Binaries are made available on the [releases page](https://github.com/inlets/inl
 
 Windows users are encouraged to use [git bash](https://git-scm.com/downloads) to install the inlets binary.
 
-## Using inlets
+## inlets PRO
 
-### Video demo
+inlets PRO superceds the original inlets OSS project and includes: automation, secure defaults, HTTPS and TCP tunnel support. 
 
-Using inlets I was able to set up a public endpoint (with a custom domain name) for my JavaScript & Webpack [Create React App](https://github.com/facebook/create-react-app).
+In "A tale of two networks" Alex Ellis and Johan Siebens explore blog posts, use-cases and show demos of inlets PRO.
 
-[![https://img.youtube.com/vi/jrAqqe8N3q4/hqdefault.jpg](https://img.youtube.com/vi/jrAqqe8N3q4/maxresdefault.jpg)](https://youtu.be/jrAqqe8N3q4)
+[A tale of two networks - demos and use-cases for inlets tunnels](https://www.youtube.com/watch?v=AFMA1xA4zts&feature=youtu.be)
+
+[![https://img.youtube.com/vi/AFMA1xA4zts/hqdefault.jpg](https://img.youtube.com/vi/AFMA1xA4zts/maxresdefault.jpg)](https://youtu.be/AFMA1xA4zts)
 
 ### Quickstart tutorial
 
@@ -128,9 +130,9 @@ inlets and inlets PRO have their own documentation site:
 
 Official docs: [docs.inlets.dev](https://docs.inlets.dev)
 
-* Docs: [Quickstart tutorial on your laptop](./docs/quickstart.md)
-* Docs: [Inlets & Kubernetes recipes](./docs/kubernetes.md)
+* Docs: [inlets PRO Kubernetes charts, operator and manifests]([./docs/kubernetes.md](https://github.com/inlets/inlets-pro/tree/master/chart))
 * Tutorial: [Get a LoadBalancer for your private Kubernetes cluster with inlets-operator](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/)
+* Docs: [Quickstart tutorial on your laptop](./docs/quickstart.md)
 
 See also: [advanced usage of inlets including Docker, Kubernetes, multiple-services, and binding to private IPs](./docs/advanced.md)
 
