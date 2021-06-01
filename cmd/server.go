@@ -22,6 +22,7 @@ var serverCmd = &cobra.Command{
 	Short: `Start the tunnel server.`,
 	Long: `Start the tunnel server on a machine with a publicly-accessible IPv4 IP 
 address such as a VPS.
+
 Note: You can pass the --token argument followed by a token value to both the 
 server and client to prevent unauthorized connections to the tunnel.`,
 	RunE: runServer,

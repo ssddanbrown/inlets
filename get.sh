@@ -131,7 +131,7 @@ getPackage
 
 echo ""
 echo "================================================================"
-echo "Welcome to the open source version of inlets"
+echo "inlets has been replaced by inlets PRO"
 echo ""
 echo "For secure, encrypted tunnels, access to cloud and Kubernetes "
 echo "automation, upgrade to inlets PRO."

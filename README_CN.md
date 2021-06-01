@@ -121,12 +121,6 @@ Windows 用户建议使用 [Git bash](https://git-scm.com/downloads) 来安装 i
 
 ## 使用 inlets
 
-### 视频 Demo
-
-使用 inlets 实现为我的 JavaScript & Webpack 应用配置公开的服务入口，以及自定义的域名：[Create React App](https://github.com/facebook/create-react-app)。
-
-[![https://img.youtube.com/vi/jrAqqe8N3q4/hqdefault.jpg](https://img.youtube.com/vi/jrAqqe8N3q4/maxresdefault.jpg)](https://youtu.be/jrAqqe8N3q4)
-
 ### 快速上手
 
 你可以在任何两台互相连接的「电脑」之间运行 inlets，「电脑」可以是两个容器，虚拟机，物理机，甚至单台机器的环回网络也可以。
