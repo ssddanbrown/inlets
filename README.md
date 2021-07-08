@@ -28,19 +28,23 @@ With inlets you can set up your own self-hosted tunnel, copy over the static bin
 
 ## Do you use inlets? Sponsor the author
 
-Alex is the maintainer of inlets, if you use the project, become a sponsor on GitHub.
+Alex is the maintainer of inlets, if you use the project in some way, support it by becoming a sponsor on GitHub.
 
 <a href="https://github.com/sponsors/inlets/">
 <img alt="Sponsor this project" src="https://github.com/alexellis/alexellis/blob/master/sponsor-today.png" width="90%">
 </a>
 
+You can become a sponsor as an individual or as a corporation, check out the tiers to find which is right for you.
+
 [Find out more now](https://github.com/sponsors/inlets/)
 
-## About inlets
+## About inlets OSS
 
-inlets uses a websocket to create a tunnel between a client and a server. The server is typically a machine with a public IP address, and the client is on a private network with no public address.
+inlets OSS uses a websocket to create a tunnel between a client and a server. The server is typically a machine with a public IP address, and the client is on a private network with no public address.
 
-inlets is considered production-ready, but you should do some testing before you depend on it. For a commercially-supported solution, see [inlets PRO](https://inlets.dev/), which enables additional use-cases, has more thorough testing and secure defaults.
+inlets OSS is for hobbyists only and has no guarantee or warranty of any kind.
+
+For a commercially-supported solution, see [inlets PRO](https://inlets.dev/), which has secure defaults and thorough testing.
 
 ### Private or public tunnels?
 
@@ -50,27 +54,27 @@ inlets is considered production-ready, but you should do some testing before you
 ### Features
 
 * Tunnel HTTP or websockets
-* Client announces the tunnelled services to the server
 * Expose multiple sites on same port through the use of DNS entries and a `Host` header
-* Upgrade to link encryption using TLS for websockets (`wss://`) with an external add-on, or [inlets PRO](https://inlets.dev)
+* Upgrade to link encryption using TLS for websockets (`wss://`) with an external add-on or [inlets PRO](https://inlets.dev)
 * Shared authentication token for the client and server
 * Automatic reconnects for when the connection drops
 
 Distribution:
 
 * Binaries and Docker images for multiple architecture - Intel and ARM
-* Kubernetes YAML files and Dockerfile
+* Dockerfile
 * systemd unit file for client/server
-* Native Kubernetes Service and LoadBalancer integration with [inlets-operator](https://github.com/inlets/inlets-operator)
+
+inlets PRO has a native Kubernetes LoadBalancer integration through the [inlets-operator](https://github.com/inlets/inlets-operator).
 
 ### Going to production with inlets PRO
 
 The following features / use-cases are covered by [inlets PRO](https://inlets.dev):
 
-* Tunnel L4 TCP traffic such as websockets, databases, reverse proxies, remote desktop and SSH
+* Tunnel L4 TCP traffic such as websockets, databases, reverse proxies, remote desktop, VNC and SSH
 * Tunnel L7 HTTPS / REST traffic - with automated Let's Encrypt support 
 * Expose multiple ports from the same client - i.e. 80 and 443
-* Run a reverse proxy or Kubernetes IngressController directly on your host
+* Kubernetes helm charts, YAML and [Operator](https://github.com/inlets/inlets-operator)
 * Automated TLS for the control-plane
 * Commercial services & support
 * Documentation, blog posts, tutorials and videos
@@ -79,12 +83,12 @@ The following features / use-cases are covered by [inlets PRO](https://inlets.de
 
 inlets is a Cloud Native Tunnel and is [listed on the Cloud Native Landscape](https://landscape.cncf.io/category=service-proxy&format=card-mode&grouping=category&sort=stars) under *Service Proxies*.
 
-* [inlets PRO](https://inlets.dev) - Secure HTTP(s) and TCP tunnels with automated TLS encryption. Replaces inlets.
+* [inlets PRO](https://inlets.dev) - Secure HTTP(s) and TCP tunnels with automated TLS encryption. Replaces inlets OSS
 * [inlets-operator](https://github.com/inlets/inlets-operator) - Public IPs for your private Kubernetes Services and CRD using inlets PRO
 * [inletsctl](https://github.com/inlets/inletsctl) - The fastest way to create self-hosted exit-servers using inlets PRO
 * [inlets](https://github.com/inlets/inlets) - Cloud Native Tunnel for HTTP only - **no** tutorials, automation, TLS, TCP or Kubernetes integration available. Superseded by inlets PRO
 
-## Get inlets
+## Get inlets OSS
 
 You can install the CLI with a `curl` utility script, `brew` or by downloading the binary from the releases page. Once installed you'll get the `inlets` command.
 
@@ -110,7 +114,7 @@ Windows users are encouraged to use [git bash](https://git-scm.com/downloads) to
 
 ## inlets PRO
 
-inlets PRO superceds the original inlets OSS project and includes: automation, secure defaults, HTTPS and TCP tunnel support. 
+inlets PRO superceds the original inlets OSS project and includes: commercial support, automation, secure defaults, and HTTPS/TCP tunnels.
 
 In "A tale of two networks" Alex Ellis and Johan Siebens explore blog posts, use-cases and show demos of inlets PRO.
 
@@ -148,11 +152,7 @@ Read community tutorials, the launch posts on Hacker News, and send a PR if you 
 
 Add an entry to the [ADOPTERS.md](./ADOPTERS.md) file with your use-case.
 
-## Sponsorship
-
-You can become a GitHub Sponsor as an individual user or company.
-
-[Sponsor alex](https://github.com/sponsors/alexellis) or [Sponsor inlets](https://github.com/sponsors/inlets)
+See [inlets PRO testimonials](https://inlets.dev/)
 
 ## Disclaimer
 
