@@ -54,7 +54,7 @@ For a commercially-supported solution, see [inlets PRO](https://inlets.dev/), wh
 ### Features
 
 * Tunnel HTTP or websockets
-* Expose multiple sites on same port through the use of DNS entries and a `Host` header
+* Expose a site on through the use of a DNS entry and a `Host` header
 * Upgrade to link encryption using TLS for websockets (`wss://`) with an external add-on or [inlets PRO](https://inlets.dev)
 * Shared authentication token for the client and server
 * Automatic reconnects for when the connection drops
@@ -72,7 +72,7 @@ inlets PRO has a native Kubernetes LoadBalancer integration through the [inlets-
 The following features / use-cases are covered by [inlets PRO](https://inlets.dev):
 
 * Tunnel L4 TCP traffic such as websockets, databases, reverse proxies, remote desktop, VNC and SSH
-* Tunnel L7 HTTPS / REST traffic - with automated Let's Encrypt support 
+* Tunnel L7 HTTPS / REST traffic - with automated Let's Encrypt support and multiple upstreams
 * Expose multiple ports from the same client - i.e. 80 and 443
 * Kubernetes helm charts, YAML and [Operator](https://github.com/inlets/inlets-operator)
 * Automated TLS for the control-plane
