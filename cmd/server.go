@@ -20,11 +20,9 @@ import (
 var serverCmd = &cobra.Command{
 	Use:   "server",
 	Short: `Start the tunnel server.`,
-	Long: `Start the tunnel server on a machine with a publicly-accessible IPv4 IP 
-address such as a VPS.
+	Long: `Start the tunnel server on a machine with a publicly-accessible IPv4 IP address such as a VPS.
 
-Note: You can pass the --token argument followed by a token value to both the 
-server and client to prevent unauthorized connections to the tunnel.`,
+Note: You can pass the --token argument followed by a token value to both the server and client to prevent unauthorized connections to the tunnel.`,
 	RunE: runServer,
 	Example: `  # Bind the data and control plane to 80 and 8080
   inlets server --port 80 \
@@ -34,6 +32,8 @@ server and client to prevent unauthorized connections to the tunnel.`,
   inlets server --port 80 \
     --control-port 8001 \
     --control-addr 127.0.0.1`,
+	SilenceUsage:  true,
+	SilenceErrors: true,
 }
 
 func init() {
@@ -129,6 +129,10 @@ func runServer(cmd *cobra.Command, _ []string) error {
 	controlAddr, err := cmd.Flags().GetString("control-addr")
 	if err != nil {
 		return errors.Wrap(err, "failed to get the 'control-addr' value.")
+	}
+
+	if port == controlPort {
+		return fmt.Errorf("the --port and --control-port cannot be the same value")
 	}
 
 	inletsServer := server.Server{

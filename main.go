@@ -24,7 +24,7 @@ func main() {
 	customFormatter.FullTimestamp = true
 
 	if err := cmd.Execute(Version, GitCommit); err != nil {
-		fmt.Fprintf(os.Stderr, "Error:\n%s\n", err.Error())
+		fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
 		os.Exit(1)
 	}
 }
