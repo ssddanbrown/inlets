@@ -96,8 +96,4 @@ go get -u github.com/inlets/inlets
 cd $GOPATH/src/github.com/inlets/inlets
 ```
 
-Alternatively, you can get everything setup right in the browser with a single click using [Gitpod](https://gitpod.io):
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/inlets/inlets)
-
 Contributions are welcome. All commits must be signed-off with `git commit -s` to accept the [Developer Certificate of Origin](https://developercertificate.org).

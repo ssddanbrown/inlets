@@ -36,7 +36,7 @@ Alex is the maintainer of inlets, if you use the project in some way, support it
 
 You can become a sponsor as an individual or as a corporation, check out the tiers to find which is right for you.
 
-[Find out more now](https://github.com/sponsors/inlets/)
+[Find out more now](https://github.com/sponsors/inlets)
 
 ## About inlets OSS
 
