@@ -26,7 +26,7 @@ The following features / use-cases are covered by [inlets PRO](https://inlets.de
 There's also a broader ecosystem:
 
 * Kubernetes helm charts, YAML and [Operator](https://github.com/inlets/inlets-operator)
-* [Documentation](https://docs.inlets.dev/), [blog posts, tutorials and videos](https://inlet.dev/blog)
+* [Documentation](https://docs.inlets.dev/), [blog posts, tutorials and videos](https://inlets.dev/blog)
 * Commercial services & support
 
 Try it out for free: [inlets.dev](https://inlets.dev)
