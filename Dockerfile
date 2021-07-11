@@ -37,8 +37,8 @@ LABEL org.opencontainers.image.source $REPO_URL
 
 COPY --from=builder /usr/bin/inlets /usr/bin/
 
-USER app
-EXPOSE 80
+EXPOSE 8000
+EXPOSE 8123
 
 VOLUME /tmp/
 

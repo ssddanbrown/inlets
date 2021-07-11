@@ -8,7 +8,6 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"strconv"
 	"strings"
 
 	"github.com/inlets/inlets/pkg/server"
@@ -102,18 +101,9 @@ func runServer(cmd *cobra.Command, _ []string) error {
 		return errors.Wrap(err, "failed to get the 'port' value.")
 	}
 
-	controlPort := port
-	if cmd.Flags().Changed("control-port") {
-		val, err := cmd.Flags().GetInt("control-port")
-		if err != nil {
-			return errors.Wrap(err, "failed to get the 'control-port' value.")
-		}
-		controlPort = val
-	}
-
-	if portVal, exists := os.LookupEnv("PORT"); exists && len(portVal) > 0 {
-		port, _ = strconv.Atoi(portVal)
-		controlPort = port
+	controlPort, err := cmd.Flags().GetInt("control-port")
+	if err != nil {
+		return errors.Wrap(err, "failed to get the 'control-port' value.")
 	}
 
 	disableWrapTransport, err := cmd.Flags().GetBool("disable-transport-wrapping")

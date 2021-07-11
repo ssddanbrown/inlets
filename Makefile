@@ -1,6 +1,7 @@
 Version := $(shell git describe --tags --dirty)
 GitCommit := $(shell git rev-parse HEAD)
 LDFLAGS := "-s -w -X main.Version=$(Version) -X main.GitCommit=$(GitCommit)"
+LocalUser := alexellis
 
 # docker manifest command will work with Docker CLI 18.03 or newer
 # but for now it's still experimental feature so we need to enable that
@@ -21,7 +22,7 @@ dist:
 .PHONY: docker-local
 docker-local:
 	docker build \
-		-t ghcr.io/inlets/inlets:$(Version) .
+		-t ghcr.io/$(LocalUser)/inlets:$(Version) .
 
 .PHONY: docker
 docker:
