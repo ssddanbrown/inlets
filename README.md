@@ -138,7 +138,7 @@ Official docs: [docs.inlets.dev](https://docs.inlets.dev)
 * Tutorial: [Get a LoadBalancer for your private Kubernetes cluster with inlets-operator](https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/)
 * Docs: [Quickstart tutorial on your laptop](./docs/quickstart.md)
 
-See also: [advanced usage of inlets including Docker, Kubernetes, multiple-services, and binding to private IPs](./docs/advanced.md)
+Looking for a Docker image? Try [inlets PRO](https://github.com/inlets/inlets-pro)
 
 ### What are people saying about inlets?
 
