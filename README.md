@@ -61,11 +61,9 @@ For a commercially-supported solution, see [inlets PRO](https://inlets.dev/), wh
 
 Distribution:
 
-* Binaries and Docker images for multiple architecture - Intel and ARM
-* Dockerfile
-* systemd unit file for client/server
+* Source code only
 
-inlets PRO has a native Kubernetes LoadBalancer integration through the [inlets-operator](https://github.com/inlets/inlets-operator).
+inlets PRO ships binaries with support for ARM and Windows computers. There is also an official public Docker image available.
 
 ### Going to production with inlets PRO
 
@@ -88,33 +86,9 @@ inlets is a Cloud Native Tunnel and is [listed on the Cloud Native Landscape](ht
 * [inletsctl](https://github.com/inlets/inletsctl) - The fastest way to create self-hosted exit-servers using inlets PRO
 * [inlets](https://github.com/inlets/inlets) - Cloud Native Tunnel for HTTP only - **no** tutorials, automation, TLS, TCP or Kubernetes integration available. Superseded by inlets PRO
 
-## Get inlets OSS
-
-You can install the CLI with a `curl` utility script, `brew` or by downloading the binary from the releases page. Once installed you'll get the `inlets` command.
-
-### Install the CLI
-
-> Note: `inlets` is made available free-of-charge, but you can support its ongoing development and sign up for updates through [GitHub Sponsors](https://github.com/sponsors/alexellis/) 💪
-
-Utility script with `curl`:
-
-```bash
-# Install to local directory
-curl -sLS https://get.inlets.dev | sh
-
-# Install to /usr/local/bin/
-curl -sLS https://get.inlets.dev | sudo sh
-```
-
-> Note: the `brew` distribution is maintained by the brew team, so it may lag a little behind the GitHub release.
-
-Binaries are made available on the [releases page](https://github.com/inlets/inlets/releases) for Linux (x86_64, armhf & arm64), Windows (experimental), and for Darwin (MacOS). You will also find SHA checksums available if you want to verify your download.
-
-Windows users are encouraged to use [git bash](https://git-scm.com/downloads) to install the inlets binary.
-
 ## inlets PRO
 
-inlets PRO superceds the original inlets OSS project and includes: commercial support, automation, secure defaults, and HTTPS/TCP tunnels.
+inlets PRO supersedes the original inlets OSS project and includes: commercial support, automation, secure defaults, and HTTPS/TCP tunnels.
 
 In "A tale of two networks" Alex Ellis and Johan Siebens explore blog posts, use-cases and show demos of inlets PRO.
 
